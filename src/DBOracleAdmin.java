@@ -1,8 +1,5 @@
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -44,10 +41,26 @@ public class DBOracleAdmin {
              
         return Ostatement;
     }
-    
+    // {Start of} Getters
     Statement getStatement(){
         return Ostatement;
     }
+
+    Connection getConnection() {
+        return OdbConnection;
+    }
+    
+    
+    PreparedStatement getPrepareStatement(){
+        return;
+    }
+    
+    ResultSet getResultSet(){
+        return ;
+    }
+    // {End of} Getters
+    
+    
     
     void closeit(){
         try {

@@ -345,7 +345,7 @@ public class Welcome extends javax.swing.JFrame {
             try {
                 if(isConnectedPostgreLabel.getText().equals("Συνδεδεμένη")){
                     postgresDB.closeit();
-                }                    
+                }
                 if(isConnectedOracleLabel.getText().equals("Συνδεδεμένη")){
                     oracleDB.closeit();
                 }                   

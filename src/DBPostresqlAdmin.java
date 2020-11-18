@@ -39,12 +39,20 @@ public class DBPostresqlAdmin {
              
         return Pstatement;
     }
-    
+    // {Start of} Getters
+     
     Statement getStatement(){
         return Pstatement;
     }
     
     
+    
+    
+    
+    
+    
+    
+    // {End of} Getters
         void closeit(){
         try {
             PdbConnection.close();
