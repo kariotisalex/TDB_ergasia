@@ -1,7 +1,4 @@
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
 /*
@@ -343,6 +340,9 @@ public class Welcome extends javax.swing.JFrame {
 
     private void enterToMain(){
             try {
+//                Statement psql = postgresDB.getStatement();
+//                psql.executeUpdate("DROP TABLE persons");
+                
                 if(isConnectedPostgreLabel.getText().equals("Συνδεδεμένη")){
                     postgresDB.closeit();
                 }
@@ -352,7 +352,7 @@ public class Welcome extends javax.swing.JFrame {
                 new MainWindow().setVisible(true);
                 this.setVisible(false);
             } catch (Exception e) {
-                System.out.println("ti malakia paixtike? " + e.getLocalizedMessage());
+                System.out.println("ti malakia paixtike? " + e.toString());
             }
 
     }

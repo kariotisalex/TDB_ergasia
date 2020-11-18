@@ -12,50 +12,63 @@ import java.sql.*;
  * @author alexa
  */
 public class DBPostresqlAdmin {
-    private static String PdriverClassName = "org.postgresql.Driver";
-    private static String Purl = "jdbc:postgresql://dblabs.it.teithe.gr:5432/";
-    private static Connection PdbConnection = null;
-    private static String Pusername = "";
-    private static String Ppasswd = "";
-    private static Statement Pstatement = null;
-    private static ResultSet Prs = null;
+    private static String driverClassName = "org.postgresql.Driver";
+    private static String url = "jdbc:postgresql://dblabs.it.teithe.gr:5432/";
+    private static Connection dbConnection = null;
+    private static String username = "";
+    private static String passwd = "";
+    private static Statement statement = null;
+    private static ResultSet rs = null;
+    private static PreparedStatement preparedStatement;
 
     public DBPostresqlAdmin(String Pusername, String Ppasswd) {
-        this.Pusername = Pusername;
-        this.Ppasswd = Ppasswd;
-        Purl = "jdbc:postgresql://dblabs.it.teithe.gr:5432/"+ Pusername;
+        this.username = Pusername;
+        this.passwd = Ppasswd;
+        url = "jdbc:postgresql://dblabs.it.teithe.gr:5432/"+ Pusername;
     }
     
      Statement connectToDB(){
         try {
-            Class.forName (PdriverClassName);
-            PdbConnection = DriverManager.getConnection (Purl, Pusername, Ppasswd);
-            Pstatement    = PdbConnection.createStatement();
+            Class.forName (driverClassName);
+            dbConnection = DriverManager.getConnection (url, username, passwd);
+            statement    = dbConnection.createStatement();
             
         } catch (Exception e) {
             System.out.println(e.toString());
             System.out.println("Den egine sindesi");
         }
              
-        return Pstatement;
+        return statement;
     }
     // {Start of} Getters
      
+     
+    Connection getConnection() {
+        return dbConnection;
+    }
+     
     Statement getStatement(){
-        return Pstatement;
+        return statement;
     }
     
+    ResultSet getResultset(){
+        return rs;
+    }
     
-    
+    PreparedStatement getPrepareStatement(){
+        return preparedStatement;
+    }    
     
     
     
     
     
     // {End of} Getters
+    
+    
         void closeit(){
         try {
-            PdbConnection.close();
+            dbConnection.close();
         } catch (Exception e) {
         }
     }
