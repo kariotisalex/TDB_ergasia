@@ -1,5 +1,5 @@
 
-import java.sql.Statement;
+import java.sql.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -65,7 +65,7 @@ public class Welcome extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 7;
         gridBagConstraints.insets = new java.awt.Insets(13, 0, 15, 0);
         getContentPane().add(appEntrance, gridBagConstraints);
@@ -97,6 +97,12 @@ public class Welcome extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(14, 17, 0, 0);
         jPanel1.add(jLabel4, gridBagConstraints);
+
+        postgrePW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                postgrePWActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -133,8 +139,6 @@ public class Welcome extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 16);
         jPanel1.add(postgreErrorLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -179,6 +183,12 @@ public class Welcome extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(11, 17, 0, 0);
         jPanel2.add(jLabel6, gridBagConstraints);
+
+        oraclePW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oraclePWActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -246,6 +256,16 @@ public class Welcome extends javax.swing.JFrame {
         oracleEntrance();
     }//GEN-LAST:event_oracleEntranceActionPerformed
 
+    private void postgrePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgrePWActionPerformed
+        // TODO add your handling code here:
+        postgreEntrance();
+    }//GEN-LAST:event_postgrePWActionPerformed
+
+    private void oraclePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oraclePWActionPerformed
+        // TODO add your handling code here:
+        oracleEntrance();
+    }//GEN-LAST:event_oraclePWActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -308,7 +328,7 @@ public class Welcome extends javax.swing.JFrame {
     DBPostresqlAdmin postgresDB;
 
 // Methods
-// DB methods
+// {Start of} DB methods
     private void oracleEntrance(){
         oracleErrorLabel.setText("");
         oracleDB = new DBOracleAdmin(oracleUN.getText(), oraclePW.getText());
@@ -338,26 +358,18 @@ public class Welcome extends javax.swing.JFrame {
     public DBPostresqlAdmin giveIt(){
         return postgresDB;
     }
-// Enter to main window
+    // {End of} DB methods
+    
+    // {Start Method} Enter to main window
 
     private void enterToMain(){
-            try {
-
-                
-//                if(isConnectedPostgreLabel.getText().equals("Συνδεδεμένη")){
-//                    postgresDB.closeit();
-//                }
-//                if(isConnectedOracleLabel.getText().equals("Συνδεδεμένη")){
-//                    oracleDB.closeit();
-//                }                   
+            try {                 
                 new MainWindow().setVisible(true);
                 this.setVisible(false);
-            } catch (Exception e) {
-                System.out.println("ti malakia paixtike? " + e.toString());
+            }catch (Exception e) {
+                System.out.println(e.toString() + " "+ e.getMessage());
             }
-
-    }
-
+    }// {End Method} Enter to main window
     
 
 

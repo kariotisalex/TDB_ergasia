@@ -1,5 +1,6 @@
 
 import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,7 +20,8 @@ public class MainWindow extends javax.swing.JFrame {
         fillDate();
         initComponents();
         dropTablesPG();
-
+        createTablesPG();
+        insertToTables();
     }
 
     /**
@@ -105,14 +107,14 @@ public class MainWindow extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Όνομα", "Επίθετο", "Όνομα Πατέρα", "Ονομα Μητέρας", "Ημερομηνία Γεννησης"
+                "AM", "Όνομα", "Επίθετο", "Όνομα Πατέρα", "Ονομα Μητέρας", "Ετος εισαγωγης"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -126,6 +128,11 @@ public class MainWindow extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jButton2.setText("Ανανέωση");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -652,13 +659,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-
-        try {
-            postgresDB.closeit();
-        } catch (Exception e) {
-            System.out.println("Kati gamithike ....");
-        }
-
+        exitFromApp();
         System.exit(0);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -681,6 +682,38 @@ public class MainWindow extends javax.swing.JFrame {
         System.out.println("");
 
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        String selectString = "SELECT * FROM mathitis;";
+        Statement aStatePG = dbpg.getStatement();
+        model.setRowCount(0);
+        ResultSet rs = dbpg.getResultset();
+        
+        try {
+            rs = aStatePG.executeQuery(selectString);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        } 
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -781,10 +814,11 @@ public class MainWindow extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     // {Start of} Variables
     DBPostresqlAdmin dbpg;
+    DBOracleAdmin dbor;
     String[] imeraCombo = new String[31];
     String[] minasCombo = new String[12];
     String[] etosCombo = new String[61];
-    DBPostresqlAdmin postgresDB;
+    
 
     // {End of} variables
     // {Start of} Methods
@@ -802,12 +836,110 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     void dropTablesPG() {
-        Statement psql = postgresDB.getStatement();
+        Statement psql = dbpg.getStatement();
         try {psql.executeUpdate("DROP TABLE mathitis");} catch (SQLException e) {}
         try {psql.executeUpdate("DROP TABLE mathima");} catch (SQLException e) {}
         try {psql.executeUpdate("DROP TABLE vathmologia");} catch (SQLException e) {}
         try {psql.executeUpdate("DROP TABLE kathigitis");} catch (SQLException e) {}
     }
+    
+    void createTablesPG(){
+        Statement aStatePG = dbpg.getStatement();
+        String query1 = "CREATE TABLE mathitis(\n" +
+                       "sid int NOT NULL,\n" +
+                       "onoma varchar(50),\n" +
+                       "eponymo varchar(50),\n" +
+                       "onPateras varchar(20),\n" +
+                       "onMiteras varchar(20),\n" +
+                       "etosEisagogis int,\n" +
+                       "PRIMARY KEY(sid)\n" +
+                       ");";
+        
+        String query2 = "CREATE TABLE kathigitis(\n" +
+                        "kid int NOT NULL, \n" +
+                        "Onoma_kathigiti varchar(20),\n" +
+                        "Epitheto_kathigiti varchar(20), \n" +
+                        "Eidikotita varchar(20),\n" +
+                        "PRIMARY KEY(kid)\n" +
+                        ");";        
+        
+        
+        
+        String query3 = "CREATE TABLE mathima(\n" +
+                        "mid int NOT NULL,\n" +
+                        "Kid INT NOT NULL,\n" +
+                        "mathima varchar(20),\n" +
+                        "PRIMARY KEY(mid),\n" +
+                        "FOREIGN KEY (kid) REFERENCES kathigitis(kid)\n" +
+                        ");";
+        
+        String query4 = "CREATE TABLE vathmologia(\n" +
+                        "sid int NOT NULL, \n" +
+                        "mid int NOT NULL, \n" +
+                        "vathmos int,\n" +
+                        "etos varchar(50),\n" +
+                        "FOREIGN KEY (sid) REFERENCES mathitis(sid),\n" +
+                        "FOREIGN KEY (mid) REFERENCES mathima(mid)\n" +
+                        ");";        
+        try {
+            aStatePG.executeUpdate(query1);
+            aStatePG.executeUpdate(query2);
+            aStatePG.executeUpdate(query3);
+            aStatePG.executeUpdate(query4);
+        } catch (Exception e) {
+            System.out.println("Create table : " + e.toString());
+        }    
+    }
+    
+    void insertToTables(){
+        
 
+        
+        // Mathitis
+        
+        String insertQuery = "INSERT INTO mathitis(sid, onoma, eponymo, onPateras, onMiteras, etosEisagogis) VALUES (?, ?, ?, ?, ?, ?);";
+        
+        PreparedStatement aStatePG = dbpg.getPrepareStatement(insertQuery);
+        
+        int[] sid = {1,2,3,4,5,6,7,8};
+        String[] onoma = {"Δημητρα","Ολίβια","Χρυσάνθη","Παναγιώτα","Βασίλης","Νίκος", "Γιώργος", "Παύλος"};
+        String[] eponymo = {"Μολώνη", "Σουλίωτη", "Αποσκίτη", "Μπόμπορη", "Βασιλείου", "Νίκας", "Γεωργίου", "Παύλου"};
+        String[] onPatera = {"Νίκος", "Πέτρος", "Δημήτρης","Βαγγέλης", "Νικιτα", "Παρασευάς", "Δημήτρης", "Βρασίδας"};
+        String[] onMhteras = {"Αναστασία","Νίκη","Ελένη","Δανάη","Ευταξία","Ελισάβετ","Μαρία","Μελπομένη"};
+        int[] etosEisagogis = {2015,2017,2019,2018,2018,2019,2015,2015};
+        
+        try {
+            for(int i =0; i < 8; i++ ){
+                aStatePG.setInt(1,sid[i]);
+                aStatePG.setString(2, onoma[i]);
+                aStatePG.setString(3, eponymo[i]);
+                aStatePG.setString(4, onPatera[i]);
+                aStatePG.setString(5, onMhteras[i]);
+                aStatePG.setInt(6, etosEisagogis[i]);
+                aStatePG.executeUpdate();
+            }
+        } catch (Exception e) {
+        }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    void exitFromApp(){
+        try {dbpg.closeit();} catch (Exception e) {System.out.println(e.toString());}
+        try {dbor.closeit();} catch (Exception e) {System.out.println(e.toString());}
+    }
     // {end of} Methods
 }

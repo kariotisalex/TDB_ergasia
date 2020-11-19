@@ -72,6 +72,7 @@ public class DBOracleAdmin {
     
     static void closeit(){
         try {
+            statement.close();
             dbConnection.close();
         } catch (Exception e) {
         }

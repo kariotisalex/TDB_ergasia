@@ -73,6 +73,7 @@ public class DBPostresqlAdmin {
     
     static void closeit(){
         try {
+            statement.close();
             dbConnection.close();
         } catch (Exception e) {
         }
