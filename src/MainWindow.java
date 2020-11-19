@@ -690,7 +690,6 @@ public class MainWindow extends javax.swing.JFrame {
         Statement aStatePG = dbpg.getStatement();
         model.setRowCount(0);
         ResultSet rs = dbpg.getResultset();
-        
         try {
             rs = aStatePG.executeQuery(selectString);
             
