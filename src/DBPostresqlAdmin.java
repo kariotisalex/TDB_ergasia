@@ -55,8 +55,13 @@ public class DBPostresqlAdmin {
         return rs;
     }
     
-    static PreparedStatement getPrepareStatement(){
+    static PreparedStatement getPrepareStatement(String ps){
+        try {
+            preparedStatement = dbConnection.prepareStatement(ps);
+        } catch (Exception e) {
+        }
         return preparedStatement;
+        
     }    
     
     

@@ -56,8 +56,13 @@ public class DBOracleAdmin {
         return rs;
     }
     
-    static PreparedStatement getPrepareStatement(){
-        return preparedStatement;
+    static PreparedStatement getPrepareStatement(String ps){
+        try {
+            preparedStatement = dbConnection.prepareStatement(ps);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return preparedStatement ;
     }
     
 

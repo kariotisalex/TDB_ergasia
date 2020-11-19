@@ -1,15 +1,11 @@
 
 import java.sql.*;
 
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author alexa
@@ -22,8 +18,8 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         fillDate();
         initComponents();
-        enterTo();
-        
+        dropTablesPG();
+
     }
 
     /**
@@ -656,20 +652,19 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        
+
         try {
             postgresDB.closeit();
         } catch (Exception e) {
             System.out.println("Kati gamithike ....");
         }
-        
-        
+
         System.exit(0);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -678,13 +673,13 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        System.out.println("Onoma : "+ onomaMathitiInsertTextField.getText());
-        System.out.println("epytheto : "+ eponymoMathitiInsertTextField.getText());
+        System.out.println("Onoma : " + onomaMathitiInsertTextField.getText());
+        System.out.println("epytheto : " + eponymoMathitiInsertTextField.getText());
         System.out.println("Onoma patera : " + onomaPateraIMathitinsertTextField.getText());
         System.out.println("Onoma miteras : " + onomaMiterasMathitiInsertTextField.getText());
         System.out.println("Hmerominia gennisis : " + imeraGennisisMathiti.getSelectedItem());
         System.out.println("");
-        
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
@@ -720,7 +715,6 @@ public class MainWindow extends javax.swing.JFrame {
                 new MainWindow().setVisible(true);
             }
         });
-                
 
     }
 
@@ -785,79 +779,35 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTextField onomaMiterasMathitiInsertTextField;
     private javax.swing.JTextField onomaPateraIMathitinsertTextField;
     // End of variables declaration//GEN-END:variables
-
+    // {Start of} Variables
     DBPostresqlAdmin dbpg;
     String[] imeraCombo = new String[31];
     String[] minasCombo = new String[12];
     String[] etosCombo = new String[61];
     DBPostresqlAdmin postgresDB;
 
-    void fillDate(){
-        for (int i = 0; i < 61; i++){
+    // {End of} variables
+    // {Start of} Methods
+    void fillDate() {
+        for (int i = 0; i < 61; i++) {
             int etos = 2015;
-            if(i < 12){
-                minasCombo[i] = String.valueOf(i+1);
+            if (i < 12) {
+                minasCombo[i] = String.valueOf(i + 1);
             }
-            if(i<31){
-                imeraCombo[i] = String.valueOf(i+1);
-                
+            if (i < 31) {
+                imeraCombo[i] = String.valueOf(i + 1);
             }
-            etosCombo[i] = String.valueOf(etos-i);
+            etosCombo[i] = String.valueOf(etos - i);
         }
-        
-    
-    
-    
-    
-    }
-    
-    
-    
-    
-    
-    // Variables
-
-
-
-
-    void enterTo(){
-
-        try {
-            
-            Statement psql = postgresDB.getStatement();
-            psql.executeUpdate("DROP TABLE persons");
-            
-            
-        } catch (Exception e) {
-            
-            System.out.println(" ti gamithike??" + e.getMessage());
-        }
-        
-        
-        
-
     }
 
+    void dropTablesPG() {
+        Statement psql = postgresDB.getStatement();
+        try {psql.executeUpdate("DROP TABLE mathitis");} catch (SQLException e) {}
+        try {psql.executeUpdate("DROP TABLE mathima");} catch (SQLException e) {}
+        try {psql.executeUpdate("DROP TABLE vathmologia");} catch (SQLException e) {}
+        try {psql.executeUpdate("DROP TABLE kathigitis");} catch (SQLException e) {}
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // {end of} Methods
 }
