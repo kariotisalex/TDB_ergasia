@@ -27,7 +27,7 @@ public class DBPostresqlAdmin {
         url = "jdbc:postgresql://dblabs.it.teithe.gr:5432/"+ Pusername;
     }
     
-     Statement connectToDB(){
+    static Statement connectToDB(){
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -43,19 +43,19 @@ public class DBPostresqlAdmin {
     // {Start of} Getters
      
      
-    Connection getConnection() {
+    static Connection getConnection() {
         return dbConnection;
     }
      
-    Statement getStatement(){
+    static Statement getStatement(){
         return statement;
     }
     
-    ResultSet getResultset(){
+    static ResultSet getResultset(){
         return rs;
     }
     
-    PreparedStatement getPrepareStatement(){
+    static PreparedStatement getPrepareStatement(){
         return preparedStatement;
     }    
     
@@ -66,7 +66,7 @@ public class DBPostresqlAdmin {
     // {End of} Getters
     
     
-        void closeit(){
+    static void closeit(){
         try {
             dbConnection.close();
         } catch (Exception e) {

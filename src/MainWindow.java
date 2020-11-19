@@ -1,4 +1,7 @@
 
+import java.sql.*;
+
+
 
 
 /*
@@ -19,7 +22,7 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         fillDate();
         initComponents();
-        
+        enterTo();
         
     }
 
@@ -228,6 +231,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         jButton6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton6.setText("Ε Ι Σ Α Γ Ω Γ Η");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -648,6 +656,14 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        
+        try {
+            postgresDB.closeit();
+        } catch (Exception e) {
+            System.out.println("Kati gamithike ....");
+        }
+        
+        
         System.exit(0);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -659,6 +675,17 @@ public class MainWindow extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Onoma : "+ onomaMathitiInsertTextField.getText());
+        System.out.println("epytheto : "+ eponymoMathitiInsertTextField.getText());
+        System.out.println("Onoma patera : " + onomaPateraIMathitinsertTextField.getText());
+        System.out.println("Onoma miteras : " + onomaMiterasMathitiInsertTextField.getText());
+        System.out.println("Hmerominia gennisis : " + imeraGennisisMathiti.getSelectedItem());
+        System.out.println("");
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -762,19 +789,20 @@ public class MainWindow extends javax.swing.JFrame {
     DBPostresqlAdmin dbpg;
     String[] imeraCombo = new String[31];
     String[] minasCombo = new String[12];
-    String[] etosCombo = new String[25];
-    
+    String[] etosCombo = new String[61];
+    DBPostresqlAdmin postgresDB;
 
     void fillDate(){
-        for (int i = 0; i < 31; i++){
+        for (int i = 0; i < 61; i++){
             int etos = 2015;
             if(i < 12){
                 minasCombo[i] = String.valueOf(i+1);
             }
-            if(i<25){
-                etosCombo[i] = String.valueOf(etos-i);
+            if(i<31){
+                imeraCombo[i] = String.valueOf(i+1);
+                
             }
-            imeraCombo[i] = String.valueOf(i+1);
+            etosCombo[i] = String.valueOf(etos-i);
         }
         
     
@@ -792,7 +820,23 @@ public class MainWindow extends javax.swing.JFrame {
 
 
 
+    void enterTo(){
 
+        try {
+            
+            Statement psql = postgresDB.getStatement();
+            psql.executeUpdate("DROP TABLE persons");
+            
+            
+        } catch (Exception e) {
+            
+            System.out.println(" ti gamithike??" + e.getMessage());
+        }
+        
+        
+        
+
+    }
 
 
 

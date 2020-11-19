@@ -311,8 +311,8 @@ public class Welcome extends javax.swing.JFrame {
 // DB methods
     private void oracleEntrance(){
         oracleErrorLabel.setText("");
-            oracleDB = new DBOracleAdmin(oracleUN.getText(), oraclePW.getText());
-            Statement test = oracleDB.connectToDB();
+        oracleDB = new DBOracleAdmin(oracleUN.getText(), oraclePW.getText());
+        Statement test = oracleDB.connectToDB();
             if(test != null){
                 isConnectedOracleLabel.setText("Συνδεδεμένη");
                 oracleEntrance.setEnabled(false);
@@ -335,20 +335,21 @@ public class Welcome extends javax.swing.JFrame {
         
         
     }
-
+    public DBPostresqlAdmin giveIt(){
+        return postgresDB;
+    }
 // Enter to main window
 
     private void enterToMain(){
             try {
-//                Statement psql = postgresDB.getStatement();
-//                psql.executeUpdate("DROP TABLE persons");
+
                 
-                if(isConnectedPostgreLabel.getText().equals("Συνδεδεμένη")){
-                    postgresDB.closeit();
-                }
-                if(isConnectedOracleLabel.getText().equals("Συνδεδεμένη")){
-                    oracleDB.closeit();
-                }                   
+//                if(isConnectedPostgreLabel.getText().equals("Συνδεδεμένη")){
+//                    postgresDB.closeit();
+//                }
+//                if(isConnectedOracleLabel.getText().equals("Συνδεδεμένη")){
+//                    oracleDB.closeit();
+//                }                   
                 new MainWindow().setVisible(true);
                 this.setVisible(false);
             } catch (Exception e) {
@@ -356,6 +357,8 @@ public class Welcome extends javax.swing.JFrame {
             }
 
     }
+
+    
 
 
 }

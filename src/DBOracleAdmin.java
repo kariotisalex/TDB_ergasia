@@ -29,7 +29,7 @@ public class DBOracleAdmin {
         
     }
 
-    Statement connectToDB(){
+    static Statement connectToDB(){
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -44,19 +44,19 @@ public class DBOracleAdmin {
     }
     // {Start of} Getters
     
-    Connection getConnection() {
+    static Connection getConnection() {
         return dbConnection;
     }
     
-    Statement getStatement(){
+    static Statement getStatement(){
         return statement;
     }
     
-    ResultSet getResultSet(){
+    static ResultSet getResultSet(){
         return rs;
     }
     
-    PreparedStatement getPrepareStatement(){
+    static PreparedStatement getPrepareStatement(){
         return preparedStatement;
     }
     
@@ -65,7 +65,7 @@ public class DBOracleAdmin {
     
     
     
-    void closeit(){
+    static void closeit(){
         try {
             dbConnection.close();
         } catch (Exception e) {
