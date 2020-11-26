@@ -116,33 +116,43 @@
                   </Group>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="usernamepTF" pref="97" max="32767" attributes="0"/>
-                      <Component id="passwordpTF" max="32767" attributes="0"/>
+                      <Component id="postgreUN" pref="97" max="32767" attributes="0"/>
+                      <Component id="postgrePW" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="99" max="32767" attributes="0"/>
-                  <Component id="eisodospButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="postgreEntrance" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="isConnectedPostgreLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="isConnectedPostgreLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="usernamepTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="postgreUN" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="passwordpTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="postgrePW" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="eisodospButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="postgreEntrance" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -159,17 +169,28 @@
             <Property name="text" type="java.lang.String" value="Password:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="usernamepTF">
+        <Component class="javax.swing.JTextField" name="postgreUN">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernamepTFActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postgreUNActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="passwordpTF">
-        </Component>
-        <Component class="javax.swing.JButton" name="eisodospButton">
+        <Component class="javax.swing.JButton" name="postgreEntrance">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x395;&#x3af;&#x3c3;&#x3bf;&#x3b4;&#x3bf;&#x3c2;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postgreEntranceActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="isConnectedPostgreLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x39c;&#x3b7; &#x3c3;&#x3c5;&#x3bd;&#x3b4;&#x3b5;&#x3b4;&#x3b5;&#x3bc;&#x3ad;&#x3bd;&#x3b7;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="postgrePW">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="postgrePWActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -193,33 +214,43 @@
                   </Group>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="usernameoTF" alignment="0" pref="97" max="32767" attributes="0"/>
-                      <Component id="passwordoTF" alignment="0" max="32767" attributes="0"/>
+                      <Component id="oraclePW" pref="97" max="32767" attributes="0"/>
+                      <Component id="oracleUN" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="99" max="32767" attributes="0"/>
-                  <Component id="eisodosoButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="oracleEntrance" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="isConnectedOracleLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="isConnectedOracleLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="usernameoTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="oracleUN" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="passwordoTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="oraclePW" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="eisodosoButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="oracleEntrance" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -236,17 +267,28 @@
             <Property name="text" type="java.lang.String" value="Password:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="usernameoTF">
+        <Component class="javax.swing.JTextField" name="oraclePW">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameoTFActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="oraclePWActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="passwordoTF">
-        </Component>
-        <Component class="javax.swing.JButton" name="eisodosoButton">
+        <Component class="javax.swing.JButton" name="oracleEntrance">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x395;&#x3af;&#x3c3;&#x3bf;&#x3b4;&#x3bf;&#x3c2;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="oracleEntranceActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="isConnectedOracleLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x39c;&#x3b7; &#x3c3;&#x3c5;&#x3bd;&#x3b4;&#x3b5;&#x3b4;&#x3b5;&#x3bc;&#x3ad;&#x3bd;&#x3b7;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="oracleUN">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="oracleUNActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

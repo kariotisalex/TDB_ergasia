@@ -5,6 +5,12 @@
  */
 package main;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author proxc
@@ -15,8 +21,12 @@ public class Students extends javax.swing.JFrame {
      * Creates new form Home_Data
      */
     public Students() {
+        fillDate();
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
+        //showInTable();
+        
+        
     }
 
     /**
@@ -28,9 +38,9 @@ public class Students extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         viewPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         editPanel = new javax.swing.JPanel();
@@ -39,6 +49,7 @@ public class Students extends javax.swing.JFrame {
         viewStudent = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        refreshListStudents = new javax.swing.JButton();
         editStudent = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -55,17 +66,6 @@ public class Students extends javax.swing.JFrame {
         month = new javax.swing.JComboBox<>();
         year = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel1.setBackground(new java.awt.Color(45, 118, 232));
-
-        jLabel15.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/images/group_52px_1.png"))); // NOI18N
-        jLabel15.setText(" Μαθητές");
-
         jPanel3.setBackground(new java.awt.Color(45, 118, 232));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -78,6 +78,18 @@ public class Students extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(45, 118, 232));
+
+        jLabel15.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/images/group_52px_1.png"))); // NOI18N
+        jLabel15.setText(" Μαθητές");
 
         viewPanel.setBackground(new java.awt.Color(45, 118, 232));
         viewPanel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,14 +158,12 @@ public class Students extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(viewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(241, 241, 241))
+                        .addComponent(editPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +172,6 @@ public class Students extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -194,15 +203,30 @@ public class Students extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        refreshListStudents.setText("Ανανέωση");
+        refreshListStudents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshListStudentsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout viewStudentLayout = new javax.swing.GroupLayout(viewStudent);
         viewStudent.setLayout(viewStudentLayout);
         viewStudentLayout.setHorizontalGroup(
             viewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1033, Short.MAX_VALUE)
+            .addGroup(viewStudentLayout.createSequentialGroup()
+                .addGap(454, 454, 454)
+                .addComponent(refreshListStudents)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewStudentLayout.setVerticalGroup(
             viewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+            .addGroup(viewStudentLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(refreshListStudents)
+                .addContainerGap())
         );
 
         botPanel.add(viewStudent, "card2");
@@ -233,6 +257,13 @@ public class Students extends javax.swing.JFrame {
         onomapLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
         onomapLabel.setText("Όνομα πατέρα :");
 
+        day.setModel(new javax.swing.DefaultComboBoxModel<>(imeraCombo));
+        day.setToolTipText("");
+
+        month.setModel(new javax.swing.DefaultComboBoxModel<>(minasCombo));
+
+        year.setModel(new javax.swing.DefaultComboBoxModel<>(etosCombo));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -248,19 +279,19 @@ public class Students extends javax.swing.JFrame {
                             .addComponent(eponimoLabel)
                             .addComponent(onomamLabel)
                             .addComponent(etoseisLabel))
-                        .addGap(60, 60, 60)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(eponimoTF)
-                            .addComponent(onomapTF, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(onomamTF, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(onomamTF, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                .addComponent(onomapTF)
+                                .addComponent(eponimoTF)
+                                .addComponent(onomaTF))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(onomaTF))))
+                                .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -351,6 +382,10 @@ public class Students extends javax.swing.JFrame {
         viewPanel.setBackground(new java.awt.Color(45,118,232));
     }//GEN-LAST:event_editPanelMouseClicked
 
+    private void refreshListStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshListStudentsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshListStudentsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -413,8 +448,67 @@ public class Students extends javax.swing.JFrame {
     private javax.swing.JTextField onomamTF;
     private javax.swing.JLabel onomapLabel;
     private javax.swing.JTextField onomapTF;
+    private javax.swing.JButton refreshListStudents;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JPanel viewStudent;
     private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
+   
+    
+    DBPostresqlAdmin dbpg;
+    DBOracleAdmin dbor;
+    String[] imeraCombo = new String[31];
+    String[] minasCombo = new String[12];
+    String[] etosCombo = new String[61];
+    
+    
+    void fillDate() {
+        for (int i = 0; i < 61; i++) {
+            int etos = 2015;
+            if (i < 12) {
+                minasCombo[i] = String.valueOf(i + 1);
+            }
+            if (i < 31) {
+                imeraCombo[i] = String.valueOf(i + 1);
+            }
+            etosCombo[i] = String.valueOf(etos - i);
+        }
+    }
+    
+    
+//    void showInTable(){
+//        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+//        String selectString = "SELECT * FROM mathitis;";
+//        Statement aStatePG = dbpg.getStatement();
+//        model.setRowCount(0);
+//        ResultSet rs = dbpg.getResultset();
+//        try {
+//            rs = aStatePG.executeQuery(selectString);
+//            
+//            ResultSetMetaData rsmd = rs.getMetaData();
+//            int numberOfColumns = rsmd.getColumnCount();
+//            Object[] row = new Object[numberOfColumns];
+//            String columnvalue;
+//            while (rs.next()) {
+//                for (int i = 1; i<= numberOfColumns; i++) {
+//                    columnvalue = rs.getString(i);
+//                    row[i-1] = columnvalue;
+//                }
+//                
+//                model.addRow(row);
+//            }
+//        } catch(SQLException ex) {
+//            System.out.println("\n -- SQL Exception --- \n");
+//            while(ex != null) {
+//		System.out.println("Message: " + ex.getMessage());
+//		ex = ex.getNextException();
+//            }
+//        } 
+//    }
+
+
+
+
+
+
 }

@@ -5,6 +5,10 @@
  */
 package main;
 
+import java.sql.Statement;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author proxc
@@ -32,15 +36,17 @@ public class Settings extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        usernamepTF = new javax.swing.JTextField();
-        passwordpTF = new javax.swing.JTextField();
-        eisodospButton = new javax.swing.JButton();
+        postgreUN = new javax.swing.JTextField();
+        postgreEntrance = new javax.swing.JButton();
+        isConnectedPostgreLabel = new javax.swing.JLabel();
+        postgrePW = new javax.swing.JPasswordField();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        usernameoTF = new javax.swing.JTextField();
-        passwordoTF = new javax.swing.JTextField();
-        eisodosoButton = new javax.swing.JButton();
+        oraclePW = new javax.swing.JTextField();
+        oracleEntrance = new javax.swing.JButton();
+        isConnectedOracleLabel = new javax.swing.JLabel();
+        oracleUN = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -76,13 +82,26 @@ public class Settings extends javax.swing.JFrame {
 
         jLabel2.setText("Password:");
 
-        usernamepTF.addActionListener(new java.awt.event.ActionListener() {
+        postgreUN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernamepTFActionPerformed(evt);
+                postgreUNActionPerformed(evt);
             }
         });
 
-        eisodospButton.setText("Είσοδος");
+        postgreEntrance.setText("Είσοδος");
+        postgreEntrance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                postgreEntranceActionPerformed(evt);
+            }
+        });
+
+        isConnectedPostgreLabel.setText("Μη συνδεδεμένη");
+
+        postgrePW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                postgrePWActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -95,27 +114,34 @@ public class Settings extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usernamepTF, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                    .addComponent(passwordpTF))
+                    .addComponent(postgreUN, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(postgrePW))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(99, Short.MAX_VALUE)
-                .addComponent(eisodospButton)
-                .addGap(97, 97, 97))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(postgreEntrance)
+                        .addGap(97, 97, 97))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(isConnectedPostgreLabel)
+                        .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap()
+                .addComponent(isConnectedPostgreLabel)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(usernamepTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(postgreUN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(passwordpTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(postgrePW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(eisodospButton)
+                .addComponent(postgreEntrance)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -125,13 +151,26 @@ public class Settings extends javax.swing.JFrame {
 
         jLabel4.setText("Password:");
 
-        usernameoTF.addActionListener(new java.awt.event.ActionListener() {
+        oraclePW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameoTFActionPerformed(evt);
+                oraclePWActionPerformed(evt);
             }
         });
 
-        eisodosoButton.setText("Είσοδος");
+        oracleEntrance.setText("Είσοδος");
+        oracleEntrance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oracleEntranceActionPerformed(evt);
+            }
+        });
+
+        isConnectedOracleLabel.setText("Μη συνδεδεμένη");
+
+        oracleUN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oracleUNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -144,27 +183,34 @@ public class Settings extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usernameoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                    .addComponent(passwordoTF))
+                    .addComponent(oraclePW, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(oracleUN))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(99, Short.MAX_VALUE)
-                .addComponent(eisodosoButton)
-                .addGap(97, 97, 97))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(oracleEntrance)
+                        .addGap(97, 97, 97))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(isConnectedOracleLabel)
+                        .addContainerGap())))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap()
+                .addComponent(isConnectedOracleLabel)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(usernameoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(oracleUN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(passwordoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(oraclePW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(eisodosoButton)
+                .addComponent(oracleEntrance)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -194,13 +240,33 @@ public class Settings extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernamepTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamepTFActionPerformed
+    private void postgreUNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgreUNActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernamepTFActionPerformed
+    }//GEN-LAST:event_postgreUNActionPerformed
 
-    private void usernameoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameoTFActionPerformed
+    private void postgrePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgrePWActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameoTFActionPerformed
+        postgreEntrance();
+    }//GEN-LAST:event_postgrePWActionPerformed
+
+    private void oracleUNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oracleUNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_oracleUNActionPerformed
+
+    private void oracleEntranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oracleEntranceActionPerformed
+        // TODO add your handling code here:
+        oracleEntrance();
+    }//GEN-LAST:event_oracleEntranceActionPerformed
+
+    private void oraclePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oraclePWActionPerformed
+        // TODO add your handling code here:
+        oracleEntrance();
+    }//GEN-LAST:event_oraclePWActionPerformed
+
+    private void postgreEntranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgreEntranceActionPerformed
+        // TODO add your handling code here:
+        postgreEntrance();
+    }//GEN-LAST:event_postgreEntranceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,8 +307,8 @@ public class Settings extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton eisodosoButton;
-    private javax.swing.JButton eisodospButton;
+    private javax.swing.JLabel isConnectedOracleLabel;
+    private javax.swing.JLabel isConnectedPostgreLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -251,9 +317,65 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JTextField passwordoTF;
-    private javax.swing.JTextField passwordpTF;
-    private javax.swing.JTextField usernameoTF;
-    private javax.swing.JTextField usernamepTF;
+    private javax.swing.JButton oracleEntrance;
+    private javax.swing.JTextField oraclePW;
+    private javax.swing.JTextField oracleUN;
+    private javax.swing.JButton postgreEntrance;
+    private javax.swing.JPasswordField postgrePW;
+    private javax.swing.JTextField postgreUN;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+    DBOracleAdmin oracleDB;
+    DBPostresqlAdmin postgresDB;
+
+// Methods
+// {Start of} DB methods
+    private void oracleEntrance(){
+       // oracleErrorLabel.setText("");
+        oracleDB = new DBOracleAdmin(oracleUN.getText(), oraclePW.getText());
+        Statement test = oracleDB.connectToDB();
+            if(test != null){
+                isConnectedOracleLabel.setText("Συνδεδεμένη");
+                oracleEntrance.setEnabled(false);
+            }else{
+                String a = "<html>Ελεγξτε το Username ή το Password<br>Ελεγξτε τη συνδεση VPN";
+                JOptionPane.showMessageDialog(new JFrame(), a, "Σφάλμα", HEIGHT);
+                
+            }
+    }
+    private void postgreEntrance(){
+        //postgreErrorLabel.setText("");
+            postgresDB = new DBPostresqlAdmin(postgreUN.getText(), postgrePW.getText());
+            Statement test = postgresDB.connectToDB();
+            if(test != null){
+                isConnectedPostgreLabel.setText("Συνδεδεμένη");
+                postgreEntrance.setEnabled(false);
+            }else{
+               // postgreErrorLabel.setText("Ελεγξτε το Username ή το Password");
+            }
+    }
+    
+    public DBPostresqlAdmin giveIt(){
+        return postgresDB;
+    }
+    // {End of} DB methods
+    
+    // {Start Method} Enter to main window
+
+//    private void enterToMain(){
+//            try {                 
+//                new MainWindow().setVisible(true);
+//                this.setVisible(false);
+//            }catch (Exception e) {
+//                System.out.println(e.toString() + " "+ e.getMessage());
+//            }
+//    }// {End Method} Enter to main window
+    
+
+
+
+
 }

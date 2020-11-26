@@ -38,6 +38,7 @@ public class Teachers extends javax.swing.JFrame {
         viewTeachers = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        refreshListTeachers = new javax.swing.JButton();
         editTeachers = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -168,15 +169,25 @@ public class Teachers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        refreshListTeachers.setText("Καταχώρηση");
+
         javax.swing.GroupLayout viewTeachersLayout = new javax.swing.GroupLayout(viewTeachers);
         viewTeachers.setLayout(viewTeachersLayout);
         viewTeachersLayout.setHorizontalGroup(
             viewTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 949, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
+            .addGroup(viewTeachersLayout.createSequentialGroup()
+                .addGap(419, 419, 419)
+                .addComponent(refreshListTeachers)
+                .addContainerGap(435, Short.MAX_VALUE))
         );
         viewTeachersLayout.setVerticalGroup(
             viewTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewTeachersLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(refreshListTeachers)
+                .addContainerGap())
         );
 
         botPanel.add(viewTeachers, "card2");
@@ -378,6 +389,7 @@ public class Teachers extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> month;
     private javax.swing.JLabel onomaLabel;
     private javax.swing.JTextField onomaTF;
+    private javax.swing.JButton refreshListTeachers;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JPanel viewTeachers;
     private javax.swing.JComboBox<String> year;
