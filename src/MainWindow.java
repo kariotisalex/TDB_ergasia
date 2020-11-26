@@ -685,7 +685,33 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        showInTable();
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        String selectString = "SELECT * FROM mathitis;";
+        Statement aStatePG = dbpg.getStatement();
+        model.setRowCount(0);
+        ResultSet rs = dbpg.getResultset();
+        try {
+            rs = aStatePG.executeQuery(selectString);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -893,42 +919,26 @@ public class MainWindow extends javax.swing.JFrame {
             }
         } catch (Exception e) {
         }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     void exitFromApp(){
         try {dbpg.closeit();} catch (Exception e) {System.out.println(e.toString());}
         try {dbor.closeit();} catch (Exception e) {System.out.println(e.toString());}
-    }
-    
-    
-    
-    void showInTable(){
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        String selectString = "SELECT * FROM mathitis;";
-        Statement aStatePG = dbpg.getStatement();
-        model.setRowCount(0);
-        ResultSet rs = dbpg.getResultset();
-        try {
-            rs = aStatePG.executeQuery(selectString);
-            
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int numberOfColumns = rsmd.getColumnCount();
-            Object[] row = new Object[numberOfColumns];
-            String columnvalue;
-            while (rs.next()) {
-                for (int i = 1; i<= numberOfColumns; i++) {
-                    columnvalue = rs.getString(i);
-                    row[i-1] = columnvalue;
-                }
-                
-                model.addRow(row);
-            }
-        } catch(SQLException ex) {
-            System.out.println("\n -- SQL Exception --- \n");
-            while(ex != null) {
-		System.out.println("Message: " + ex.getMessage());
-		ex = ex.getNextException();
-            }
-        } 
     }
     // {end of} Methods
 }
