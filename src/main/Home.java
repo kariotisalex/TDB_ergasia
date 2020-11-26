@@ -57,6 +57,7 @@ public class Home extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(860, 650));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(860, 600));
