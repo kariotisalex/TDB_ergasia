@@ -5,7 +5,6 @@
  */
 package main;
 
-import javafx.scene.paint.Color;
 import javax.swing.JPanel;
 
 /**
