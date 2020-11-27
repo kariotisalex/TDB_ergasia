@@ -336,13 +336,10 @@ public class Settings extends javax.swing.JFrame {
     
     DBOracleAdmin dbor;
     DBPostresqlAdmin dbpg;
-    static int sidIncr = 1;
     
     // { End of }   Variables
     
-    static int sidIncreament(){
-        return sidIncr++;
-    }
+
 
     
 // Methods
@@ -393,40 +390,10 @@ public class Settings extends javax.swing.JFrame {
     }
     
     void createTablesPG(){
-        Statement aStatePG = dbpg.getStatement();
 
-        StudentAdmin a = new StudentAdmin();
+        new StudentAdmin();
+        new TeachersAdmin();
         
-        String query2 = "CREATE TABLE kathigitis(\n" +
-                        "kid int NOT NULL, \n" +
-                        "Onoma_kathigiti varchar(20),\n" +
-                        "Epitheto_kathigiti varchar(20), \n" +
-                        "Eidikotita varchar(20),\n" +
-                        "PRIMARY KEY(kid)\n" +
-                        ");";        
-        
-        
-        
-        String query3 = "CREATE TABLE mathima(\n" +
-                        "mid int NOT NULL,\n" +
-                        "Kid INT NOT NULL,\n" +
-                        "mathima varchar(20),\n" +
-                        "PRIMARY KEY(mid),\n" +
-                        "FOREIGN KEY (kid) REFERENCES kathigitis(kid)\n" +
-                        ");";
-        
-        String query4 = "CREATE TABLE vathmologia(\n" +
-                        "sid int NOT NULL, \n" +
-                        "mid int NOT NULL, \n" +
-                        "vathmos int,\n" +
-                        "etos varchar(50),\n" +
-                        "FOREIGN KEY (sid) REFERENCES mathitis(sid),\n" +
-                        "FOREIGN KEY (mid) REFERENCES mathima(mid)\n" +
-                        ");";
-        
-        try {aStatePG.executeUpdate(query2);} catch (Exception e) {System.out.println("Create table : " + e.toString());}
-        try {aStatePG.executeUpdate(query3);} catch (Exception e) {System.out.println("Create table : " + e.toString());}
-        try {aStatePG.executeUpdate(query4);} catch (Exception e) {System.out.println("Create table : " + e.toString());}
         
             
         
@@ -442,28 +409,7 @@ public class Settings extends javax.swing.JFrame {
     
     
     
-     void addNewStudent(String onoma, String eponymo, String onomaPatera, String onomaMiteras, int etosEisagwgis){
-        String addQuery = "INSERT INTO mathitis(sid, onoma, eponymo, onPateras, onMiteras, etosEisagogis) VALUES (?, ?, ?, ?, ?, ?)";
-            
-            
-        try {
-        PreparedStatement aStatePG = dbpg.getPrepareStatement(addQuery);
-            for(int i =0; i < 8; i++ ){
-                aStatePG.setInt(1,Settings.sidIncreament());
-                aStatePG.setString(2, onoma);
-                aStatePG.setString(3, eponymo);
-                aStatePG.setString(4, onomaPatera);
-                aStatePG.setString(5, onomaMiteras);
-                aStatePG.setInt(6, etosEisagwgis);
-                aStatePG.executeUpdate();
-                System.out.println("Mpike");
-                
-            }
-        } catch (Exception e) {
-            System.out.println("pirame to mpoylo des kai to logo " + e.toString());
-        }        
-        
-    }
+
 
     
     

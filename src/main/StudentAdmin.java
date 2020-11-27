@@ -8,7 +8,6 @@ package main;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 
 /**
@@ -27,7 +26,29 @@ public class StudentAdmin {
     }
         
     
-
+    
+    
+    
+    
+    
+    
+    private void createTable(){
+        Statement aStatePG = DBPostresqlAdmin.getStatement(); 
+        String query1 = "CREATE TABLE mathitis(\n" +
+               "sid int NOT NULL,\n" +
+               "onoma varchar(50) NOT NULL,\n" +
+               "eponymo varchar(50) NOT NULL,\n" +
+               "onPateras varchar(20) NOT NULL,\n" +
+               "onMiteras varchar(20) NOT NULL,\n" +
+               "etosEisagogis int NOT NULL,\n" +
+               "PRIMARY KEY(sid)\n" +
+               ");";
+        try {
+            aStatePG.executeUpdate(query1);
+        } catch (Exception e) {
+            System.out.println("gamithike ");
+        }
+    }
     
     private void insertToMathitis(){
         
@@ -86,79 +107,7 @@ public class StudentAdmin {
     
     }
     
-        
-        
-//        String addQuery = "INSERT INTO mathitis(sid, onoma, eponymo, onPateras, onMiteras, etosEisagogis) VALUES (?, ?, ?, ?, ?, ?)";
-//        try {
-//            DBPostresqlAdmin dbpg = new DBPostresqlAdmin();
-//            try {
-//                PreparedStatement aStatePG = dbpg.getPrepareStatement(addQuery);
-//                for(int i =0; i < 8; i++ ){
-//                    aStatePG.setInt(1,sid++);
-//                    aStatePG.setString(2, onoma);
-//                    aStatePG.setString(3, eponymo);
-//                    aStatePG.setString(4, onomaPatera);
-//                    aStatePG.setString(5, onomaMiteras);
-//                    aStatePG.setInt(6, etosEisagwgis);
-//                    aStatePG.executeUpdate();
-//                    System.out.println("Mpike");
-//                }
-//            } catch (Exception e) {
-//                System.out.println("pirame to mpoylo des kai to logo " + e.toString());
-//            }  
-//            
-//        } catch (Exception e) {
-//            System.out.println("Gia na doyme");
-//        }}
-        
-            
-      
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    private void createTable(){
-        Statement aStatePG = DBPostresqlAdmin.getStatement();
-        
-        String query1 = "CREATE TABLE mathitis(\n" +
-               "sid int NOT NULL,\n" +
-               "onoma varchar(50) NOT NULL,\n" +
-               "eponymo varchar(50) NOT NULL,\n" +
-               "onPateras varchar(20) NOT NULL,\n" +
-               "onMiteras varchar(20) NOT NULL,\n" +
-               "etosEisagogis int NOT NULL,\n" +
-               "PRIMARY KEY(sid)\n" +
-               ");";
-
-        try {
-            aStatePG.executeUpdate(query1);
-        } catch (Exception e) {
-            System.out.println("gamithike ");
-        }
-    }
-    
+       
     
     
     

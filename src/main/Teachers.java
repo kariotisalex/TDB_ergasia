@@ -5,6 +5,12 @@
  */
 package main;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author proxc
@@ -17,6 +23,8 @@ public class Teachers extends javax.swing.JFrame {
     public Teachers() {
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
+        showInTable();
+
     }
 
     /**
@@ -44,14 +52,10 @@ public class Teachers extends javax.swing.JFrame {
         onomaLabel = new javax.swing.JLabel();
         eponimoTF = new javax.swing.JTextField();
         onomaTF = new javax.swing.JTextField();
-        katButton = new javax.swing.JButton();
+        kataxorisiBtn = new javax.swing.JButton();
         eponimoLabel = new javax.swing.JLabel();
-        birthdateLabel = new javax.swing.JLabel();
         eidikotitaLabel = new javax.swing.JLabel();
         eidikotitaTF = new javax.swing.JTextField();
-        day = new javax.swing.JComboBox<>();
-        month = new javax.swing.JComboBox<>();
-        year = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -169,7 +173,12 @@ public class Teachers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        refreshListTeachers.setText("Καταχώρηση");
+        refreshListTeachers.setText("Ανανέωση");
+        refreshListTeachers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshListTeachersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout viewTeachersLayout = new javax.swing.GroupLayout(viewTeachers);
         viewTeachers.setLayout(viewTeachersLayout);
@@ -179,12 +188,13 @@ public class Teachers extends javax.swing.JFrame {
             .addGroup(viewTeachersLayout.createSequentialGroup()
                 .addGap(419, 419, 419)
                 .addComponent(refreshListTeachers)
-                .addContainerGap(435, Short.MAX_VALUE))
+                .addContainerGap(444, Short.MAX_VALUE))
         );
         viewTeachersLayout.setVerticalGroup(
             viewTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewTeachersLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refreshListTeachers)
                 .addContainerGap())
@@ -204,13 +214,15 @@ public class Teachers extends javax.swing.JFrame {
             }
         });
 
-        katButton.setText("Καταχώρηση");
+        kataxorisiBtn.setText("Καταχώρηση");
+        kataxorisiBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kataxorisiBtnActionPerformed(evt);
+            }
+        });
 
         eponimoLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
         eponimoLabel.setText("Επώνυμο :");
-
-        birthdateLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
-        birthdateLabel.setText("Ημ. Γέννησης:");
 
         eidikotitaLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
         eidikotitaLabel.setText("Ειδικότητα :");
@@ -222,24 +234,17 @@ public class Teachers extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(katButton)
+                    .addComponent(kataxorisiBtn)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(onomaLabel)
                             .addComponent(eidikotitaLabel)
-                            .addComponent(eponimoLabel)
-                            .addComponent(birthdateLabel))
-                        .addGap(90, 90, 90)
+                            .addComponent(eponimoLabel))
+                        .addGap(106, 106, 106)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eponimoTF)
+                            .addComponent(eponimoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                             .addComponent(eidikotitaTF, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(onomaTF)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(onomaTF))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -258,14 +263,8 @@ public class Teachers extends javax.swing.JFrame {
                     .addComponent(eidikotitaLabel)
                     .addComponent(eidikotitaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(birthdateLabel)
-                    .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(katButton)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addComponent(kataxorisiBtn)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout editTeachersLayout = new javax.swing.GroupLayout(editTeachers);
@@ -280,9 +279,9 @@ public class Teachers extends javax.swing.JFrame {
         editTeachersLayout.setVerticalGroup(
             editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editTeachersLayout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(124, 124, 124))
         );
 
         botPanel.add(editTeachers, "card3");
@@ -311,7 +310,7 @@ public class Teachers extends javax.swing.JFrame {
         editTeachers.setVisible(false);
         viewPanel.setBackground(new java.awt.Color(35,90,190));
         editPanel.setBackground(new java.awt.Color(45,118,232));
-
+        showInTable();
     }//GEN-LAST:event_viewPanelMouseClicked
 
     private void editPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPanelMouseClicked
@@ -325,6 +324,18 @@ public class Teachers extends javax.swing.JFrame {
     private void eponimoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eponimoTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eponimoTFActionPerformed
+
+    private void refreshListTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshListTeachersActionPerformed
+        // TODO add your handling code here:
+        showInTable();
+    }//GEN-LAST:event_refreshListTeachersActionPerformed
+
+    private void kataxorisiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kataxorisiBtnActionPerformed
+        // TODO add your handling code here:
+        TeachersAdmin.addNewTeacher(onomaTF.getText(), eponimoTF.getText(), eidikotitaTF.getText());
+        
+        
+    }//GEN-LAST:event_kataxorisiBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,9 +380,7 @@ public class Teachers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel birthdateLabel;
     private javax.swing.JPanel botPanel;
-    private javax.swing.JComboBox<String> day;
     private javax.swing.JPanel editPanel;
     private javax.swing.JPanel editTeachers;
     private javax.swing.JLabel eidikotitaLabel;
@@ -385,13 +394,45 @@ public class Teachers extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton katButton;
-    private javax.swing.JComboBox<String> month;
+    private javax.swing.JButton kataxorisiBtn;
     private javax.swing.JLabel onomaLabel;
     private javax.swing.JTextField onomaTF;
     private javax.swing.JButton refreshListTeachers;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JPanel viewTeachers;
-    private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
+
+private void showInTable(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT * FROM kathigitis;";
+        Statement aStatePG = DBPostresqlAdmin.getStatement();
+        model.setRowCount(0);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            rs = aStatePG.executeQuery(selectString);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        } 
+    }
+
+
+
+
 }

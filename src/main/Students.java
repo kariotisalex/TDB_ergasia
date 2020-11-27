@@ -5,11 +5,7 @@
  */
 package main;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,7 +21,7 @@ public class Students extends javax.swing.JFrame {
         fillDate();
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
-        //showInTable();
+        showInTable();
         
         
     }
@@ -101,6 +97,11 @@ public class Students extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Προβολή");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
@@ -364,6 +365,7 @@ public class Students extends javax.swing.JFrame {
         editStudent.setVisible(false);
         viewPanel.setBackground(new java.awt.Color(35,90,190));
         editPanel.setBackground(new java.awt.Color(45,118,232));
+        showInTable();
         
     }//GEN-LAST:event_viewPanelMouseClicked
 
@@ -391,6 +393,10 @@ public class Students extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_kataxorisiBtnActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments
