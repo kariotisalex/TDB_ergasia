@@ -360,11 +360,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="katButton" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="onomaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="onomapLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -374,23 +373,19 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="onomamTF" alignment="1" pref="171" max="32767" attributes="0"/>
-                                          <Component id="onomapTF" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="eponimoTF" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="onomaTF" alignment="1" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="day" min="-2" pref="48" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="month" min="-2" pref="48" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="year" min="-2" pref="63" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="year" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
+                                      <Component id="onomamTF" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="onomapTF" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="eponimoTF" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="onomaTF" alignment="0" max="32767" attributes="0"/>
                                   </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="kataxorisiBtn" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="336" pref="336" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="50" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -420,12 +415,10 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="etoseisLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="day" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="month" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="year" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="31" max="32767" attributes="0"/>
-                          <Component id="katButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="kataxorisiBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -447,10 +440,13 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="onomaTF">
                 </Component>
-                <Component class="javax.swing.JButton" name="katButton">
+                <Component class="javax.swing.JButton" name="kataxorisiBtn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x39a;&#x3b1;&#x3c4;&#x3b1;&#x3c7;&#x3ce;&#x3c1;&#x3b7;&#x3c3;&#x3b7;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kataxorisiBtnActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="eponimoLabel">
                   <Properties>
@@ -487,27 +483,6 @@
                 <Component class="javax.swing.JTextField" name="onomapTF">
                 </Component>
                 <Component class="javax.swing.JTextField" name="onomamTF">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="day">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(imeraCombo)" type="code"/>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="month">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(minasCombo)" type="code"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="year">
                   <Properties>

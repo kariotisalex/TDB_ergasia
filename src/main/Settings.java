@@ -5,6 +5,9 @@
  */
 package main;
 
+import java.awt.Color;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -20,6 +23,9 @@ public class Settings extends javax.swing.JFrame {
      */
     public Settings() {
         initComponents();
+    }
+    public Settings(int i){
+        
     }
 
     /**
@@ -267,6 +273,7 @@ public class Settings extends javax.swing.JFrame {
     private void postgreEntranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgreEntranceActionPerformed
         // TODO add your handling code here:
         postgreEntrance();
+        
     }//GEN-LAST:event_postgreEntranceActionPerformed
 
     /**
@@ -325,20 +332,27 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JPasswordField postgrePW;
     private javax.swing.JTextField postgreUN;
     // End of variables declaration//GEN-END:variables
+    // { Start of } Variables
+    
+    DBOracleAdmin dbor;
+    DBPostresqlAdmin dbpg;
+    static int sidIncr = 1;
+    
+    // { End of }   Variables
+    
+    static int sidIncreament(){
+        return sidIncr++;
+    }
 
-
-
-
-    DBOracleAdmin oracleDB;
-    DBPostresqlAdmin postgresDB;
-
+    
 // Methods
-// {Start of} DB methods
+// { Start of } DB methods
     private void oracleEntrance(){
        // oracleErrorLabel.setText("");
-        oracleDB = new DBOracleAdmin(oracleUN.getText(), oraclePW.getText());
-        Statement test = oracleDB.connectToDB();
+        dbor = new DBOracleAdmin(oracleUN.getText(), oraclePW.getText());
+        Statement test = dbor.connectToDB();
             if(test != null){
+                
                 isConnectedOracleLabel.setText("Συνδεδεμένη");
                 oracleEntrance.setEnabled(false);
             }else{
@@ -349,33 +363,112 @@ public class Settings extends javax.swing.JFrame {
     }
     private void postgreEntrance(){
         //postgreErrorLabel.setText("");
-            postgresDB = new DBPostresqlAdmin(postgreUN.getText(), postgrePW.getText());
-            Statement test = postgresDB.connectToDB();
+            dbpg = new DBPostresqlAdmin(postgreUN.getText(), postgrePW.getText());
+            Statement test = dbpg.connectToDB();
             if(test != null){
+                isConnectedPostgreLabel.setForeground(Color.GREEN);
                 isConnectedPostgreLabel.setText("Συνδεδεμένη");
                 postgreEntrance.setEnabled(false);
+                dropTablesPG();
+                createTablesPG();
+//                insertToMathitis();
             }else{
                // postgreErrorLabel.setText("Ελεγξτε το Username ή το Password");
             }
     }
     
     public DBPostresqlAdmin giveIt(){
-        return postgresDB;
+        return dbpg;
     }
     // {End of} DB methods
     
     // {Start Method} Enter to main window
 
-//    private void enterToMain(){
-//            try {                 
-//                new MainWindow().setVisible(true);
-//                this.setVisible(false);
-//            }catch (Exception e) {
-//                System.out.println(e.toString() + " "+ e.getMessage());
-//            }
-//    }// {End Method} Enter to main window
+    void dropTablesPG() {
+        Statement psql = dbpg.getStatement();
+        try {psql.executeUpdate("DROP TABLE vathmologia");} catch (SQLException e) {}
+        try {psql.executeUpdate("DROP TABLE mathima");} catch (SQLException e) {}
+        try {psql.executeUpdate("DROP TABLE mathitis");} catch (SQLException e) {}
+        try {psql.executeUpdate("DROP TABLE kathigitis");} catch (SQLException e) {}
+    }
+    
+    void createTablesPG(){
+        Statement aStatePG = dbpg.getStatement();
+
+        StudentAdmin a = new StudentAdmin();
+        
+        String query2 = "CREATE TABLE kathigitis(\n" +
+                        "kid int NOT NULL, \n" +
+                        "Onoma_kathigiti varchar(20),\n" +
+                        "Epitheto_kathigiti varchar(20), \n" +
+                        "Eidikotita varchar(20),\n" +
+                        "PRIMARY KEY(kid)\n" +
+                        ");";        
+        
+        
+        
+        String query3 = "CREATE TABLE mathima(\n" +
+                        "mid int NOT NULL,\n" +
+                        "Kid INT NOT NULL,\n" +
+                        "mathima varchar(20),\n" +
+                        "PRIMARY KEY(mid),\n" +
+                        "FOREIGN KEY (kid) REFERENCES kathigitis(kid)\n" +
+                        ");";
+        
+        String query4 = "CREATE TABLE vathmologia(\n" +
+                        "sid int NOT NULL, \n" +
+                        "mid int NOT NULL, \n" +
+                        "vathmos int,\n" +
+                        "etos varchar(50),\n" +
+                        "FOREIGN KEY (sid) REFERENCES mathitis(sid),\n" +
+                        "FOREIGN KEY (mid) REFERENCES mathima(mid)\n" +
+                        ");";
+        
+        try {aStatePG.executeUpdate(query2);} catch (Exception e) {System.out.println("Create table : " + e.toString());}
+        try {aStatePG.executeUpdate(query3);} catch (Exception e) {System.out.println("Create table : " + e.toString());}
+        try {aStatePG.executeUpdate(query4);} catch (Exception e) {System.out.println("Create table : " + e.toString());}
+        
+            
+        
+    }
+        
+    
     
 
+    
+    
+    
+    
+    
+    
+    
+     void addNewStudent(String onoma, String eponymo, String onomaPatera, String onomaMiteras, int etosEisagwgis){
+        String addQuery = "INSERT INTO mathitis(sid, onoma, eponymo, onPateras, onMiteras, etosEisagogis) VALUES (?, ?, ?, ?, ?, ?)";
+            
+            
+        try {
+        PreparedStatement aStatePG = dbpg.getPrepareStatement(addQuery);
+            for(int i =0; i < 8; i++ ){
+                aStatePG.setInt(1,Settings.sidIncreament());
+                aStatePG.setString(2, onoma);
+                aStatePG.setString(3, eponymo);
+                aStatePG.setString(4, onomaPatera);
+                aStatePG.setString(5, onomaMiteras);
+                aStatePG.setInt(6, etosEisagwgis);
+                aStatePG.executeUpdate();
+                System.out.println("Mpike");
+                
+            }
+        } catch (Exception e) {
+            System.out.println("pirame to mpoylo des kai to logo " + e.toString());
+        }        
+        
+    }
+
+    
+    
+    
+    
 
 
 

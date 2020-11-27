@@ -5,6 +5,7 @@
  */
 package main;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -55,15 +56,13 @@ public class Students extends javax.swing.JFrame {
         onomaLabel = new javax.swing.JLabel();
         eponimoTF = new javax.swing.JTextField();
         onomaTF = new javax.swing.JTextField();
-        katButton = new javax.swing.JButton();
+        kataxorisiBtn = new javax.swing.JButton();
         eponimoLabel = new javax.swing.JLabel();
         etoseisLabel = new javax.swing.JLabel();
         onomamLabel = new javax.swing.JLabel();
         onomapLabel = new javax.swing.JLabel();
         onomapTF = new javax.swing.JTextField();
         onomamTF = new javax.swing.JTextField();
-        day = new javax.swing.JComboBox<>();
-        month = new javax.swing.JComboBox<>();
         year = new javax.swing.JComboBox<>();
 
         jPanel3.setBackground(new java.awt.Color(45, 118, 232));
@@ -243,7 +242,12 @@ public class Students extends javax.swing.JFrame {
             }
         });
 
-        katButton.setText("Καταχώρηση");
+        kataxorisiBtn.setText("Καταχώρηση");
+        kataxorisiBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kataxorisiBtnActionPerformed(evt);
+            }
+        });
 
         eponimoLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
         eponimoLabel.setText("Επώνυμο :");
@@ -257,11 +261,6 @@ public class Students extends javax.swing.JFrame {
         onomapLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
         onomapLabel.setText("Όνομα πατέρα :");
 
-        day.setModel(new javax.swing.DefaultComboBoxModel<>(imeraCombo));
-        day.setToolTipText("");
-
-        month.setModel(new javax.swing.DefaultComboBoxModel<>(minasCombo));
-
         year.setModel(new javax.swing.DefaultComboBoxModel<>(etosCombo));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -271,7 +270,6 @@ public class Students extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(katButton)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(onomaLabel)
@@ -281,18 +279,15 @@ public class Students extends javax.swing.JFrame {
                             .addComponent(etoseisLabel))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(onomamTF, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                                .addComponent(onomapTF)
-                                .addComponent(eponimoTF)
-                                .addComponent(onomaTF))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                            .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(onomamTF)
+                            .addComponent(onomapTF)
+                            .addComponent(eponimoTF)
+                            .addComponent(onomaTF))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(kataxorisiBtn)
+                        .addGap(336, 336, 336))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,11 +311,9 @@ public class Students extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etoseisLabel)
-                    .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(katButton)
+                .addComponent(kataxorisiBtn)
                 .addGap(28, 28, 28))
         );
 
@@ -384,7 +377,20 @@ public class Students extends javax.swing.JFrame {
 
     private void refreshListStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshListStudentsActionPerformed
         // TODO add your handling code here:
+        showInTable();
     }//GEN-LAST:event_refreshListStudentsActionPerformed
+
+    private void kataxorisiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kataxorisiBtnActionPerformed
+        // TODO add your handling code here:
+        StudentAdmin.addNewStudent(onomaTF.getText(), eponimoTF.getText(), onomapTF.getText(), onomamTF.getText(), year.getSelectedItem());
+
+  
+
+        
+        
+        
+        
+    }//GEN-LAST:event_kataxorisiBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,7 +432,6 @@ public class Students extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel botPanel;
-    private javax.swing.JComboBox<String> day;
     private javax.swing.JPanel editPanel;
     private javax.swing.JPanel editStudent;
     private javax.swing.JLabel eponimoLabel;
@@ -440,8 +445,7 @@ public class Students extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton katButton;
-    private javax.swing.JComboBox<String> month;
+    private javax.swing.JButton kataxorisiBtn;
     private javax.swing.JLabel onomaLabel;
     private javax.swing.JTextField onomaTF;
     private javax.swing.JLabel onomamLabel;
@@ -457,55 +461,47 @@ public class Students extends javax.swing.JFrame {
     
     DBPostresqlAdmin dbpg;
     DBOracleAdmin dbor;
-    String[] imeraCombo = new String[31];
-    String[] minasCombo = new String[12];
     String[] etosCombo = new String[61];
     
     
     void fillDate() {
         for (int i = 0; i < 61; i++) {
             int etos = 2015;
-            if (i < 12) {
-                minasCombo[i] = String.valueOf(i + 1);
-            }
-            if (i < 31) {
-                imeraCombo[i] = String.valueOf(i + 1);
-            }
             etosCombo[i] = String.valueOf(etos - i);
         }
     }
     
     
-//    void showInTable(){
-//        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-//        String selectString = "SELECT * FROM mathitis;";
-//        Statement aStatePG = dbpg.getStatement();
-//        model.setRowCount(0);
-//        ResultSet rs = dbpg.getResultset();
-//        try {
-//            rs = aStatePG.executeQuery(selectString);
-//            
-//            ResultSetMetaData rsmd = rs.getMetaData();
-//            int numberOfColumns = rsmd.getColumnCount();
-//            Object[] row = new Object[numberOfColumns];
-//            String columnvalue;
-//            while (rs.next()) {
-//                for (int i = 1; i<= numberOfColumns; i++) {
-//                    columnvalue = rs.getString(i);
-//                    row[i-1] = columnvalue;
-//                }
-//                
-//                model.addRow(row);
-//            }
-//        } catch(SQLException ex) {
-//            System.out.println("\n -- SQL Exception --- \n");
-//            while(ex != null) {
-//		System.out.println("Message: " + ex.getMessage());
-//		ex = ex.getNextException();
-//            }
-//        } 
-//    }
-
+    void showInTable(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT * FROM mathitis;";
+        Statement aStatePG = dbpg.getStatement();
+        model.setRowCount(0);
+        ResultSet rs = dbpg.getResultset();
+        try {
+            rs = aStatePG.executeQuery(selectString);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        } 
+    }
+    
 
 
 
