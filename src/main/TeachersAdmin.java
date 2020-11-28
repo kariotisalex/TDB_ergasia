@@ -8,7 +8,6 @@ package main;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import static main.StudentAdmin.sid;
 
 /**
  *
@@ -50,9 +49,9 @@ public class TeachersAdmin {
         PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(insertQuery);
         
         
-        String[] onoma = {"Γιωργος",          "Νικος",   "Ανδρέας",    "Βικη",       "Χρηστος",   "Γιωργος",     "Ηλίας",       "Παυλος"};
-        String[] eponymo = {"Γεωργίου",       "Νικας",   "Πλιατσιδης", "Σαρτζετακη", "Σαμαράς",   "Ματζουρανης", "Τζακοπουλος", "Καρυπιδης"};
-        String[] eidikotita = {"Μαθηματικο", "Χημικο", "Φιλολογία",  "Γυμναστικη",   "Φιλολογια", "Μαθηματικο",  "Φυσικό",      "Πληροφορικη"};
+        String[] onoma      =    {"Γιωργος",    "Νικος", "Ανδρέας",    "Βικη",       "Χρηστος",   "Γιωργος",     "Ηλίας",       "Παυλος"};
+        String[] eponymo    =    {"Γεωργίου",   "Νικας", "Πλιατσιδης", "Σαρτζετακη", "Σαμαράς",   "Ματζουρανης", "Τζακοπουλος", "Καρυπιδης"};
+        String[] eidikotita =    {"Μαθηματικο", "Χημικο","Φιλολογία",  "Γυμναστικη", "Φιλολογια", "Μαθηματικο",  "Φυσικό",      "Πληροφορικη"};
         
         
         try {

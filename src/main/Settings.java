@@ -6,11 +6,8 @@
 package main;
 
 import java.awt.Color;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import java.sql.*;
+import javax.swing.*;
 
 /**
  *
@@ -23,9 +20,12 @@ public class Settings extends javax.swing.JFrame {
      */
     public Settings() {
         initComponents();
-    }
-    public Settings(int i){
-        
+        if(DBPostresqlAdmin.getConnection() != null){
+            jPanelPostgresChanger(true);
+            postgreUN.setText(DBPostresqlAdmin.getUsername());
+            postgrePW.setText(DBPostresqlAdmin.getPassword());
+            isConnectedPostgre = !isConnectedPostgre;
+        }
     }
 
     /**
@@ -249,11 +249,20 @@ public class Settings extends javax.swing.JFrame {
 
     private void postgreUNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgreUNActionPerformed
         // TODO add your handling code here:
+        postgrePW.requestFocus();
     }//GEN-LAST:event_postgreUNActionPerformed
 
     private void postgrePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgrePWActionPerformed
-        // TODO add your handling code here:
-        postgreEntrance();
+        // TODO add your handling code here:        
+        if (!isConnectedPostgre){
+            if(enterToPostrgres()){
+                jPanelPostgresChanger(true);
+                isConnectedPostgre = !isConnectedPostgre;
+            }
+        }else{
+            jPanelPostgresChanger(!DBPostresqlAdmin.closeit());
+            
+        }
     }//GEN-LAST:event_postgrePWActionPerformed
 
     private void oracleUNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oracleUNActionPerformed
@@ -272,7 +281,15 @@ public class Settings extends javax.swing.JFrame {
 
     private void postgreEntranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgreEntranceActionPerformed
         // TODO add your handling code here:
-        postgreEntrance();
+        if (!isConnectedPostgre){
+            if(enterToPostrgres()){
+                jPanelPostgresChanger(enterToPostrgres());
+                isConnectedPostgre = !isConnectedPostgre;
+            }
+        }else{
+            jPanelPostgresChanger(!DBPostresqlAdmin.closeit());  
+        }
+
         
     }//GEN-LAST:event_postgreEntranceActionPerformed
 
@@ -333,7 +350,7 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JTextField postgreUN;
     // End of variables declaration//GEN-END:variables
     // { Start of } Variables
-    
+    boolean isConnectedPostgre = false;
     DBOracleAdmin dbor;
     DBPostresqlAdmin dbpg;
     
@@ -358,30 +375,52 @@ public class Settings extends javax.swing.JFrame {
                 
             }
     }
-    private void postgreEntrance(){
+    private boolean enterToPostrgres(){
         //postgreErrorLabel.setText("");
             dbpg = new DBPostresqlAdmin(postgreUN.getText(), postgrePW.getText());
             Statement test = dbpg.connectToDB();
             if(test != null){
-                isConnectedPostgreLabel.setForeground(Color.GREEN);
-                isConnectedPostgreLabel.setText("Συνδεδεμένη");
-                postgreEntrance.setEnabled(false);
-                dropTablesPG();
-                createTablesPG();
-//                insertToMathitis();
+
+                return true;
             }else{
-               // postgreErrorLabel.setText("Ελεγξτε το Username ή το Password");
+                JOptionPane.showMessageDialog(null, "Ελεγξτε το Username ή/και το Password" , 
+                        "Ενημέρωση", JOptionPane.WARNING_MESSAGE);
+                return false;
             }
+            
     }
     
-    public DBPostresqlAdmin giveIt(){
-        return dbpg;
+    private void jPanelPostgresChanger(boolean isConnected){
+        if (isConnected){
+            isConnectedPostgreLabel.setForeground(Color.GREEN);
+            isConnectedPostgreLabel.setText("Συνδεδεμένη");
+            postgreUN.setEnabled(!isConnected);
+            postgrePW.setEnabled(!isConnected);
+            postgreEntrance.setText("Έξοδος");
+            Home.enableUI = true;
+            tableController();
+        }else{
+            postgreEntrance.setText("Είσοδος");
+            postgreUN.setEnabled(!isConnected);
+            postgrePW.setEnabled(!isConnected);
+            isConnectedPostgreLabel.setText("Μη συνδεδεμένη");
+            isConnectedPostgreLabel.setForeground(Color.BLACK);
+            Home.enableUI = false;
+        }
+
     }
+    
     // {End of} DB methods
     
     // {Start Method} Enter to main window
 
-    void dropTablesPG() {
+
+    
+    private void tableController(){
+        dropTablesPG();
+        createTablesPG();
+    }
+    private void dropTablesPG() {
         Statement psql = dbpg.getStatement();
         try {psql.executeUpdate("DROP TABLE vathmologia");} catch (SQLException e) {}
         try {psql.executeUpdate("DROP TABLE mathima");} catch (SQLException e) {}
@@ -389,20 +428,10 @@ public class Settings extends javax.swing.JFrame {
         try {psql.executeUpdate("DROP TABLE kathigitis");} catch (SQLException e) {}
     }
     
-    void createTablesPG(){
-
+    private void createTablesPG(){
         new StudentAdmin();
-        new TeachersAdmin();
-        
-        
-            
-        
-    }
-        
-    
-    
-
-    
+        new TeachersAdmin();        
+    }  
     
     
     

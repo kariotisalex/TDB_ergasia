@@ -46,7 +46,7 @@ public class StudentAdmin {
         try {
             aStatePG.executeUpdate(query1);
         } catch (Exception e) {
-            System.out.println("gamithike ");
+            System.out.println("StudentAdmin.java " + e.getMessage() );
         }
     }
     

@@ -214,6 +214,12 @@ public class Teachers extends javax.swing.JFrame {
             }
         });
 
+        onomaTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onomaTFActionPerformed(evt);
+            }
+        });
+
         kataxorisiBtn.setText("Καταχώρηση");
         kataxorisiBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,7 +285,7 @@ public class Teachers extends javax.swing.JFrame {
         editTeachersLayout.setVerticalGroup(
             editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editTeachersLayout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(124, 124, 124))
         );
@@ -302,6 +308,7 @@ public class Teachers extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPanelMouseClicked
@@ -323,6 +330,7 @@ public class Teachers extends javax.swing.JFrame {
 
     private void eponimoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eponimoTFActionPerformed
         // TODO add your handling code here:
+        eidikotitaTF.requestFocus();
     }//GEN-LAST:event_eponimoTFActionPerformed
 
     private void refreshListTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshListTeachersActionPerformed
@@ -336,6 +344,11 @@ public class Teachers extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_kataxorisiBtnActionPerformed
+
+    private void onomaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onomaTFActionPerformed
+        // TODO add your handling code here:
+        eponimoTF.requestFocus();
+    }//GEN-LAST:event_onomaTFActionPerformed
 
     /**
      * @param args the command line arguments

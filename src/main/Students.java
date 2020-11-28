@@ -21,7 +21,7 @@ public class Students extends javax.swing.JFrame {
         fillDate();
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
-        showInTable();
+        showAllInTable();
         
         
     }
@@ -47,6 +47,7 @@ public class Students extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         refreshListStudents = new javax.swing.JButton();
+        searchYear = new javax.swing.JComboBox<>();
         editStudent = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -172,8 +173,8 @@ public class Students extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(editPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         botPanel.setLayout(new java.awt.CardLayout());
@@ -210,21 +211,34 @@ public class Students extends javax.swing.JFrame {
             }
         });
 
+        searchYear.setModel(new javax.swing.DefaultComboBoxModel<>(etosCombo));
+        searchYear.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                searchYearItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout viewStudentLayout = new javax.swing.GroupLayout(viewStudent);
         viewStudent.setLayout(viewStudentLayout);
         viewStudentLayout.setHorizontalGroup(
             viewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1033, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(viewStudentLayout.createSequentialGroup()
                 .addGap(454, 454, 454)
                 .addComponent(refreshListStudents)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(495, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewStudentLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(searchYear, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
         viewStudentLayout.setVerticalGroup(
             viewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewStudentLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(refreshListStudents)
                 .addContainerGap())
         );
@@ -353,6 +367,7 @@ public class Students extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void eponimoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eponimoTFActionPerformed
@@ -365,7 +380,7 @@ public class Students extends javax.swing.JFrame {
         editStudent.setVisible(false);
         viewPanel.setBackground(new java.awt.Color(35,90,190));
         editPanel.setBackground(new java.awt.Color(45,118,232));
-        showInTable();
+        showAllInTable();
         
     }//GEN-LAST:event_viewPanelMouseClicked
 
@@ -379,7 +394,7 @@ public class Students extends javax.swing.JFrame {
 
     private void refreshListStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshListStudentsActionPerformed
         // TODO add your handling code here:
-        showInTable();
+        showAllInTable();
     }//GEN-LAST:event_refreshListStudentsActionPerformed
 
     private void kataxorisiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kataxorisiBtnActionPerformed
@@ -396,7 +411,23 @@ public class Students extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
+        
+        viewStudent.setVisible(true);
+        editStudent.setVisible(false);
+        viewPanel.setBackground(new java.awt.Color(35,90,190));
+        editPanel.setBackground(new java.awt.Color(45,118,232));
+        showAllInTable();
+        
+        
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void searchYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_searchYearItemStateChanged
+        // TODO add your handling code here:
+        showOnlyOnYear();
+        
+        
+        
+    }//GEN-LAST:event_searchYearItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -459,31 +490,30 @@ public class Students extends javax.swing.JFrame {
     private javax.swing.JLabel onomapLabel;
     private javax.swing.JTextField onomapTF;
     private javax.swing.JButton refreshListStudents;
+    private javax.swing.JComboBox<String> searchYear;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JPanel viewStudent;
     private javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
    
-    
-    DBPostresqlAdmin dbpg;
-    DBOracleAdmin dbor;
+
     String[] etosCombo = new String[61];
     
     
     void fillDate() {
         for (int i = 0; i < 61; i++) {
-            int etos = 2015;
+            int etos = 2020;
             etosCombo[i] = String.valueOf(etos - i);
         }
     }
     
     
-    void showInTable(){
+    private void showAllInTable(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         String selectString = "SELECT * FROM mathitis;";
-        Statement aStatePG = dbpg.getStatement();
+        Statement aStatePG = DBPostresqlAdmin.getStatement();
         model.setRowCount(0);
-        ResultSet rs = dbpg.getResultset();
+        ResultSet rs = DBPostresqlAdmin.getResultset();
         try {
             rs = aStatePG.executeQuery(selectString);
             
@@ -509,7 +539,35 @@ public class Students extends javax.swing.JFrame {
     }
     
 
-
+    private void showOnlyOnYear(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT * FROM mathitis WHERE etosEisagogis = " + searchYear.getSelectedItem()+";";
+        Statement aStatePG = DBPostresqlAdmin.getStatement();
+        model.setRowCount(0);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            rs = aStatePG.executeQuery(selectString);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        }
+    }
 
 
 

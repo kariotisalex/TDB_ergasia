@@ -5,17 +5,23 @@
  */
 package main;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author proxc
  */
-public class Home_Data extends javax.swing.JFrame {
+public class SignInToProgram extends javax.swing.JFrame {
 
     /**
      * Creates new form Home_Data
      */
-    public Home_Data() {
+    public SignInToProgram() {
         initComponents();
+        if(Home.signIn){
+            jPanelChanger(true);
+            loginButton.setText("Log Out");
+        }
     }
 
     /**
@@ -53,16 +59,16 @@ public class Home_Data extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel15)
-                .addContainerGap(740, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel15)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Σύνδεση χρήστη"));
@@ -84,24 +90,30 @@ public class Home_Data extends javax.swing.JFrame {
             }
         });
 
+        passwordTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usernameoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(usernameoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                     .addComponent(passwordTF))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
                 .addComponent(loginButton)
-                .addGap(97, 97, 97))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,9 +126,9 @@ public class Home_Data extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(loginButton)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,33 +137,46 @@ public class Home_Data extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(335, 335, 335)
+                .addGap(106, 106, 106)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
+                .addGap(31, 31, 31)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameoTFActionPerformed
         // TODO add your handling code here:
+        passwordTF.requestFocus();
     }//GEN-LAST:event_usernameoTFActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        if((usernameoTF.getText().equals("admin")) && (passwordTF.getText().equals("admin"))){
-            Home.enableUI = true;
-            this.setVisible(false);
-    }
+        if(!Home.signIn){
+            signIn();
+        }else{
+            signOut();
+        }
+        
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void passwordTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTFActionPerformed
+        // TODO add your handling code here:
+        if(!Home.signIn){
+            signIn();
+        }else{
+            signOut();
+        }        
+    }//GEN-LAST:event_passwordTFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,21 +195,23 @@ public class Home_Data extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home_Data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignInToProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home_Data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignInToProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home_Data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignInToProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home_Data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignInToProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home_Data().setVisible(true);
+                new SignInToProgram().setVisible(true);
             }
         });
     }
@@ -199,8 +226,40 @@ public class Home_Data extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordTF;
     private javax.swing.JTextField usernameoTF;
     // End of variables declaration//GEN-END:variables
+    
+    void signIn(){
 
-
+        if(isCorrectUnPw(usernameoTF.getText(),passwordTF.getText())){
+            Home.settingEnabler = true;
+            Home.signIn = true;
+            jPanelChanger(true);
+            loginButton.setText("Log Out");
+            JOptionPane.showMessageDialog(null, "Επιτυχής Εισοδος στην Εφαρμογή", 
+                                    "Ενημέρωση", JOptionPane.INFORMATION_MESSAGE);
+            
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Ελέγξτε το Username ή/και το Password", 
+                                            "Ενημέρωση", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    void signOut(){
+        Home.settingEnabler = false;
+        Home.signIn = false;
+        jPanelChanger(false);
+        loginButton.setText("Log In");
+    }
+    
+    
+    boolean isCorrectUnPw(String username,String password){
+        return (usernameoTF.getText().equals("admin")) && (passwordTF.getText().equals("admin"));
+    }
+    
+    private void jPanelChanger(boolean isSignedIn){
+        usernameoTF.setEnabled(!isSignedIn);
+        passwordTF.setEnabled(!isSignedIn);
+    }
 
 
 }

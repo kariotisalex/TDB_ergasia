@@ -376,6 +376,7 @@ public class Home extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMousePressed
@@ -434,7 +435,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
         // TODO add your handling code here:
-        if(enableUI)
+        if(settingEnabler)
         setColor(jPanel7);
     }//GEN-LAST:event_jPanel7MouseEntered
 
@@ -468,7 +469,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
         // TODO add your handling code here:
-            new Home_Data().show();
+            new SignInToProgram().show();
     }//GEN-LAST:event_jPanel4MousePressed
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
@@ -498,7 +499,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jPanel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MousePressed
         // TODO add your handling code here:
-        if (enableUI)
+        if (settingEnabler)
             new Settings().show();
     }//GEN-LAST:event_jPanel7MousePressed
  public void setColor(JPanel panel)
@@ -573,7 +574,9 @@ public class Home extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     static boolean enableUI = false;
-
+    static boolean signIn = false;
+    static boolean settingEnabler = false;
+    
 
 
 

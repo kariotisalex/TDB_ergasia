@@ -71,8 +71,12 @@ public class DBPostresqlAdmin {
         
     }    
     
-
-    
+    static String getUsername(){
+        return username;
+    }
+    static String getPassword(){
+        return passwd;
+    }
     
     // {End of} Getters
     
@@ -86,11 +90,13 @@ public class DBPostresqlAdmin {
     
     
     
-    static void closeit(){
+    static boolean closeit(){
         try {
             statement.close();
             dbConnection.close();
+            return true;
         } catch (Exception e) {
+            return false;
         }
     }
 
