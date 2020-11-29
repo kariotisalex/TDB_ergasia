@@ -13,10 +13,10 @@ import javax.swing.JOptionPane;
  *
  * @author alexa
  */
-public class TeachersAdmin {
+public class KathigitisAdmin {
     static int kid = 1;
 
-    public TeachersAdmin() {
+    public KathigitisAdmin() {
         createTable();
         insertToKathigitis();
         

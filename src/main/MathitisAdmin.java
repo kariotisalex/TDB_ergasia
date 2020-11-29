@@ -14,15 +14,19 @@ import javax.swing.JOptionPane;
  *
  * @author alexa
  */
-public class StudentAdmin {
-    static int sid = 1;
+public class MathitisAdmin {
+    private static int sid = 1;
     
-    public StudentAdmin() {
+    public MathitisAdmin() {
         
         createTable();
         insertToMathitis();
         
         
+    }
+
+    public static int getSid() {
+        return sid;
     }
         
     

@@ -52,7 +52,10 @@ public class DBPostresqlAdmin {
     static Connection getConnection() {
         return dbConnection;
     }
-     
+    static boolean isConnected(){
+        
+        return (dbConnection != null);
+    }
     static Statement getStatement(){
         return statement;
     }

@@ -476,25 +476,25 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         //just a sample.
         if (enableUI)
-            new Students().show();
+            new Mathitis().show();
     }//GEN-LAST:event_jPanel5MousePressed
 
     private void jPanel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MousePressed
         // TODO add your handling code here:
         if (enableUI)
-            new Teachers().show();
+            new Kathigitis().show();
     }//GEN-LAST:event_jPanel6MousePressed
 
     private void jPanel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MousePressed
         // TODO add your handling code here:
         if (enableUI)
-            new Mathimata().show();
+            new Mathima().show();
     }//GEN-LAST:event_jPanel8MousePressed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
         // TODO add your handling code here:
         if (enableUI)
-            new Grades().show();
+            new Vathmologia().show();
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void jPanel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MousePressed

@@ -6,11 +6,10 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
-    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -55,7 +54,7 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -94,9 +93,9 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/main/images/w_exam_50px.png"/>
+              <Image iconType="3" name="/main/images/w_training_50px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#x392;&#x3b1;&#x3b8;&#x3bc;&#x3bf;&#x3bb;&#x3bf;&#x3b3;&#x3af;&#x3b5;&#x3c2;"/>
+            <Property name="text" type="java.lang.String" value=" &#x39a;&#x3b1;&#x3b8;&#x3b7;&#x3b3;&#x3b7;&#x3c4;&#x3ad;&#x3c2;"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="viewPanel">
@@ -195,7 +194,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="viewGrades">
+        <Container class="javax.swing.JPanel" name="viewTeachers">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card2"/>
@@ -205,12 +204,22 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="1010" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="419" max="-2" attributes="0"/>
+                      <Component id="refreshListTeachers" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="444" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="438" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jScrollPane1" pref="396" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="refreshListTeachers" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -225,34 +234,16 @@
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="7" rowCount="0">
-                        <Column editable="true" title="&#x391;&#x39c;" type="java.lang.String"/>
-                        <Column editable="true" title="&#x38c;&#x3bd;&#x3bf;&#x3bc;&#x3b1;" type="java.lang.String"/>
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="&#x38c;&#x3bd;&#x3bf;&#x3bc;&#x3b1; " type="java.lang.String"/>
                         <Column editable="true" title="&#x395;&#x3c0;&#x3ce;&#x3bd;&#x3c5;&#x3bc;&#x3bf;" type="java.lang.String"/>
-                        <Column editable="true" title="&#x39c;&#x3ac;&#x3b8;&#x3b7;&#x3bc;&#x3b1;" type="java.lang.String"/>
-                        <Column editable="true" title="&#x392;&#x3b1;&#x3b8;&#x3bc;&#x3bf;&#x3bb;&#x3bf;&#x3b3;&#x3af;&#x3b1; A&apos; T&#x3b5;&#x3c4;&#x3c1;&#x3b1;&#x3bc;&#x3ae;&#x3bd;&#x3bf;&#x3c5;" type="java.lang.String"/>
-                        <Column editable="true" title="&#x392;&#x3b1;&#x3b8;&#x3bc;&#x3bf;&#x3bb;&#x3bf;&#x3b3;&#x3af;&#x3b1; B&apos; &#x3a4;&#x3b5;&#x3c1;&#x3b1;&#x3bc;&#x3ae;&#x3bd;&#x3bf;&#x3c5;" type="java.lang.String"/>
-                        <Column editable="true" title="&#x388;&#x3c4;&#x3bf;&#x3c2; &#x392;&#x3b1;&#x3b8;&#x3bc;&#x3bf;&#x3bb;&#x3cc;&#x3b3;&#x3b7;&#x3c3;&#x3b7;&#x3c2;" type="java.lang.String"/>
+                        <Column editable="true" title="&#x395;&#x3b9;&#x3b4;&#x3b9;&#x3ba;&#x3cc;&#x3c4;&#x3b7;&#x3c4;&#x3b1;" type="java.lang.String"/>
+                        <Column editable="true" title="&#x397;&#x3bc;&#x3b5;&#x3c1;&#x3bf;&#x3bc;&#x3b7;&#x3bd;&#x3af;&#x3b1; &#x393;&#x3ad;&#x3bd;&#x3bd;&#x3b7;&#x3c3;&#x3b7;&#x3c2;" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="1" prefWidth="1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -281,9 +272,17 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="refreshListTeachers">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x391;&#x3bd;&#x3b1;&#x3bd;&#x3ad;&#x3c9;&#x3c3;&#x3b7;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshListTeachersActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="editGrades">
+        <Container class="javax.swing.JPanel" name="editTeachers">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card3"/>
@@ -294,18 +293,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="237" max="32767" attributes="0"/>
+                      <EmptySpace pref="234" max="32767" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="43" max="32767" attributes="0"/>
+                      <EmptySpace pref="76" max="32767" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -315,7 +314,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="&#x3a6;&#x3cc;&#x3c1;&#x3bc;&#x3b1; &#x3b5;&#x3b9;&#x3c3;&#x3b1;&#x3b3;&#x3c9;&#x3b3;&#x3ae;&#x3c2; &#x3b2;&#x3b1;&#x3b8;&#x3bc;&#x3ce;&#x3bd;"/>
+                    <TitledBorder title="&#x3a6;&#x3cc;&#x3c1;&#x3bc;&#x3b1; &#x3b5;&#x3c0;&#x3b5;&#x3be;&#x3b5;&#x3c1;&#x3b3;&#x3b1;&#x3c3;&#x3af;&#x3b1;&#x3c2; &#x3ba;&#x3b1;&#x3b8;&#x3b7;&#x3b3;&#x3b7;&#x3c4;&#x3ce;&#x3bd;"/>
                   </Border>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -329,34 +328,22 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="katButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="kataxorisiBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="onomaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="mathimaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="eidikotitaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="eponimoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="bathmosaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="bathmosbLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="etosbathLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="eponimoTF" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="eponimoTF" alignment="0" pref="157" max="32767" attributes="0"/>
+                                      <Component id="eidikotitaTF" alignment="1" max="32767" attributes="0"/>
                                       <Component id="onomaTF" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="day" min="-2" pref="36" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="month" min="-2" pref="36" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="year" min="-2" pref="63" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="bathmosaTF" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="mathimaTF" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="bathmosbTF" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -375,29 +362,12 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="mathimaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="mathimaTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="eidikotitaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="eidikotitaTF" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="bathmosaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="bathmosaTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="bathmosbLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="bathmosbTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="etosbathLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="day" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="year" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="month" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="33" max="32767" attributes="0"/>
-                          <Component id="katButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="kataxorisiBtn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="25" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -417,11 +387,17 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="onomaTF">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onomaTFActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="katButton">
+                <Component class="javax.swing.JButton" name="kataxorisiBtn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="&#x39a;&#x3b1;&#x3c4;&#x3b1;&#x3c7;&#x3ce;&#x3c1;&#x3b7;&#x3c3;&#x3b7;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kataxorisiBtnActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="eponimoLabel">
                   <Properties>
@@ -431,58 +407,15 @@
                     <Property name="text" type="java.lang.String" value="&#x395;&#x3c0;&#x3ce;&#x3bd;&#x3c5;&#x3bc;&#x3bf; :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="bathmosbLabel">
+                <Component class="javax.swing.JLabel" name="eidikotitaLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lucida Sans" size="18" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&#x392;&#x3b1;&#x3b8;&#x3bc;&#x3cc;&#x3c2; &#x392;&apos; &#x3a4;&#x3b5;&#x3c4;&#x3c1;&#x3b1;&#x3bc;&#x3ae;&#x3bd;&#x3bf;&#x3c5; :"/>
+                    <Property name="text" type="java.lang.String" value="&#x395;&#x3b9;&#x3b4;&#x3b9;&#x3ba;&#x3cc;&#x3c4;&#x3b7;&#x3c4;&#x3b1; :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="bathmosaLabel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Lucida Sans" size="18" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="&#x392;&#x3b1;&#x3b8;&#x3bc;&#x3cc;&#x3c2; &#x391;&apos; &#x3a4;&#x3b5;&#x3c4;&#x3c1;&#x3b1;&#x3bc;&#x3ae;&#x3bd;&#x3bf;&#x3c5; :"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="mathimaLabel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Lucida Sans" size="18" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="&#x39c;&#x3ac;&#x3b8;&#x3b7;&#x3bc;&#x3b1; :"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="mathimaTF">
-                </Component>
-                <Component class="javax.swing.JTextField" name="bathmosaTF">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="day">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="month">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="year">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="etosbathLabel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Lucida Sans" size="18" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="&#x388;&#x3c4;&#x3bf;&#x3c2; &#x392;&#x3b1;&#x3b8;&#x3bc;&#x3bf;&#x3bb;&#x3cc;&#x3b3;&#x3b7;&#x3c3;&#x3b7;&#x3c2; :"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="bathmosbTF">
+                <Component class="javax.swing.JTextField" name="eidikotitaTF">
                 </Component>
               </SubComponents>
             </Container>

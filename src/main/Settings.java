@@ -64,7 +64,7 @@ public class Settings extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/images/w_settings_50px.png"))); // NOI18N
-        jLabel15.setText("Ρυθμήσεις");
+        jLabel15.setText("Ρυθμίσεις");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -245,6 +245,7 @@ public class Settings extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void postgreUNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgreUNActionPerformed
@@ -253,16 +254,24 @@ public class Settings extends javax.swing.JFrame {
     }//GEN-LAST:event_postgreUNActionPerformed
 
     private void postgrePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgrePWActionPerformed
-        // TODO add your handling code here:        
-        if (!isConnectedPostgre){
-            if(enterToPostrgres()){
-                jPanelPostgresChanger(true);
-                isConnectedPostgre = !isConnectedPostgre;
+        // TODO add your handling code here:
+        postgreEntrance.setEnabled(false);
+        if(!postgreEntrance.isEnabled()){
+            if (!isConnectedPostgre){
+                if(enterToPostrgres()){
+                    jPanelPostgresChanger(true);
+                    isConnectedPostgre = !isConnectedPostgre;
+                }
+            }else{
+                jPanelPostgresChanger(!DBPostresqlAdmin.closeit());
+
             }
-        }else{
-            jPanelPostgresChanger(!DBPostresqlAdmin.closeit());
-            
         }
+
+        if(DBPostresqlAdmin.isConnected()){
+            postgreEntrance.setEnabled(true);
+        }
+        
     }//GEN-LAST:event_postgrePWActionPerformed
 
     private void oracleUNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oracleUNActionPerformed
@@ -429,8 +438,10 @@ public class Settings extends javax.swing.JFrame {
     }
     
     private void createTablesPG(){
-        new StudentAdmin();
-        new TeachersAdmin();        
+        new MathitisAdmin();
+        new KathigitisAdmin();
+        new MathimaAdmin();
+        new VathmologiaAdmin();
     }  
     
     

@@ -11,12 +11,12 @@ import java.sql.Statement;
  *
  * @author alexa
  */
-public class GradesAdmin {
+public class VathmologiaAdmin {
     
     static int sid = 1;
     
     
-    public GradesAdmin() {
+    public VathmologiaAdmin() {
         createTable();
         
         
