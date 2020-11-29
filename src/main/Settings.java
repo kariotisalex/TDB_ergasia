@@ -104,12 +104,6 @@ public class Settings extends javax.swing.JFrame {
 
         isConnectedPostgreLabel.setText("Μη συνδεδεμένη");
 
-        postgrePW.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                postgrePWActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -252,27 +246,6 @@ public class Settings extends javax.swing.JFrame {
         // TODO add your handling code here:
         postgrePW.requestFocus();
     }//GEN-LAST:event_postgreUNActionPerformed
-
-    private void postgrePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postgrePWActionPerformed
-        // TODO add your handling code here:
-        postgreEntrance.setEnabled(false);
-        if(!postgreEntrance.isEnabled()){
-            if (!isConnectedPostgre){
-                if(enterToPostrgres()){
-                    jPanelPostgresChanger(true);
-                    isConnectedPostgre = !isConnectedPostgre;
-                }
-            }else{
-                jPanelPostgresChanger(!DBPostresqlAdmin.closeit());
-
-            }
-        }
-
-        if(DBPostresqlAdmin.isConnected()){
-            postgreEntrance.setEnabled(true);
-        }
-        
-    }//GEN-LAST:event_postgrePWActionPerformed
 
     private void oracleUNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oracleUNActionPerformed
         // TODO add your handling code here:

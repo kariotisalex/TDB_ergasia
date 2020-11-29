@@ -5,6 +5,7 @@
  */
 package main;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -34,29 +35,28 @@ public class Home extends javax.swing.JFrame {
         exit = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        vathmologiesMainButton = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        mathitesMainButton = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        kathigitesMainButton = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        rithmiseisMainButton = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        mathimataMainButton = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(860, 650));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -81,8 +81,8 @@ public class Home extends javax.swing.JFrame {
         exit.setForeground(new java.awt.Color(255, 255, 255));
         exit.setText("X");
         exit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                exitMousePressed(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                exitMouseReleased(evt);
             }
         });
         jPanel2.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(838, 0, 22, -1));
@@ -99,16 +99,16 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 160));
 
-        jPanel3.setBackground(new java.awt.Color(240, 240, 240));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        vathmologiesMainButton.setBackground(new java.awt.Color(240, 240, 240));
+        vathmologiesMainButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel3MouseEntered(evt);
+                vathmologiesMainButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel3MouseExited(evt);
+                vathmologiesMainButtonMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel3MousePressed(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                vathmologiesMainButtonMouseReleased(evt);
             }
         });
 
@@ -120,20 +120,20 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/images/exam_50px.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout vathmologiesMainButtonLayout = new javax.swing.GroupLayout(vathmologiesMainButton);
+        vathmologiesMainButton.setLayout(vathmologiesMainButtonLayout);
+        vathmologiesMainButtonLayout.setHorizontalGroup(
+            vathmologiesMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vathmologiesMainButtonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(vathmologiesMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        vathmologiesMainButtonLayout.setVerticalGroup(
+            vathmologiesMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vathmologiesMainButtonLayout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -141,7 +141,7 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 140, 120));
+        jPanel1.add(vathmologiesMainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 140, 120));
 
         jPanel4.setBackground(new java.awt.Color(240, 240, 240));
         jPanel4.setForeground(new java.awt.Color(240, 240, 240));
@@ -188,16 +188,16 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 140, 120));
 
-        jPanel5.setBackground(new java.awt.Color(240, 240, 240));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        mathitesMainButton.setBackground(new java.awt.Color(240, 240, 240));
+        mathitesMainButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
+                mathitesMainButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel5MouseExited(evt);
+                mathitesMainButtonMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel5MousePressed(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                mathitesMainButtonMouseReleased(evt);
             }
         });
 
@@ -209,20 +209,20 @@ public class Home extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/images/group_52px.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout mathitesMainButtonLayout = new javax.swing.GroupLayout(mathitesMainButton);
+        mathitesMainButton.setLayout(mathitesMainButtonLayout);
+        mathitesMainButtonLayout.setHorizontalGroup(
+            mathitesMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mathitesMainButtonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(mathitesMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        mathitesMainButtonLayout.setVerticalGroup(
+            mathitesMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mathitesMainButtonLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -230,18 +230,18 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 140, 120));
+        jPanel1.add(mathitesMainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 140, 120));
 
-        jPanel6.setBackground(new java.awt.Color(240, 240, 240));
-        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        kathigitesMainButton.setBackground(new java.awt.Color(240, 240, 240));
+        kathigitesMainButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel6MouseEntered(evt);
+                kathigitesMainButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel6MouseExited(evt);
+                kathigitesMainButtonMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel6MousePressed(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                kathigitesMainButtonMouseReleased(evt);
             }
         });
 
@@ -253,20 +253,20 @@ public class Home extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/images/training_50px.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout kathigitesMainButtonLayout = new javax.swing.GroupLayout(kathigitesMainButton);
+        kathigitesMainButton.setLayout(kathigitesMainButtonLayout);
+        kathigitesMainButtonLayout.setHorizontalGroup(
+            kathigitesMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kathigitesMainButtonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(kathigitesMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        kathigitesMainButtonLayout.setVerticalGroup(
+            kathigitesMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kathigitesMainButtonLayout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -274,18 +274,18 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 140, 120));
+        jPanel1.add(kathigitesMainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 140, 120));
 
-        jPanel7.setBackground(new java.awt.Color(240, 240, 240));
-        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        rithmiseisMainButton.setBackground(new java.awt.Color(240, 240, 240));
+        rithmiseisMainButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel7MouseEntered(evt);
+                rithmiseisMainButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel7MouseExited(evt);
+                rithmiseisMainButtonMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel7MousePressed(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                rithmiseisMainButtonMouseReleased(evt);
             }
         });
 
@@ -297,20 +297,20 @@ public class Home extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/images/settings_48px.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout rithmiseisMainButtonLayout = new javax.swing.GroupLayout(rithmiseisMainButton);
+        rithmiseisMainButton.setLayout(rithmiseisMainButtonLayout);
+        rithmiseisMainButtonLayout.setHorizontalGroup(
+            rithmiseisMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rithmiseisMainButtonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(rithmiseisMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        rithmiseisMainButtonLayout.setVerticalGroup(
+            rithmiseisMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rithmiseisMainButtonLayout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -318,18 +318,18 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 140, 120));
+        jPanel1.add(rithmiseisMainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 140, 120));
 
-        jPanel8.setBackground(new java.awt.Color(240, 240, 240));
-        jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        mathimataMainButton.setBackground(new java.awt.Color(240, 240, 240));
+        mathimataMainButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel8MouseEntered(evt);
+                mathimataMainButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel8MouseExited(evt);
+                mathimataMainButtonMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel8MousePressed(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                mathimataMainButtonMouseReleased(evt);
             }
         });
 
@@ -341,20 +341,20 @@ public class Home extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/images/school_50px.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout mathimataMainButtonLayout = new javax.swing.GroupLayout(mathimataMainButton);
+        mathimataMainButton.setLayout(mathimataMainButtonLayout);
+        mathimataMainButtonLayout.setHorizontalGroup(
+            mathimataMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mathimataMainButtonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mathimataMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+        mathimataMainButtonLayout.setVerticalGroup(
+            mathimataMainButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mathimataMainButtonLayout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -362,7 +362,7 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 140, 120));
+        jPanel1.add(mathimataMainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 140, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -378,11 +378,6 @@ public class Home extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void exitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMousePressed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_exitMousePressed
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
         // TODO add your handling code here:
@@ -411,97 +406,127 @@ public class Home extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);  
     }//GEN-LAST:event_jPanel2MouseDragged
 
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+    private void mathitesMainButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mathitesMainButtonMouseEntered
         // TODO add your handling code here:
         if(enableUI)
-        setColor(jPanel5);
-    }//GEN-LAST:event_jPanel5MouseEntered
+        setColor(mathitesMainButton);
+    }//GEN-LAST:event_mathitesMainButtonMouseEntered
 
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+    private void mathitesMainButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mathitesMainButtonMouseExited
         // TODO add your handling code here:
-        resetColor(jPanel5);
-    }//GEN-LAST:event_jPanel5MouseExited
+        resetColor(mathitesMainButton);
+    }//GEN-LAST:event_mathitesMainButtonMouseExited
 
-    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
+    private void kathigitesMainButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kathigitesMainButtonMouseEntered
         // TODO add your handling code here
         if(enableUI)
-        setColor(jPanel6);
-    }//GEN-LAST:event_jPanel6MouseEntered
+        setColor(kathigitesMainButton);
+    }//GEN-LAST:event_kathigitesMainButtonMouseEntered
 
-    private void jPanel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseExited
+    private void kathigitesMainButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kathigitesMainButtonMouseExited
         // TODO add your handling code here:
-        resetColor(jPanel6);
-    }//GEN-LAST:event_jPanel6MouseExited
+        resetColor(kathigitesMainButton);
+    }//GEN-LAST:event_kathigitesMainButtonMouseExited
 
-    private void jPanel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseEntered
+    private void rithmiseisMainButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rithmiseisMainButtonMouseEntered
         // TODO add your handling code here:
         if(settingEnabler)
-        setColor(jPanel7);
-    }//GEN-LAST:event_jPanel7MouseEntered
+        setColor(rithmiseisMainButton);
+    }//GEN-LAST:event_rithmiseisMainButtonMouseEntered
 
-    private void jPanel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseExited
+    private void rithmiseisMainButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rithmiseisMainButtonMouseExited
         // TODO add your handling code here:
-        resetColor(jPanel7);
+        resetColor(rithmiseisMainButton);
         
-    }//GEN-LAST:event_jPanel7MouseExited
+    }//GEN-LAST:event_rithmiseisMainButtonMouseExited
 
-    private void jPanel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseEntered
+    private void mathimataMainButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mathimataMainButtonMouseEntered
         // TODO add your handling code here:
         if(enableUI)
-        setColor(jPanel8);
-    }//GEN-LAST:event_jPanel8MouseEntered
+        setColor(mathimataMainButton);
+    }//GEN-LAST:event_mathimataMainButtonMouseEntered
 
-    private void jPanel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseExited
+    private void mathimataMainButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mathimataMainButtonMouseExited
         // TODO add your handling code here:
-        resetColor(jPanel8);
-    }//GEN-LAST:event_jPanel8MouseExited
+        resetColor(mathimataMainButton);
+    }//GEN-LAST:event_mathimataMainButtonMouseExited
 
-    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
+    private void vathmologiesMainButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vathmologiesMainButtonMouseEntered
         // TODO add your handling code here:
         if(enableUI)
-        setColor(jPanel3);
-    }//GEN-LAST:event_jPanel3MouseEntered
+        setColor(vathmologiesMainButton);
+    }//GEN-LAST:event_vathmologiesMainButtonMouseEntered
 
-    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
+    private void vathmologiesMainButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vathmologiesMainButtonMouseExited
         // TODO add your handling code here:
-        resetColor(jPanel3);
-    }//GEN-LAST:event_jPanel3MouseExited
+        resetColor(vathmologiesMainButton);
+    }//GEN-LAST:event_vathmologiesMainButtonMouseExited
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
         // TODO add your handling code here:
             new SignInToProgram().show();
     }//GEN-LAST:event_jPanel4MousePressed
 
-    private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
+    private void exitMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseReleased
         // TODO add your handling code here:
-        //just a sample.
+  
+        int n = JOptionPane.showConfirmDialog(null, "Επιθυμείτε την έξοδο απο την εφαρμογή;", "Έξοδος", JOptionPane.YES_NO_OPTION);
+        if (n == JOptionPane.YES_OPTION){
+            if(DBPostresqlAdmin.isConnected())
+                DBPostresqlAdmin.closeit();
+            System.exit(0);
+        }
+        
+    }//GEN-LAST:event_exitMouseReleased
+
+    private void mathitesMainButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mathitesMainButtonMouseReleased
+        // TODO add your handling code here:
         if (enableUI)
             new Mathitis().show();
-    }//GEN-LAST:event_jPanel5MousePressed
+        else{
+            notifier("Μαθητές");
+            
+        }
+    }//GEN-LAST:event_mathitesMainButtonMouseReleased
 
-    private void jPanel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MousePressed
+    private void kathigitesMainButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kathigitesMainButtonMouseReleased
         // TODO add your handling code here:
         if (enableUI)
             new Kathigitis().show();
-    }//GEN-LAST:event_jPanel6MousePressed
+        else{
+            notifier("Καθηγητές");
+        }
+    }//GEN-LAST:event_kathigitesMainButtonMouseReleased
 
-    private void jPanel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MousePressed
-        // TODO add your handling code here:
-        if (enableUI)
-            new Mathima().show();
-    }//GEN-LAST:event_jPanel8MousePressed
-
-    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-        // TODO add your handling code here:
-        if (enableUI)
-            new Vathmologia().show();
-    }//GEN-LAST:event_jPanel3MousePressed
-
-    private void jPanel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MousePressed
+    private void rithmiseisMainButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rithmiseisMainButtonMouseReleased
         // TODO add your handling code here:
         if (settingEnabler)
             new Settings().show();
-    }//GEN-LAST:event_jPanel7MousePressed
+        else{
+        String messege = "<HTML>Η εισοδος στην καρτέλα 'Ρυθμίσεις' απετυχε<br>"
+                       + "Παρακαλώ συνδεθειτε στην εφαρμογη μεσω της καρτελας 'Συνδεση'";
+        JOptionPane.showMessageDialog(null, messege, "Ενημέρωση", JOptionPane.WARNING_MESSAGE); 
+    }
+    }//GEN-LAST:event_rithmiseisMainButtonMouseReleased
+
+    private void mathimataMainButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mathimataMainButtonMouseReleased
+        // TODO add your handling code here:
+        if (enableUI)
+            new Mathima().show();
+        else{
+            notifier("Μαθήματα");
+        }
+    }//GEN-LAST:event_mathimataMainButtonMouseReleased
+
+    private void vathmologiesMainButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vathmologiesMainButtonMouseReleased
+        // TODO add your handling code here:
+        if (enableUI)
+            new Vathmologia().show();
+        else{
+            notifier("Βαθμογολίες");
+        }
+        
+    }//GEN-LAST:event_vathmologiesMainButtonMouseReleased
  public void setColor(JPanel panel)
  {
      panel.setBackground(new java.awt.Color(197, 197, 197));
@@ -565,19 +590,30 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel kathigitesMainButton;
+    private javax.swing.JPanel mathimataMainButton;
+    private javax.swing.JPanel mathitesMainButton;
+    private javax.swing.JPanel rithmiseisMainButton;
+    private javax.swing.JPanel vathmologiesMainButton;
     // End of variables declaration//GEN-END:variables
 
     static boolean enableUI = false;
     static boolean signIn = false;
     static boolean settingEnabler = false;
     
+void notifier(String a){
+    if(!settingEnabler){
+        String messege = "<HTML>Η εισοδος στην καρτέλα '" + a + "' απετυχε<br>"
+                       + "Παρακαλώ συνδεθειτε στην εφαρμογη μεσω της καρτελας 'Συνδεση'";
+        JOptionPane.showMessageDialog(null, messege, "Ενημέρωση", JOptionPane.WARNING_MESSAGE);
+    }else{
+        String messege = "<HTML>Η εισοδος στην καρτέλα '" + a + "' απετυχε<br>"
+                + "Παρακαλώ συνδεθειτε στην <u>βαση δεδομένων</u> μεσω της καρτέλας 'Ρυθμίσεις'";
+        JOptionPane.showMessageDialog(null, messege, "Ενημέρωση", JOptionPane.WARNING_MESSAGE);
 
+    }
+}
 
 
 

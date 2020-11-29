@@ -523,23 +523,18 @@ public class Vathmologia extends javax.swing.JFrame {
 
         if((Integer.valueOf(ext)< MathitisAdmin.getSid()) && (Integer.valueOf(ext)>0)){
             String selectString = "SELECT * FROM mathitis WHERE sid = ?;";
-            System.out.println("1");
+
             PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
-            System.out.println("2");
+
             ResultSet rs = DBPostresqlAdmin.getResultset();
-            System.out.println("3");
+
             try {
 
-                System.out.println("4");
+
                 aStatePG.setInt(1, Integer.valueOf(ext));
-                System.out.println("5");
                 rs = aStatePG.executeQuery();        
-
                 ResultSetMetaData rsmd = rs.getMetaData();
-                System.out.println("6");
-
                 int numberOfColumns = rsmd.getColumnCount();
-
                 String columnvalue;
                 rs.next();
                     String holder = "";
