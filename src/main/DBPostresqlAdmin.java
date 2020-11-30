@@ -32,7 +32,7 @@ public class DBPostresqlAdmin {
     public DBPostresqlAdmin() {
     }
     
-    static Statement connectToDB(){
+    static Connection connectToDB(){
         try {
             Class.forName (driverClassName);
             dbConnection = DriverManager.getConnection (url, username, passwd);
@@ -44,7 +44,7 @@ public class DBPostresqlAdmin {
             System.out.println("Den egine sindesi");
         }
              
-        return statement;
+        return dbConnection;
     }
     // {Start of} Getters
      
@@ -95,8 +95,17 @@ public class DBPostresqlAdmin {
     
     static boolean closeit(){
         try {
-            statement.close();
-            dbConnection.close();
+            if(statement != null){
+                statement.close();
+                System.out.println("Εκλεισε το ProstgreSQL Statement");
+            }
+                
+            
+            if(dbConnection != null){
+                dbConnection.close();
+                System.out.println("Εκλεισε το ProstgreSQL Connection");
+                dbConnection = null;
+            }
             return true;
         } catch (Exception e) {
             return false;

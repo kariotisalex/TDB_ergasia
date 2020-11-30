@@ -269,7 +269,8 @@ public class Settings extends javax.swing.JFrame {
                 isConnectedPostgre = !isConnectedPostgre;
             }
         }else{
-            jPanelPostgresChanger(!DBPostresqlAdmin.closeit());  
+            jPanelPostgresChanger(!DBPostresqlAdmin.closeit());
+            isConnectedPostgre = !isConnectedPostgre;
         }
 
         
@@ -360,8 +361,8 @@ public class Settings extends javax.swing.JFrame {
     private boolean enterToPostrgres(){
         //postgreErrorLabel.setText("");
             dbpg = new DBPostresqlAdmin(postgreUN.getText(), postgrePW.getText());
-            Statement test = dbpg.connectToDB();
-            if(test != null){
+            
+            if(dbpg.connectToDB() != null){
 
                 return true;
             }else{
@@ -373,7 +374,7 @@ public class Settings extends javax.swing.JFrame {
     }
     
     private void jPanelPostgresChanger(boolean isConnected){
-        if (isConnected){
+        if (isConnected == true){
             isConnectedPostgreLabel.setForeground(Color.GREEN);
             isConnectedPostgreLabel.setText("Συνδεδεμένη");
             postgreUN.setEnabled(!isConnected);
@@ -381,7 +382,7 @@ public class Settings extends javax.swing.JFrame {
             postgreEntrance.setText("Έξοδος");
             Home.enableUI = true;
             tableController();
-        }else{
+        }else if(isConnected == false){
             postgreEntrance.setText("Είσοδος");
             postgreUN.setEnabled(!isConnected);
             postgrePW.setEnabled(!isConnected);
@@ -404,10 +405,10 @@ public class Settings extends javax.swing.JFrame {
     }
     private void dropTablesPG() {
         Statement psql = dbpg.getStatement();
-        try {psql.executeUpdate("DROP TABLE vathmologia");} catch (SQLException e) {}
-        try {psql.executeUpdate("DROP TABLE mathima");} catch (SQLException e) {}
-        try {psql.executeUpdate("DROP TABLE mathitis");} catch (SQLException e) {}
-        try {psql.executeUpdate("DROP TABLE kathigitis");} catch (SQLException e) {}
+        try {psql.executeUpdate("DROP TABLE vathmologia");} catch (SQLException e) {System.out.println(e.getMessage());}
+        try {psql.executeUpdate("DROP TABLE mathima");} catch (SQLException e) {System.out.println(e.getMessage());}
+        try {psql.executeUpdate("DROP TABLE mathitis");} catch (SQLException e) {System.out.println(e.getMessage());}
+        try {psql.executeUpdate("DROP TABLE kathigitis");} catch (SQLException e) {System.out.println(e.getMessage());}
     }
     
     private void createTablesPG(){

@@ -24,7 +24,7 @@ public class Vathmologia extends javax.swing.JFrame {
         
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
-        showAllInTable();
+        showView();
         
     }
 
@@ -44,10 +44,6 @@ public class Vathmologia extends javax.swing.JFrame {
         editPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         botPanel = new javax.swing.JPanel();
-        viewGrades = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         editGrades = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -63,6 +59,10 @@ public class Vathmologia extends javax.swing.JFrame {
         stoixeiaMathitisLabel = new javax.swing.JLabel();
         kwdikosMathimatosField = new javax.swing.JTextField();
         stoixeiaMathimatosLabel = new javax.swing.JLabel();
+        viewGrades = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -163,57 +163,6 @@ public class Vathmologia extends javax.swing.JFrame {
 
         botPanel.setLayout(new java.awt.CardLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ΑΜ", "Όνομα", "Επώνυμο", "Μάθημα", "Έτος Βαθμολόγησης", "Βαθμολογία A' Tετραμήνου", "Βαθμολογία B' Τεραμήνου", "Τελική Εξέταση"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(1);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(1);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-        }
-
-        jButton1.setText("Ανανέωση");
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jButton1KeyReleased(evt);
-            }
-        });
-
-        javax.swing.GroupLayout viewGradesLayout = new javax.swing.GroupLayout(viewGrades);
-        viewGrades.setLayout(viewGradesLayout);
-        viewGradesLayout.setHorizontalGroup(
-            viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
-            .addGroup(viewGradesLayout.createSequentialGroup()
-                .addGap(438, 438, 438)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        viewGradesLayout.setVerticalGroup(
-            viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewGradesLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
-
-        botPanel.add(viewGrades, "card2");
-
         editGrades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editGradesMouseClicked(evt);
@@ -289,9 +238,8 @@ public class Vathmologia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(stoixeiaMathitisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(kwdikosMathimatosField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                        .addComponent(kwdikosMathitiField, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(kwdikosMathimatosField, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(kwdikosMathitiField)
                     .addComponent(stoixeiaMathimatosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
@@ -353,17 +301,68 @@ public class Vathmologia extends javax.swing.JFrame {
             .addGroup(editGradesLayout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(314, Short.MAX_VALUE))
+                .addContainerGap(353, Short.MAX_VALUE))
         );
         editGradesLayout.setVerticalGroup(
             editGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editGradesLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
 
         botPanel.add(editGrades, "card3");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ΑΜ", "Όνομα", "Επώνυμο", "Μάθημα", "Έτος Βαθμολόγησης", "Βαθμολογία A' Tετραμήνου", "Βαθμολογία B' Τεραμήνου", "Τελική Εξέταση"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(1);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(1);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jButton1.setText("Ανανέωση");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout viewGradesLayout = new javax.swing.GroupLayout(viewGrades);
+        viewGrades.setLayout(viewGradesLayout);
+        viewGradesLayout.setHorizontalGroup(
+            viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1049, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewGradesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+        viewGradesLayout.setVerticalGroup(
+            viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewGradesLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
+        botPanel.add(viewGrades, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -439,10 +438,10 @@ public class Vathmologia extends javax.swing.JFrame {
                           String.valueOf(etosVathmCombo.getSelectedItem()));
     }//GEN-LAST:event_kataxorisiBtnActionPerformed
 
-    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        showAllInTable();
-    }//GEN-LAST:event_jButton1KeyReleased
+        showView();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -542,10 +541,10 @@ public class Vathmologia extends javax.swing.JFrame {
     String vathmos[] = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"};
     String tetramino[] = {"1o Τετράμηνο", "2ο Τετράμηνο", "Τελική Εξέταση"};
     String etosCombo[] = new String[61];
+    String[] viewChager = {"1ο, 2ο και Τελικες εξετάσεις", "1ο και 2ο εξαμηνο",
+                           "Τελικές Εξετάσεις", "2ο τετραμηνο", "1o τετραμηνο"};
     
     private void fillCombos(){
-        
-
         for (int i = 0; i < 61; i++) {
             int etos = 2020;
             etosCombo[i] = String.valueOf(etos - i);
@@ -667,19 +666,133 @@ public class Vathmologia extends javax.swing.JFrame {
     
     
     
-    private void showAllInTable(){
+    private void showView(){
+        showTwoTermsWithFinalExams();
+        showOnePlusTwoTerms();
+        showFinalExams();
+        showSecondTerm();
+        showFirstTerm();
+    }
+
+    
+    private void showTwoTermsWithFinalExams(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String selectString = "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos, v2.vathmos\n" +
-                              "FROM vathmologia V1, vathmologia v2, mathitis m1, mathima m2\n" +
-                              "WHERE v1.sid=v2.sid AND\n" +
-                              "      v1.mid=v2.mid AND\n" +
-                              "      v1.etos=v2.etos AND\n" +
-                              "      v1.eksamino=1 AND\n" +
-                              "      v2.eksamino=2 AND\n" +
-                              "      m1.sid = v1.sid AND\n" +
-                              "      m2.mid = v2.mid;";
+        String selectString1 = "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos, v2.vathmos, v3.vathmos\n" +
+                               "FROM vathmologia V1, vathmologia v2, vathmologia v3, mathitis m1, mathima m2\n" +
+                               "WHERE v1.sid      =  v2.sid  AND\n" +
+                               "      v2.sid      =  v3.sid  AND\n" +
+                               "      v1.mid      =  v2.mid  AND\n" +
+                               "      v2.mid      =  v3.mid  AND\n" +
+                               "      v1.etos     =  v2.etos AND\n" +
+                               "      v2.etos     =  v3.etos AND\n" +
+                               "      v1.eksamino =   1      AND\n" +
+                               "      v2.eksamino =   2      AND\n" +
+                               "      v3.eksamino =   3      AND\n" +
+                               "      m1.sid      =  v1.sid  AND\n" +
+                               "      m2.mid      =  v2.mid";
         Statement aStatePG = DBPostresqlAdmin.getStatement();
         model.setRowCount(0);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            rs = aStatePG.executeQuery(selectString1);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showOnePlusTwoTerms(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString2 =  "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos, v2.vathmos\n" +
+                                "FROM vathmologia V1, vathmologia v2, mathitis m1, mathima m2\n" +
+                                "WHERE v1.sid=v2.sid AND\n" +
+                                "      v1.mid=v2.mid AND\n" +
+                                "      v1.etos=v2.etos AND\n" +
+                                "      v1.eksamino = 1 AND\n" +
+                                "      v2.eksamino = 2 AND\n" +
+                                "      m1.sid = v1.sid AND\n" +
+                                "      m2.mid = v2.mid\n" +
+                                "EXCEPT\n" +
+                                "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos, v2.vathmos\n" +
+                                "FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
+                                "WHERE v1.sid=v2.sid AND\n" +
+                                "      v2.sid=v3.sid AND\n" +
+                                "      v1.mid=v2.mid AND\n" +
+                                "      v2.mid=v3.mid AND\n" +
+                                "      v1.etos=v2.etos AND\n" +
+                                "      v2.etos=v3.etos AND\n" +
+                                "      v1.eksamino = 1 AND\n" +
+                                "      v2.eksamino = 2 AND\n" +
+                                "      v3.eksamino = 3 AND\n" +
+                                "      m1.sid = v1.sid AND\n" +
+                                "      m2.mid = v2.mid";
+        
+        Statement aStatePG = DBPostresqlAdmin.getStatement();
+        
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            rs = aStatePG.executeQuery(selectString2);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    
+    private void showFinalExams(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos\n" +
+                              "FROM vathmologia V1, mathitis m1, mathima m2\n" +
+                              "WHERE v1.eksamino  = 3      AND\n" +
+                              "      m1.sid       = v1.sid AND\n" +
+                              "      m2.mid       = v1.mid    \n" +
+                              "EXCEPT\n" +
+                              "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v3.vathmos\n" +
+                              "FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
+                              "WHERE v1.sid      =   v2.sid  AND\n" +
+                              "      v2.sid      =   v3.sid  AND\n" +
+                              "      v1.mid      =   v2.mid  AND\n" +
+                              "      v2.mid      =   v3.mid  AND\n" +
+                              "      v1.etos     =   v2.etos AND\n" +
+                              "      v2.etos     =   v3.etos AND\n" +
+                              "      v1.eksamino =    1      AND\n" +
+                              "      v2.eksamino =    2      AND\n" +
+                              "      v3.eksamino =    3      AND\n" +
+                              "      m1.sid      =   v1.sid  AND\n" +
+                              "      m2.mid      =   v2.mid  ";
+        Statement aStatePG = DBPostresqlAdmin.getStatement();
         ResultSet rs = DBPostresqlAdmin.getResultset();
         try {
             rs = aStatePG.executeQuery(selectString);
@@ -702,9 +815,126 @@ public class Vathmologia extends javax.swing.JFrame {
 		System.out.println("Message: " + ex.getMessage());
 		ex = ex.getNextException();
             }
-        } 
+        }
     }
+    private void showSecondTerm(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, null, v1.vathmos\n" +
+                              "	FROM vathmologia V1, mathitis m1, mathima m2\n" +
+                              "	WHERE v1.eksamino  =   2 AND\n" +
+                              "	      m1.sid       =  v1.sid AND\n" +
+                              "	      m2.mid       =  v1.mid\n" +
+                              "EXCEPT\n" +
+                              "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, null, v2.vathmos\n" +
+                              "	FROM vathmologia V1, vathmologia v2, mathitis m1, mathima m2\n" +
+                              "	WHERE v1.sid      =  v2.sid  AND\n" +
+                              "	      v1.mid      =  v2.mid  AND\n" +
+                              "	      v1.etos     =  v2.etos AND\n" +
+                              "	      v1.eksamino =   1      AND\n" +
+                              "	      v2.eksamino =   2      AND\n" +
+                              "	      m1.sid      =  v1.sid  AND\n" +
+                              "	      m2.mid      =  v2.mid     \n" +
+                              "	EXCEPT\n" +
+                              "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, null, v2.vathmos\n" +
+                              "	FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
+                              "	WHERE v1.sid      = v2.sid AND\n" +
+                              "	      v2.sid      = v3.sid AND\n" +
+                              "	      v1.mid      = v2.mid AND\n" +
+                              "	      v2.mid      = v3.mid AND\n" +
+                              "	      v1.etos     = v2.etos AND\n" +
+                              "	      v2.etos     = v3.etos AND\n" +
+                              "	      v1.eksamino =  1      AND\n" +
+                              "	      v2.eksamino =  2      AND\n" +
+                              "	      v3.eksamino =  3      AND\n" +
+                              "	      m1.sid      = v1.sid  AND\n" +
+                              "	      m2.mid      = v2.mid";
+        Statement aStatePG = DBPostresqlAdmin.getStatement();
+        
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            rs = aStatePG.executeQuery(selectString);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        }
+    }
+        
+    private void showFirstTerm(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos\n" +
+                              "	FROM vathmologia V1, mathitis m1, mathima m2\n" +
+                              "	WHERE v1.eksamino =1       AND\n" +
+                              "	      m1.sid      = v1.sid AND\n" +
+                              "	      m2.mid      = v1.mid    \n" +
+                              " EXCEPT\n" +
+                              "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos\n" +
+                              "	FROM vathmologia V1, vathmologia v2, mathitis m1, mathima m2\n" +
+                              "	WHERE v1.sid      = v2.sid AND\n" +
+                              "	      v1.mid      = v2.mid AND\n" +
+                              "	      v1.etos     = v2.etos AND\n" +
+                              "	      v1.eksamino =  1 AND\n" +
+                              "	      v2.eksamino =  2 AND\n" +
+                              "	      m1.sid      = v1.sid AND\n" +
+                              "	      m2.mid      = v2.mid\n" +
+                              "	EXCEPT\n" +
+                              "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos\n" +
+                              "	FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
+                              "	WHERE v1.sid      = v2.sid   AND\n" +
+                              "	      v2.sid      = v3.sid   AND\n" +
+                              "	      v1.mid      = v2.mid   AND\n" +
+                              "	      v2.mid      = v3.mid   AND\n" +
+                              "	      v1.etos     = v2.etos  AND\n" +
+                              "	      v2.etos     = v3.etos  AND\n" +
+                              "	      v1.eksamino =  1 AND      \n" +
+                              "	      v2.eksamino =  2 AND      \n" +
+                              "	      v3.eksamino =  3 AND      \n" +
+                              "	      m1.sid      = v1.sid   AND\n" +
+                              "	      m2.mid      = v2.mid";
+        Statement aStatePG = DBPostresqlAdmin.getStatement();
+       
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            rs = aStatePG.executeQuery(selectString);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        }
+    }    
+        
+        
 
-
+    
 
 }
