@@ -5,7 +5,7 @@
  */
 package main;
 
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  *
@@ -18,7 +18,7 @@ public class VathmologiaAdmin {
     
     public VathmologiaAdmin() {
         createTable();
-        
+        insertToVathmologia();
         
     }
     
@@ -32,7 +32,8 @@ public class VathmologiaAdmin {
                         "sid int NOT NULL, \n" +
                         "mid int NOT NULL, \n" +
                         "vathmos int,\n" +
-                        "etos varchar(50),\n" +
+                        "eksamino int,\n" +
+                        "etos int,\n" +
                         "FOREIGN KEY (sid) REFERENCES mathitis(sid),\n" +
                         "FOREIGN KEY (mid) REFERENCES mathima(mid)\n" +
                         ");";
@@ -40,5 +41,67 @@ public class VathmologiaAdmin {
         try {aStatePG.executeUpdate(query4);} catch (Exception e) {System.out.println("Create table : " + e.toString());}
     }
     
+    static void addNewVathmologia(int sid, int mid, int vathmos, int eksamino, int etos){
         
+        
+        
+        
+        String insertQuery = "INSERT INTO vathmologia(sid, mid, vathmos, eksamino, etos"
+                           + ") VALUES (?, ?, ?, ?, ?);";
+        
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(insertQuery);
+        
+        try {
+            
+            aStatePG.setInt(1,sid);
+            aStatePG.setInt(2, mid);
+            aStatePG.setInt(3, vathmos);
+            aStatePG.setInt(4, eksamino);
+            aStatePG.setInt(5, etos);
+            aStatePG.executeUpdate();
+            
+        } catch (Exception e) {
+            
+            System.out.println(e.getMessage());
+            
+        }
+
+        
+        
+    }
+    private void insertToVathmologia(){
+        
+        String insertQuery = "INSERT INTO vathmologia(sid, mid, vathmos, eksamino, etos"
+                + ") VALUES (?, ?, ?, ?, ?);";
+        
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(insertQuery);
+        
+        
+            int[] sid      =  {  1,    1,    2,    4,    2,    2,    2,    2   };
+            int[] mid      =  {  1,    1,    3,    4,    3,    4,    2,    4   };
+            int[] vathmos  =  {  7,    9,    7,    8,    5,    3,    15,   10  };
+            int[] eksamino =  {  1,    2,    1,    2,    2,    1,    1,    2   };
+            int[] etos     =  { 2020, 2020, 2019, 2015, 2019, 2015, 2020, 2015 };
+        
+        
+        try {
+            for(int i =0; i < 8; i++ ){
+                aStatePG.setInt(1,sid[i]);
+                aStatePG.setInt(2, mid[i]);
+                aStatePG.setInt(3, vathmos[i]);
+                aStatePG.setInt(4, eksamino[i]);
+                aStatePG.setInt(5, etos[i]);
+                aStatePG.executeUpdate();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 }

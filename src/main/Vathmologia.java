@@ -6,8 +6,6 @@
 package main;
 
 import java.sql.*;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,6 +24,7 @@ public class Vathmologia extends javax.swing.JFrame {
         
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
+        showAllInTable();
         
     }
 
@@ -48,11 +47,12 @@ public class Vathmologia extends javax.swing.JFrame {
         viewGrades = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         editGrades = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
         kwdikosMathitiField = new javax.swing.JTextField();
-        katButton = new javax.swing.JButton();
+        kataxorisiBtn = new javax.swing.JButton();
         bathmosaLabel = new javax.swing.JLabel();
         mathimaLabel = new javax.swing.JLabel();
         tetraminoCombo = new javax.swing.JComboBox<>();
@@ -168,11 +168,11 @@ public class Vathmologia extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ΑΜ", "Όνομα", "Επώνυμο", "Μάθημα", "Βαθμολογία A' Tετραμήνου", "Βαθμολογία B' Τεραμήνου", "Έτος Βαθμολόγησης"
+                "ΑΜ", "Όνομα", "Επώνυμο", "Μάθημα", "Έτος Βαθμολόγησης", "Βαθμολογία A' Tετραμήνου", "Βαθμολογία B' Τεραμήνου", "Τελική Εξέταση"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -186,15 +186,30 @@ public class Vathmologia extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        jButton1.setText("Ανανέωση");
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jButton1KeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout viewGradesLayout = new javax.swing.GroupLayout(viewGrades);
         viewGrades.setLayout(viewGradesLayout);
         viewGradesLayout.setHorizontalGroup(
             viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+            .addGroup(viewGradesLayout.createSequentialGroup()
+                .addGap(438, 438, 438)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewGradesLayout.setVerticalGroup(
             viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+            .addGroup(viewGradesLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         botPanel.add(viewGrades, "card2");
@@ -227,7 +242,12 @@ public class Vathmologia extends javax.swing.JFrame {
             }
         });
 
-        katButton.setText("Καταχώρηση");
+        kataxorisiBtn.setText("Καταχώρηση");
+        kataxorisiBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kataxorisiBtnActionPerformed(evt);
+            }
+        });
 
         bathmosaLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
         bathmosaLabel.setLabelFor(vathmosCombo);
@@ -277,7 +297,7 @@ public class Vathmologia extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(katButton)
+                        .addComponent(kataxorisiBtn)
                         .addGap(215, 215, 215))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,7 +339,7 @@ public class Vathmologia extends javax.swing.JFrame {
                     .addComponent(etosΒathLabel)
                     .addComponent(etosVathmCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
-                .addComponent(katButton)
+                .addComponent(kataxorisiBtn)
                 .addGap(22, 22, 22))
         );
 
@@ -398,7 +418,6 @@ public class Vathmologia extends javax.swing.JFrame {
     private void editGradesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editGradesMouseClicked
         // TODO add your handling code here:
         jPanel5.requestFocusInWindow();
-
     }//GEN-LAST:event_editGradesMouseClicked
 
     private void kwdikosMathitiFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kwdikosMathitiFieldActionPerformed
@@ -410,6 +429,20 @@ public class Vathmologia extends javax.swing.JFrame {
         // TODO add your handling code here:
         vathmosCombo.requestFocus();
     }//GEN-LAST:event_kwdikosMathimatosFieldActionPerformed
+
+    private void kataxorisiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kataxorisiBtnActionPerformed
+        // TODO add your handling code here:
+        addNewVathmologia(kwdikosMathitiField.getText(),
+                          kwdikosMathimatosField.getText(),
+                          String.valueOf(vathmosCombo.getSelectedItem()),
+                          tetraminoCombo.getSelectedIndex()+1,
+                          String.valueOf(etosVathmCombo.getSelectedItem()));
+    }//GEN-LAST:event_kataxorisiBtnActionPerformed
+
+    private void jButton1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyReleased
+        // TODO add your handling code here:
+        showAllInTable();
+    }//GEN-LAST:event_jButton1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -484,6 +517,7 @@ public class Vathmologia extends javax.swing.JFrame {
     private javax.swing.JPanel editPanel;
     private javax.swing.JComboBox<String> etosVathmCombo;
     private javax.swing.JLabel etosΒathLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -491,7 +525,7 @@ public class Vathmologia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton katButton;
+    private javax.swing.JButton kataxorisiBtn;
     private javax.swing.JTextField kwdikosMathimatosField;
     private javax.swing.JTextField kwdikosMathitiField;
     private javax.swing.JLabel mathimaLabel;
@@ -505,8 +539,8 @@ public class Vathmologia extends javax.swing.JFrame {
     private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
     
-    String vathmos[] = {"1","2","3","4","5","6","7","8","9","10"};
-    String tetramino[] = {"1o Τετράμηνο", "2ο Τετράμηνο"};
+    String vathmos[] = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"};
+    String tetramino[] = {"1o Τετράμηνο", "2ο Τετράμηνο", "Τελική Εξέταση"};
     String etosCombo[] = new String[61];
     
     private void fillCombos(){
@@ -520,87 +554,156 @@ public class Vathmologia extends javax.swing.JFrame {
     }
 
     private void showStudentViaID(String ext){
+        try {
+            
+            if((Integer.valueOf(ext)< MathitisAdmin.getSid()) && (Integer.valueOf(ext)>0)){
+                String selectString = "SELECT * FROM mathitis WHERE sid = ?;";
 
-        if((Integer.valueOf(ext)< MathitisAdmin.getSid()) && (Integer.valueOf(ext)>0)){
-            String selectString = "SELECT * FROM mathitis WHERE sid = ?;";
+                PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
 
-            PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+                ResultSet rs = DBPostresqlAdmin.getResultset();
 
-            ResultSet rs = DBPostresqlAdmin.getResultset();
-
-            try {
+                try {
 
 
-                aStatePG.setInt(1, Integer.valueOf(ext));
-                rs = aStatePG.executeQuery();        
-                ResultSetMetaData rsmd = rs.getMetaData();
-                int numberOfColumns = rsmd.getColumnCount();
-                String columnvalue;
-                rs.next();
-                    String holder = "";
-                    for (int i = 2; i<= numberOfColumns; i++) {
-                        columnvalue = rs.getString(i);
-                        holder += columnvalue + " ";
+                    aStatePG.setInt(1, Integer.valueOf(ext));
+                    rs = aStatePG.executeQuery();        
+                    ResultSetMetaData rsmd = rs.getMetaData();
+                    int numberOfColumns = rsmd.getColumnCount();
+                    String columnvalue;
+                    rs.next();
+                        String holder = "";
+                        for (int i = 2; i<= numberOfColumns; i++) {
+                            columnvalue = rs.getString(i);
+                            holder += columnvalue + " ";
+                        }
+
+                        stoixeiaMathitisLabel.setText(holder);
+
+                } catch(SQLException ex) {
+                    System.out.println("\n -- SQL Exception --- \n");
+                    while(ex != null) {
+                        System.out.println("Message: " + ex.getMessage());
+                        ex = ex.getNextException();
                     }
-
-                    stoixeiaMathitisLabel.setText(holder);
-
-            } catch(SQLException ex) {
-                System.out.println("\n -- SQL Exception --- \n");
-                while(ex != null) {
-                    System.out.println("Message: " + ex.getMessage());
-                    ex = ex.getNextException();
-                }
-            } 
-        }else{
+                } 
+            }else{
+                kwdikosMathitiField.setText("");
+                stoixeiaMathitisLabel.setText("");
+                String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+                JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            }            
+            
+            
+        } catch (Exception e) {
+            kwdikosMathitiField.setText("");
             stoixeiaMathitisLabel.setText("");
             String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
             JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
         }
-    }
 
+    }
 
     private void showLessonViaID(String ext){
+        try {
+            if((Integer.valueOf(ext)< MathitisAdmin.getSid()) && (Integer.valueOf(ext)>0)){
+                String selectString = "SELECT M.onoma_mathimatos, K.onoma_kathigiti, K.epitheto_kathigiti FROM mathima M, kathigitis K WHERE K.kid=M.kid AND mid = ?;";
 
-        if((Integer.valueOf(ext)< MathitisAdmin.getSid()) && (Integer.valueOf(ext)>0)){
-            String selectString = "SELECT M.onoma_mathimatos, K.onoma_kathigiti, K.epitheto_kathigiti FROM mathima M, kathigitis K WHERE K.kid=M.kid AND mid = ?;";
-           
-            PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
-            ResultSet rs = DBPostresqlAdmin.getResultset();
-            try {
+                PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+                ResultSet rs = DBPostresqlAdmin.getResultset();
+                try {
 
-                aStatePG.setInt(1, Integer.valueOf(ext));
-                rs = aStatePG.executeQuery();        
+                    aStatePG.setInt(1, Integer.valueOf(ext));
+                    rs = aStatePG.executeQuery();        
 
-                ResultSetMetaData rsmd = rs.getMetaData();
+                    ResultSetMetaData rsmd = rs.getMetaData();
 
-                int numberOfColumns = rsmd.getColumnCount();
+                    int numberOfColumns = rsmd.getColumnCount();
 
-                String columnvalue;
-                rs.next();
-                    String holder = "";
-                    for (int i = 1; i<= numberOfColumns; i++) {
-                        columnvalue = rs.getString(i);
-                        holder += columnvalue + " ";
+                    String columnvalue;
+                    rs.next();
+                        String holder = "";
+                        for (int i = 1; i<= numberOfColumns; i++) {
+                            columnvalue = rs.getString(i);
+                            holder += columnvalue + " ";
+                        }
+
+                        stoixeiaMathimatosLabel.setText(holder);
+
+                } catch(SQLException ex) {
+                    System.out.println("\n -- SQL Exception --- \n");
+                    while(ex != null) {
+                        System.out.println("Message: " + ex.getMessage());
+                        ex = ex.getNextException();
                     }
-
-                    stoixeiaMathimatosLabel.setText(holder);
-
-            } catch(SQLException ex) {
-                System.out.println("\n -- SQL Exception --- \n");
-                while(ex != null) {
-                    System.out.println("Message: " + ex.getMessage());
-                    ex = ex.getNextException();
-                }
-            } 
-        }else{
+                } 
+            }else{
+                kwdikosMathimatosField.setText("");
+                stoixeiaMathitisLabel.setText("");
+                String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+                JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            }    
+        } catch (Exception e) {
+            kwdikosMathimatosField.setText("");
             stoixeiaMathitisLabel.setText("");
             String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
             JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
         }
+        
     }
 
-
+    private void addNewVathmologia(String sid,String mid, String vathmos, int eksamino, String etos){
+        
+        try {
+            VathmologiaAdmin.addNewVathmologia(Integer.valueOf(sid), 
+                                               Integer.valueOf(mid), 
+                                               Integer.valueOf(vathmos), 
+                                               Integer.valueOf(eksamino), 
+                                               Integer.valueOf(etos));
+        } catch (Exception e) {
+            System.out.println("kati xalase "+ e.getMessage());
+        }
+    }
+    
+    
+    
+    private void showAllInTable(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos, v2.vathmos\n" +
+                              "FROM vathmologia V1, vathmologia v2, mathitis m1, mathima m2\n" +
+                              "WHERE v1.sid=v2.sid AND\n" +
+                              "      v1.mid=v2.mid AND\n" +
+                              "      v1.etos=v2.etos AND\n" +
+                              "      v1.eksamino=1 AND\n" +
+                              "      v2.eksamino=2 AND\n" +
+                              "      m1.sid = v1.sid AND\n" +
+                              "      m2.mid = v2.mid;";
+        Statement aStatePG = DBPostresqlAdmin.getStatement();
+        model.setRowCount(0);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            rs = aStatePG.executeQuery(selectString);
+            
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            Object[] row = new Object[numberOfColumns];
+            String columnvalue;
+            while (rs.next()) {
+                for (int i = 1; i<= numberOfColumns; i++) {
+                    columnvalue = rs.getString(i);
+                    row[i-1] = columnvalue;
+                }
+                
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        } 
+    }
 
 
 

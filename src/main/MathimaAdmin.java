@@ -25,15 +25,6 @@ public class MathimaAdmin {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     private void createTable(){
         
         Statement aStatePG = DBPostresqlAdmin.getStatement();
