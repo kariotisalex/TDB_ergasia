@@ -44,6 +44,10 @@ public class Vathmologia extends javax.swing.JFrame {
         editPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         botPanel = new javax.swing.JPanel();
+        viewGrades = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         editGrades = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -59,10 +63,6 @@ public class Vathmologia extends javax.swing.JFrame {
         stoixeiaMathitisLabel = new javax.swing.JLabel();
         kwdikosMathimatosField = new javax.swing.JTextField();
         stoixeiaMathimatosLabel = new javax.swing.JLabel();
-        viewGrades = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -162,6 +162,58 @@ public class Vathmologia extends javax.swing.JFrame {
         );
 
         botPanel.setLayout(new java.awt.CardLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ΑΜ", "Όνομα", "Επώνυμο", "Μάθημα", "Έτος Βαθμολόγησης", "Βαθμολογία A' Tετραμήνου", "Βαθμολογία B' Τεραμήνου", "Τελική Εξέταση"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(1);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(1);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jButton1.setText("Ανανέωση");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout viewGradesLayout = new javax.swing.GroupLayout(viewGrades);
+        viewGrades.setLayout(viewGradesLayout);
+        viewGradesLayout.setHorizontalGroup(
+            viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1049, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewGradesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+        viewGradesLayout.setVerticalGroup(
+            viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewGradesLayout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
+        botPanel.add(viewGrades, "card2");
 
         editGrades.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -312,57 +364,6 @@ public class Vathmologia extends javax.swing.JFrame {
         );
 
         botPanel.add(editGrades, "card3");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ΑΜ", "Όνομα", "Επώνυμο", "Μάθημα", "Έτος Βαθμολόγησης", "Βαθμολογία A' Tετραμήνου", "Βαθμολογία B' Τεραμήνου", "Τελική Εξέταση"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(1);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(1);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-        }
-
-        jButton1.setText("Ανανέωση");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout viewGradesLayout = new javax.swing.GroupLayout(viewGrades);
-        viewGrades.setLayout(viewGradesLayout);
-        viewGradesLayout.setHorizontalGroup(
-            viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1049, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewGradesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
-        viewGradesLayout.setVerticalGroup(
-            viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewGradesLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
-
-        botPanel.add(viewGrades, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -689,7 +690,7 @@ public class Vathmologia extends javax.swing.JFrame {
                                "      v2.eksamino =   2      AND\n" +
                                "      v3.eksamino =   3      AND\n" +
                                "      m1.sid      =  v1.sid  AND\n" +
-                               "      m2.mid      =  v2.mid";
+                               "      m2.mid      =  v1.mid";
         Statement aStatePG = DBPostresqlAdmin.getStatement();
         model.setRowCount(0);
         ResultSet rs = DBPostresqlAdmin.getResultset();
@@ -773,13 +774,13 @@ public class Vathmologia extends javax.swing.JFrame {
     
     private void showFinalExams(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String selectString = "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos\n" +
+        String selectString = "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos,null,null, v1.vathmos\n" +
                               "FROM vathmologia V1, mathitis m1, mathima m2\n" +
                               "WHERE v1.eksamino  = 3      AND\n" +
                               "      m1.sid       = v1.sid AND\n" +
                               "      m2.mid       = v1.mid    \n" +
                               "EXCEPT\n" +
-                              "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v3.vathmos\n" +
+                              "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos,null,null,v3.vathmos\n" +
                               "FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
                               "WHERE v1.sid      =   v2.sid  AND\n" +
                               "      v2.sid      =   v3.sid  AND\n" +
@@ -834,7 +835,7 @@ public class Vathmologia extends javax.swing.JFrame {
                               "	      v2.eksamino =   2      AND\n" +
                               "	      m1.sid      =  v1.sid  AND\n" +
                               "	      m2.mid      =  v2.mid     \n" +
-                              "	EXCEPT\n" +
+                              "EXCEPT\n" +
                               "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, null, v2.vathmos\n" +
                               "	FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
                               "	WHERE v1.sid      = v2.sid AND\n" +

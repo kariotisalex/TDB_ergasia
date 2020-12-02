@@ -105,6 +105,10 @@ public class DBPostresqlAdmin {
                 dbConnection.close();
                 System.out.println("Εκλεισε το ProstgreSQL Connection");
                 dbConnection = null;
+                KathigitisAdmin.setKid(1);
+                MathitisAdmin.setSid(1);
+                MathimaAdmin.setMid(1);
+                
             }
             return true;
         } catch (Exception e) {

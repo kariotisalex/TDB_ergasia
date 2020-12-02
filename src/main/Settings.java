@@ -265,7 +265,7 @@ public class Settings extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (!isConnectedPostgre){
             if(enterToPostrgres()){
-                jPanelPostgresChanger(enterToPostrgres());
+                jPanelPostgresChanger(true);
                 isConnectedPostgre = !isConnectedPostgre;
             }
         }else{
@@ -361,15 +361,19 @@ public class Settings extends javax.swing.JFrame {
     private boolean enterToPostrgres(){
         //postgreErrorLabel.setText("");
             dbpg = new DBPostresqlAdmin(postgreUN.getText(), postgrePW.getText());
-            
-            if(dbpg.connectToDB() != null){
-
+            dbpg.connectToDB();
+            tableController();
+            if(dbpg.isConnected()){
                 return true;
             }else{
                 JOptionPane.showMessageDialog(null, "Ελεγξτε το Username ή/και το Password" , 
                         "Ενημέρωση", JOptionPane.WARNING_MESSAGE);
                 return false;
             }
+            
+            
+                
+            
             
     }
     
@@ -381,7 +385,7 @@ public class Settings extends javax.swing.JFrame {
             postgrePW.setEnabled(!isConnected);
             postgreEntrance.setText("Έξοδος");
             Home.enableUI = true;
-            tableController();
+            
         }else if(isConnected == false){
             postgreEntrance.setText("Είσοδος");
             postgreUN.setEnabled(!isConnected);

@@ -14,15 +14,19 @@ import java.sql.Statement;
  */
 
 public class MathimaAdmin {
-    static int mid = 1;
+    private static int mid = 1;
 
     public MathimaAdmin() {
         
         createTable();
-        insertToKathigitis();
+        insertToMathima();
         
         
         
+    }
+
+    public static void setMid(int mid) {
+        MathimaAdmin.mid = mid;
     }
     
     private void createTable(){
@@ -41,7 +45,7 @@ public class MathimaAdmin {
         
     }
     
-    private void insertToKathigitis(){
+    private void insertToMathima(){
         
         String insertQuery = "INSERT INTO mathima(mid, kid, onoma_mathimatos"
                 + ") VALUES (?, ?, ?);";
@@ -63,6 +67,7 @@ public class MathimaAdmin {
                 aStatePG.executeUpdate();
             }
         } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     

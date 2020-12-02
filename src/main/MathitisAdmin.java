@@ -28,6 +28,10 @@ public class MathitisAdmin {
     public static int getSid() {
         return sid;
     }
+
+    public static void setSid(int sid) {
+        MathitisAdmin.sid = sid;
+    }
         
     
     

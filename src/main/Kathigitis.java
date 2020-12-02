@@ -160,7 +160,7 @@ public class Kathigitis extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Όνομα ", "Επώνυμο", "Ειδικότητα", "Ημερομηνία Γέννησης"
+                "AM", "Όνομα ", "Επώνυμο", "Ειδικότητα"
             }
         ) {
             Class[] types = new Class [] {

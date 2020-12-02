@@ -14,7 +14,11 @@ import javax.swing.JOptionPane;
  * @author alexa
  */
 public class KathigitisAdmin {
-    static int kid = 1;
+    private static int kid = 1;
+
+    public static void setKid(int kid) {
+        KathigitisAdmin.kid = kid;
+    }
 
     public KathigitisAdmin() {
         createTable();

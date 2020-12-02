@@ -399,14 +399,13 @@ public class Mathitis extends javax.swing.JFrame {
 
     private void kataxorisiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kataxorisiBtnActionPerformed
         // TODO add your handling code here:
-        MathitisAdmin.addNewStudent(onomaTF.getText(), eponimoTF.getText(), onomapTF.getText(), onomamTF.getText(), year.getSelectedItem());
+        MathitisAdmin.addNewStudent(onomaTF.getText(), 
+                                    eponimoTF.getText(), 
+                                    onomapTF.getText(), 
+                                    onomamTF.getText(), 
+                                    year.getSelectedItem());
 
   
-
-        
-        
-        
-        
     }//GEN-LAST:event_kataxorisiBtnActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -545,7 +544,8 @@ public class Mathitis extends javax.swing.JFrame {
 
     private void showOnlyOnYear(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String selectString = "SELECT * FROM mathitis WHERE etosEisagogis = " + searchYear.getSelectedItem()+";";
+        String selectString = "SELECT * FROM mathitis WHERE etosEisagogis = " 
+                              + searchYear.getSelectedItem()+";";
         Statement aStatePG = DBPostresqlAdmin.getStatement();
         model.setRowCount(0);
         ResultSet rs = DBPostresqlAdmin.getResultset();
