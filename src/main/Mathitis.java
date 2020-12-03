@@ -40,8 +40,10 @@ public class Mathitis extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         viewPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        editPanel = new javax.swing.JPanel();
+        addPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        editPanel = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         botPanel = new javax.swing.JPanel();
         viewStudent = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -49,6 +51,7 @@ public class Mathitis extends javax.swing.JFrame {
         refreshListStudents = new javax.swing.JButton();
         searchYear = new javax.swing.JComboBox<>();
         editStudent = new javax.swing.JPanel();
+        addStudent = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
         eponimoTF = new javax.swing.JTextField();
@@ -121,6 +124,35 @@ public class Mathitis extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        addPanel.setBackground(new java.awt.Color(45, 118, 232));
+        addPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addPanelMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Προσθήκη");
+
+        javax.swing.GroupLayout addPanelLayout = new javax.swing.GroupLayout(addPanel);
+        addPanel.setLayout(addPanelLayout);
+        addPanelLayout.setHorizontalGroup(
+            addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        addPanelLayout.setVerticalGroup(
+            addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         editPanel.setBackground(new java.awt.Color(45, 118, 232));
         editPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -128,10 +160,10 @@ public class Mathitis extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Επεξεργασία");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Επεξεργασία");
 
         javax.swing.GroupLayout editPanelLayout = new javax.swing.GroupLayout(editPanel);
         editPanel.setLayout(editPanelLayout);
@@ -139,14 +171,14 @@ public class Mathitis extends javax.swing.JFrame {
             editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         editPanelLayout.setVerticalGroup(
             editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -163,6 +195,8 @@ public class Mathitis extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(viewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -173,8 +207,11 @@ public class Mathitis extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(editPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(editPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         botPanel.setLayout(new java.awt.CardLayout());
@@ -244,6 +281,19 @@ public class Mathitis extends javax.swing.JFrame {
         );
 
         botPanel.add(viewStudent, "card2");
+
+        javax.swing.GroupLayout editStudentLayout = new javax.swing.GroupLayout(editStudent);
+        editStudent.setLayout(editStudentLayout);
+        editStudentLayout.setHorizontalGroup(
+            editStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1035, Short.MAX_VALUE)
+        );
+        editStudentLayout.setVerticalGroup(
+            editStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+
+        botPanel.add(editStudent, "card4");
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Φόρμα εισαγωγής μαθητών"));
         jPanel5.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
@@ -332,31 +382,31 @@ public class Mathitis extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
-        javax.swing.GroupLayout editStudentLayout = new javax.swing.GroupLayout(editStudent);
-        editStudent.setLayout(editStudentLayout);
-        editStudentLayout.setHorizontalGroup(
-            editStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editStudentLayout.createSequentialGroup()
+        javax.swing.GroupLayout addStudentLayout = new javax.swing.GroupLayout(addStudent);
+        addStudent.setLayout(addStudentLayout);
+        addStudentLayout.setHorizontalGroup(
+            addStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addStudentLayout.createSequentialGroup()
                 .addContainerGap(274, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(270, 270, 270))
         );
-        editStudentLayout.setVerticalGroup(
-            editStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editStudentLayout.createSequentialGroup()
+        addStudentLayout.setVerticalGroup(
+            addStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addStudentLayout.createSequentialGroup()
                 .addContainerGap(67, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
 
-        botPanel.add(editStudent, "card3");
+        botPanel.add(addStudent, "card3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(botPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,20 +427,24 @@ public class Mathitis extends javax.swing.JFrame {
     private void viewPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPanelMouseClicked
         // TODO add your handling code here:
         viewStudent.setVisible(true);
+        addStudent.setVisible(false);
         editStudent.setVisible(false);
         viewPanel.setBackground(new java.awt.Color(35,90,190));
+        addPanel.setBackground(new java.awt.Color(45,118,232));
         editPanel.setBackground(new java.awt.Color(45,118,232));
         showAllInTable();
         
     }//GEN-LAST:event_viewPanelMouseClicked
 
-    private void editPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPanelMouseClicked
+    private void addPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPanelMouseClicked
         // TODO add your handling code here:
         viewStudent.setVisible(false);
-        editStudent.setVisible(true);
-        editPanel.setBackground(new java.awt.Color(35,90,190));
+        addStudent.setVisible(true);
+        editStudent.setVisible(false);
+        addPanel.setBackground(new java.awt.Color(35,90,190));
         viewPanel.setBackground(new java.awt.Color(45,118,232));
-    }//GEN-LAST:event_editPanelMouseClicked
+        editPanel.setBackground(new java.awt.Color(45,118,232));
+    }//GEN-LAST:event_addPanelMouseClicked
 
     private void refreshListStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshListStudentsActionPerformed
         // TODO add your handling code here:
@@ -412,8 +466,10 @@ public class Mathitis extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         viewStudent.setVisible(true);
+        addStudent.setVisible(false);
         editStudent.setVisible(false);
         viewPanel.setBackground(new java.awt.Color(35,90,190));
+        addPanel.setBackground(new java.awt.Color(45,118,232));
         editPanel.setBackground(new java.awt.Color(45,118,232));
         showAllInTable();
         
@@ -427,6 +483,16 @@ public class Mathitis extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_searchYearItemStateChanged
+
+    private void editPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPanelMouseClicked
+        // TODO add your handling code here:
+        viewStudent.setVisible(false);
+        addStudent.setVisible(false);
+        editStudent.setVisible(true);
+        viewPanel.setBackground(new java.awt.Color(45,118,232));
+        addPanel.setBackground(new java.awt.Color(45,118,232));
+        editPanel.setBackground(new java.awt.Color(35,90,190));
+    }//GEN-LAST:event_editPanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -471,6 +537,8 @@ public class Mathitis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel addPanel;
+    private javax.swing.JPanel addStudent;
     private javax.swing.JPanel botPanel;
     private javax.swing.JPanel editPanel;
     private javax.swing.JPanel editStudent;
@@ -480,6 +548,7 @@ public class Mathitis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;

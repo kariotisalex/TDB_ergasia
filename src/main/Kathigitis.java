@@ -40,14 +40,16 @@ public class Kathigitis extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         viewPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        editPanel = new javax.swing.JPanel();
+        addPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        editPanel = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         botPanel = new javax.swing.JPanel();
         viewTeachers = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         refreshListTeachers = new javax.swing.JButton();
-        editTeachers = new javax.swing.JPanel();
+        addTeachers = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
         eponimoTF = new javax.swing.JTextField();
@@ -56,6 +58,7 @@ public class Kathigitis extends javax.swing.JFrame {
         eponimoLabel = new javax.swing.JLabel();
         eidikotitaLabel = new javax.swing.JLabel();
         eidikotitaTF = new javax.swing.JTextField();
+        editTeachers = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -97,6 +100,35 @@ public class Kathigitis extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        addPanel.setBackground(new java.awt.Color(45, 118, 232));
+        addPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addPanelMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Προσθήκη");
+
+        javax.swing.GroupLayout addPanelLayout = new javax.swing.GroupLayout(addPanel);
+        addPanel.setLayout(addPanelLayout);
+        addPanelLayout.setHorizontalGroup(
+            addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        addPanelLayout.setVerticalGroup(
+            addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         editPanel.setBackground(new java.awt.Color(45, 118, 232));
         editPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -104,10 +136,10 @@ public class Kathigitis extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Επεξεργασία");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Επεξεργασία");
 
         javax.swing.GroupLayout editPanelLayout = new javax.swing.GroupLayout(editPanel);
         editPanel.setLayout(editPanelLayout);
@@ -115,14 +147,14 @@ public class Kathigitis extends javax.swing.JFrame {
             editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(editPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         editPanelLayout.setVerticalGroup(
             editPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -139,6 +171,8 @@ public class Kathigitis extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(viewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -150,6 +184,7 @@ public class Kathigitis extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(viewPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -272,24 +307,37 @@ public class Kathigitis extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout editTeachersLayout = new javax.swing.GroupLayout(editTeachers);
-        editTeachers.setLayout(editTeachersLayout);
-        editTeachersLayout.setHorizontalGroup(
-            editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editTeachersLayout.createSequentialGroup()
+        javax.swing.GroupLayout addTeachersLayout = new javax.swing.GroupLayout(addTeachers);
+        addTeachers.setLayout(addTeachersLayout);
+        addTeachersLayout.setHorizontalGroup(
+            addTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTeachersLayout.createSequentialGroup()
                 .addContainerGap(234, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(228, 228, 228))
         );
-        editTeachersLayout.setVerticalGroup(
-            editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editTeachersLayout.createSequentialGroup()
+        addTeachersLayout.setVerticalGroup(
+            addTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTeachersLayout.createSequentialGroup()
                 .addContainerGap(76, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(124, 124, 124))
         );
 
-        botPanel.add(editTeachers, "card3");
+        botPanel.add(addTeachers, "card3");
+
+        javax.swing.GroupLayout editTeachersLayout = new javax.swing.GroupLayout(editTeachers);
+        editTeachers.setLayout(editTeachersLayout);
+        editTeachersLayout.setHorizontalGroup(
+            editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 951, Short.MAX_VALUE)
+        );
+        editTeachersLayout.setVerticalGroup(
+            editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+
+        botPanel.add(editTeachers, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -313,19 +361,23 @@ public class Kathigitis extends javax.swing.JFrame {
     private void viewPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPanelMouseClicked
         // TODO add your handling code here:
         viewTeachers.setVisible(true);
+        addTeachers.setVisible(false);
         editTeachers.setVisible(false);
         viewPanel.setBackground(new java.awt.Color(35,90,190));
+        addPanel.setBackground(new java.awt.Color(45,118,232));
         editPanel.setBackground(new java.awt.Color(45,118,232));
         showInTable();
     }//GEN-LAST:event_viewPanelMouseClicked
 
-    private void editPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPanelMouseClicked
+    private void addPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPanelMouseClicked
         // TODO add your handling code here:
         viewTeachers.setVisible(false);
-        editTeachers.setVisible(true);
-        editPanel.setBackground(new java.awt.Color(35,90,190));
+        addTeachers.setVisible(true);
+        editTeachers.setVisible(false);
         viewPanel.setBackground(new java.awt.Color(45,118,232));
-    }//GEN-LAST:event_editPanelMouseClicked
+        addPanel.setBackground(new java.awt.Color(35,90,190));
+        editPanel.setBackground(new java.awt.Color(45,118,232));
+    }//GEN-LAST:event_addPanelMouseClicked
 
     private void eponimoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eponimoTFActionPerformed
         // TODO add your handling code here:
@@ -348,6 +400,16 @@ public class Kathigitis extends javax.swing.JFrame {
         // TODO add your handling code here:
         eponimoTF.requestFocus();
     }//GEN-LAST:event_onomaTFActionPerformed
+
+    private void editPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPanelMouseClicked
+        // TODO add your handling code here:
+        viewTeachers.setVisible(false);
+        addTeachers.setVisible(false);
+        editTeachers.setVisible(true);
+        viewPanel.setBackground(new java.awt.Color(45,118,232));
+        addPanel.setBackground(new java.awt.Color(45,118,232));
+        editPanel.setBackground(new java.awt.Color(35,90,190));
+    }//GEN-LAST:event_editPanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -400,6 +462,8 @@ public class Kathigitis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel addPanel;
+    private javax.swing.JPanel addTeachers;
     private javax.swing.JPanel botPanel;
     private javax.swing.JPanel editPanel;
     private javax.swing.JPanel editTeachers;
@@ -410,6 +474,7 @@ public class Kathigitis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
