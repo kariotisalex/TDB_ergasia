@@ -1,3 +1,5 @@
+package main;
+
 
 import java.sql.*;
 
@@ -11,22 +13,24 @@ import java.sql.*;
  *
  * @author alexa
  */
-public class DBPostresqlAdmin {
-    private static String driverClassName = "org.postgresql.Driver";
-    private static String url = "jdbc:postgresql://dblabs.it.teithe.gr:5432/";
+public class DBOracleAdmin {
+    
+    private static String     driverClassName = "oracle.jdbc.OracleDriver" ;
+    private static String     url = "jdbc:oracle:thin:@192.168.6.21:1521:dblabs" ;
     private static Connection dbConnection = null;
-    private static String username = "";
-    private static String passwd = "";
-    private static Statement statement = null;
-    private static ResultSet rs = null;
+    private static String     username = "";
+    private static String     passwd = "";
+    private static Statement  statement = null;
+    private static ResultSet  rs = null;
     private static PreparedStatement preparedStatement;
 
-    public DBPostresqlAdmin(String Pusername, String Ppasswd) {
-        this.username = Pusername;
-        this.passwd = Ppasswd;
-        url = "jdbc:postgresql://dblabs.it.teithe.gr:5432/"+ Pusername;
+    public DBOracleAdmin(String Ousername,String Opasswd) {
+        this.username = Ousername;
+        this.passwd = Opasswd;
+        
+        
     }
-    
+
     static Statement connectToDB(){
         try {
             Class.forName (driverClassName);
@@ -34,6 +38,8 @@ public class DBPostresqlAdmin {
             statement    = dbConnection.createStatement();
             
         } catch (Exception e) {
+            System.out.println(e.hashCode());
+            System.out.println(e.getMessage());
             System.out.println(e.toString());
             System.out.println("Den egine sindesi");
         }
@@ -41,17 +47,16 @@ public class DBPostresqlAdmin {
         return statement;
     }
     // {Start of} Getters
-     
-     
+    
     static Connection getConnection() {
         return dbConnection;
     }
-     
+    
     static Statement getStatement(){
         return statement;
     }
     
-    static ResultSet getResultset(){
+    static ResultSet getResultSet(){
         return rs;
     }
     
@@ -59,16 +64,14 @@ public class DBPostresqlAdmin {
         try {
             preparedStatement = dbConnection.prepareStatement(ps);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        return preparedStatement;
-        
-    }    
+        return preparedStatement ;
+    }
     
-    
-    
-    
-    
+
     // {End of} Getters
+    
     
     
     static void closeit(){
@@ -79,6 +82,19 @@ public class DBPostresqlAdmin {
         }
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
