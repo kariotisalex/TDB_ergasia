@@ -29,8 +29,8 @@ public class VathmologiaAdmin {
         Statement aStatePG = DBPostresqlAdmin.getStatement();
 
         String query4 = "CREATE TABLE vathmologia(\n" +
-                        "sid int NOT NULL, \n" +
-                        "mid int NOT NULL, \n" +
+                        "sid BIGINT NOT NULL, \n" +
+                        "mid BIGINT NOT NULL, \n" +
                         "vathmos int,\n" +
                         "eksamino int,\n" +
                         "etos int,\n" +
@@ -58,7 +58,7 @@ public class VathmologiaAdmin {
         
         
         try {
-            for(int i =0; i < 9; i++ ){
+            for(int i = 0; i < 9; i++ ){
                 aStatePG.setInt(1,sid[i]);
                 aStatePG.setInt(2, mid[i]);
                 aStatePG.setInt(3, vathmos[i]);

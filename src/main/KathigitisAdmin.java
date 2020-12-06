@@ -33,7 +33,7 @@ public class KathigitisAdmin {
         Statement aStatePG = DBPostresqlAdmin.getStatement();
 
         String query2 = "CREATE TABLE kathigitis(\n" +
-                "kid int NOT NULL, \n" +
+                "kid SERIAL NOT NULL, \n" +
                 "onoma_kathigiti varchar(20),\n" +
                 "epitheto_kathigiti varchar(20), \n" +
                 "eidikotita varchar(20),\n" +
@@ -45,10 +45,12 @@ public class KathigitisAdmin {
 
     }
     
+    
+    
     private void insertToKathigitis(){
         
-        String insertQuery = "INSERT INTO kathigitis(kid, Onoma_kathigiti, Epitheto_kathigiti, Eidikotita"
-                + ") VALUES (?, ?, ?, ?);";
+        String insertQuery = "INSERT INTO kathigitis( Onoma_kathigiti, Epitheto_kathigiti, Eidikotita"
+                + ") VALUES (?, ?, ?);";
         
         PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(insertQuery);
         
@@ -60,27 +62,27 @@ public class KathigitisAdmin {
         
         try {
             for(int i =0; i < 8; i++ ){
-                aStatePG.setInt(1,kid++);
-                aStatePG.setString(2, onoma[i]);
-                aStatePG.setString(3, eponymo[i]);
-                aStatePG.setString(4, eidikotita[i]);
+                kid++;
+                aStatePG.setString(1,onoma[i]);
+                aStatePG.setString(2, eponymo[i]);
+                aStatePG.setString(3, eidikotita[i]);
                 aStatePG.executeUpdate();
             }
         } catch (Exception e) {
+            System.out.println("insertToKathigitis : " +e.getMessage());
         }
     }
     
     static void addNewTeacher(String onoma,String epitheto, String eidikotita){
-        String addQuery = "INSERT INTO kathigitis(kid, Onoma_kathigiti, Epitheto_kathigiti, Eidikotita"
-                + ") VALUES (?, ?, ?, ?);";
+        String addQuery = "INSERT INTO kathigitis( Onoma_kathigiti, Epitheto_kathigiti, Eidikotita"
+                + ") VALUES ( ?, ?, ?);";
 
             try {
                 PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(addQuery);
-                
-                    aStatePG.setInt(1,kid++);
-                    aStatePG.setString(2, onoma);
-                    aStatePG.setString(3, epitheto);
-                    aStatePG.setString(4, eidikotita);
+                    kid++;
+                    aStatePG.setString(1,onoma);
+                    aStatePG.setString(2, epitheto);
+                    aStatePG.setString(3, eidikotita);
                     aStatePG.executeUpdate();
                     
                     JOptionPane.showMessageDialog(null, "Η καταχωρηση ολοκληρωθηκε επιτυχώς", 
@@ -92,6 +94,7 @@ public class KathigitisAdmin {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Η καταχωρηση δεν ολοκληρωθηκε επιτυχώς /n"+e.getMessage() , 
                         "Ενημέρωση", JOptionPane.WARNING_MESSAGE);
+                System.out.println("addNewTeacher : "+e.getMessage());
             }
         
         

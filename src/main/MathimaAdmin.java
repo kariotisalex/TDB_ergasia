@@ -34,8 +34,8 @@ public class MathimaAdmin {
         Statement aStatePG = DBPostresqlAdmin.getStatement();
         
         String query3 = "CREATE TABLE mathima(\n" +
-                "mid int NOT NULL,\n" +
-                "kid INT NOT NULL,\n" +
+                "mid SERIAL NOT NULL,\n" +
+                "kid BIGINT NOT NULL,\n" +
                 "onoma_mathimatos varchar(20),\n" +
                 "PRIMARY KEY(mid),\n" +
                 "FOREIGN KEY (kid) REFERENCES kathigitis(kid)\n" +
@@ -54,7 +54,7 @@ public class MathimaAdmin {
         
         
             int[] kid     =  { 1 ,5 ,3 ,4 ,6 ,2 ,7 ,8 };
-        String[] mathima  =    {"Αλγεβρα", "Αρχαία", "Εκθεση", "Γυμναστική", "Γεωμετρία", "Χημέια", "Φυσική", "Πληροφορική"};
+         String[] mathima =  {"Αλγεβρα", "Αρχαία", "Εκθεση", "Γυμναστική", "Γεωμετρία", "Χημέια", "Φυσική", "Πληροφορική"};
 
                                                                                                                                  
         
