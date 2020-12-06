@@ -626,7 +626,7 @@ public class Mathitis extends javax.swing.JFrame {
         try {
             aStatePG.setInt(1, num);
             rs = aStatePG.executeQuery();
-            Object[] row = new Object[8];
+            Object[] row = new Object[6];
             String columnvalue;
             
             while (rs.next()) {

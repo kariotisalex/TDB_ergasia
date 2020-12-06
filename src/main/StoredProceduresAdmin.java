@@ -58,6 +58,10 @@ public class StoredProceduresAdmin {
             System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
      
         }
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION showtableeidkathigitis(varchar);");} 
+        catch (SQLException e) {
+            System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
+        }
         
     }
         
@@ -329,6 +333,214 @@ public class StoredProceduresAdmin {
         catch (SQLException e) {
             System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
         }
+        try {psql.executeUpdate("CREATE OR REPLACE FUNCTION selVathmTwoTermsWithFinalExams(int)\n" +
+                                "returns table (\n" +
+                                "		sid bigint, \n" +
+                                "		onoma varchar, \n" +
+                                "		eponymo varchar, \n" +
+                                "		onoma_mathimatos varchar, \n" +
+                                "		etos int,\n" +
+                                "		vathmosProtos int,\n" +
+                                "		vathmosDeuteros int,\n" +
+                                "		vathmosTritos int\n" +
+                                "		) as\n" +
+                                "$$\n" +
+                                "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos, v2.vathmos, v3.vathmos\n" +
+                                "FROM vathmologia V1, vathmologia v2, vathmologia v3, mathitis m1, mathima m2\n" +
+                                "WHERE v1.sid      =  v2.sid  AND\n" +
+                                "     v2.sid      =  v3.sid  AND\n" +
+                                "      v1.mid      =  v2.mid  AND\n" +
+                                "      v2.mid      =  v3.mid  AND\n" +
+                                "     v1.etos     =  v2.etos AND\n" +
+                                "      v2.etos     =  v3.etos AND\n" +
+                                "      v1.eksamino =   1      AND\n" +
+                                "      v2.eksamino =   2      AND\n" +
+                                "      v3.eksamino =   3      AND\n" +
+                                "      m1.sid      =  v1.sid  AND\n" +
+                                "      m2.mid      =  v1.mid  AND\n" +
+                                "      v1.sid      =  $1;" +
+                                "$$ LANGUAGE SQL;");} 
+        catch (SQLException e) {
+            System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
+        }
+        
+        try {psql.executeUpdate("CREATE OR REPLACE FUNCTION selVathmOnePlusTwoTerms(int)\n" +
+                                "returns table (\n" +
+                                "					sid bigint, \n" +
+                                "					onoma varchar, \n" +
+                                "					eponymo varchar, \n" +
+                                "					onoma_mathimatos varchar, \n" +
+                                "					etos int,\n" +
+                                "					vathmosProtos int,\n" +
+                                "					vathmosDeuteros int\n" +
+                                "					) as\n" +
+                                "$$\n" +
+                                "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos, v2.vathmos\n" +
+                                "    FROM vathmologia V1, vathmologia v2, mathitis m1, mathima m2\n" +
+                                "    WHERE v1.sid=v2.sid AND\n" +
+                                "          v1.mid=v2.mid AND\n" +
+                                "          v1.etos=v2.etos AND\n" +
+                                "          v1.eksamino = 1 AND\n" +
+                                "          v2.eksamino = 2 AND\n" +
+                                "          m1.sid = v1.sid AND\n" +
+                                "          m2.mid = v2.mid AND" +
+                                "          v1.sid = $1\n" +
+                                "    EXCEPT\n" +
+                                "    SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos, v2.vathmos\n" +
+                                "    FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
+                                "    WHERE v1.sid=v2.sid AND\n" +
+                                "          v2.sid=v3.sid AND\n" +
+                                "          v1.mid=v2.mid AND\n" +
+                                "          v2.mid=v3.mid AND\n" +
+                                "          v1.etos=v2.etos AND\n" +
+                                "          v2.etos=v3.etos AND\n" +
+                                "          v1.eksamino = 1 AND\n" +
+                                "          v2.eksamino = 2 AND\n" +
+                                "          v3.eksamino = 3 AND\n" +
+                                "          m1.sid = v1.sid AND\n" +
+                                "          m2.mid = v2.mid;\n" +
+                                "$$ LANGUAGE SQL;");} 
+        catch (SQLException e) {
+            System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
+        }
+        
+        
+        
+        
+        try {psql.executeUpdate("CREATE OR REPLACE FUNCTION selVathmFinalExams(int)\n" +
+                                "returns table (\n" +
+                                "					sid bigint, \n" +
+                                "					onoma varchar, \n" +
+                                "					eponymo varchar, \n" +
+                                "					onoma_mathimatos varchar, \n" +
+                                "					etos int,\n" +
+                                "					vathmosProtos text,\n" +
+                                "					vathmosDeuteros text,\n" +
+                                "					vathmosTritos int					\n" +
+                                "					) as\n" +
+                                "$$\n" +
+                                "\n" +
+                                "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos,null,null, v1.vathmos\n" +
+                                "FROM vathmologia V1, mathitis m1, mathima m2\n" +
+                                "WHERE v1.eksamino=3 AND\n" +
+                                "      m1.sid = v1.sid AND\n" +
+                                "      m2.mid = v1.mid AND\n" +
+                                "      v1.sid = $1\n" +
+                                "EXCEPT\n" +
+                                "SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos,null,null, v3.vathmos\n" +
+                                "FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
+                                "WHERE v1.sid=v2.sid AND\n" +
+                                "      v2.sid=v3.sid AND\n" +
+                                "      v1.mid=v2.mid AND\n" +
+                                "      v2.mid=v3.mid AND\n" +
+                                "      v1.etos=v2.etos AND\n" +
+                                "      v2.etos=v3.etos AND\n" +
+                                "      v1.eksamino = 1 AND\n" +
+                                "      v2.eksamino = 2 AND\n" +
+                                "      v3.eksamino = 3 AND\n" +
+                                "      m1.sid = v1.sid AND\n" +
+                                "      m2.mid = v2.mid\n" +
+                                "$$ LANGUAGE SQL;");} 
+        catch (SQLException e) {
+            System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
+        }
+        
+        
+        
+        try {psql.executeUpdate("CREATE OR REPLACE FUNCTION selVathmSecondTerm(int)\n" +
+                                "returns table (		sid bigint, \n" +
+                                "					onoma varchar, \n" +
+                                "					eponymo varchar, \n" +
+                                "					onoma_mathimatos varchar, \n" +
+                                "					etos int,\n" +
+                                "					vathmosProtos text,\n" +
+                                "					vathmosDeutero int					\n" +
+                                "					) as\n" +
+                                "$$\n" +
+                                "\n" +
+                                "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, null, v1.vathmos\n" +
+                                "	FROM vathmologia V1, mathitis m1, mathima m2\n" +
+                                "	WHERE v1.eksamino=2 AND\n" +
+                                "	      m1.sid = v1.sid AND\n" +
+                                "	      m2.mid = v1.mid AND\n" +
+                                "	      v1.sid = $1 \n" +
+                                "  	EXCEPT\n" +
+                                "\n" +
+                                "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, null, v2.vathmos\n" +
+                                "	FROM vathmologia V1, vathmologia v2, mathitis m1, mathima m2\n" +
+                                "	WHERE v1.sid=v2.sid AND\n" +
+                                "	      v1.mid=v2.mid AND\n" +
+                                "	      v1.etos=v2.etos AND\n" +
+                                "	      v1.eksamino = 1 AND\n" +
+                                "	      v2.eksamino = 2 AND\n" +
+                                "	      m1.sid = v1.sid AND\n" +
+                                "	      m2.mid = v2.mid\n" +
+                                "\n" +
+                                "	EXCEPT\n" +
+                                "\n" +
+                                "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, null, v2.vathmos\n" +
+                                "	FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
+                                "	WHERE v1.sid=v2.sid AND\n" +
+                                "	      v2.sid=v3.sid AND\n" +
+                                "	      v1.mid=v2.mid AND\n" +
+                                "	      v2.mid=v3.mid AND\n" +
+                                "	      v1.etos=v2.etos AND\n" +
+                                "	      v2.etos=v3.etos AND\n" +
+                                "	      v1.eksamino = 1 AND\n" +
+                                "	      v2.eksamino = 2 AND\n" +
+                                "	      v3.eksamino = 3 AND\n" +
+                                "	      m1.sid = v1.sid AND\n" +
+                                "	      m2.mid = v2.mid\n" +
+                                "$$ LANGUAGE SQL;");} 
+        catch (SQLException e) {
+            System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
+        }
+        try {psql.executeUpdate("CREATE OR REPLACE FUNCTION selVathmFirstTerm(int)\n" +
+                                "returns table (		sid bigint, \n" +
+                                "					onoma varchar, \n" +
+                                "					eponymo varchar, \n" +
+                                "					onoma_mathimatos varchar, \n" +
+                                "					etos int,\n" +
+                                "					vathmosProtos int					\n" +
+                                "					) as\n" +
+                                "$$\n" +
+                                "\n" +
+                                "	SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos\n" +
+                                "	FROM vathmologia V1, mathitis m1, mathima m2\n" +
+                                "	WHERE v1.eksamino=1 AND\n" +
+                                "	      m1.sid = v1.sid AND\n" +
+                                "	      m2.mid = v1.mid AND\n" +
+                                "             v1.sid = $1 \n" +
+                                "  	EXCEPT\n" +
+                                "		SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos\n" +
+                                "	FROM vathmologia V1, vathmologia v2, mathitis m1, mathima m2\n" +
+                                "	WHERE v1.sid=v2.sid AND\n" +
+                                "	      v1.mid=v2.mid AND\n" +
+                                "	      v1.etos=v2.etos AND\n" +
+                                "	      v1.eksamino = 1 AND\n" +
+                                "	      v2.eksamino = 2 AND\n" +
+                                "	      m1.sid = v1.sid AND\n" +
+                                "	      m2.mid = v2.mid\n" +
+                                "\n" +
+                                "	EXCEPT\n" +
+                                "\n" +
+                                "		SELECT v1.sid, m1.onoma, m1.eponymo, m2.onoma_mathimatos, v1.etos, v1.vathmos\n" +
+                                "	FROM vathmologia V1, vathmologia v2,vathmologia v3, mathitis m1, mathima m2\n" +
+                                "	WHERE v1.sid=v2.sid AND\n" +
+                                "	      v2.sid=v3.sid AND\n" +
+                                "	      v1.mid=v2.mid AND\n" +
+                                "	      v2.mid=v3.mid AND\n" +
+                                "	      v1.etos=v2.etos AND\n" +
+                                "	      v2.etos=v3.etos AND\n" +
+                                "	      v1.eksamino = 1 AND\n" +
+                                "	      v2.eksamino = 2 AND\n" +
+                                "	      v3.eksamino = 3 AND\n" +
+                                "	      m1.sid = v1.sid AND\n" +
+                                "	      m2.mid = v2.mid\n" +
+                                "$$ LANGUAGE SQL;");} 
+        catch (SQLException e) {
+            System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
+        }        
     }
     private static void createMathitisStoredProcedure(){
         try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablemathitis()\n" +
@@ -377,6 +589,20 @@ public class StoredProceduresAdmin {
         }catch (SQLException e) {
             System.out.println("createKathigitisStoredProcedure : " + e.getMessage());
         }
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtableeidkathigitis(varchar)\n" +
+                                            "returns SETOF kathigitis as\n" +
+                                            "$$\n" +
+                                            "SELECT * \n" +
+                                            "FROM kathigitis\n" +
+                                            "WHERE eidikotita = $1;\n" +
+                                            "\n" +
+                                            "$$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createKathigitisStoredProcedure : " + e.getMessage());
+        }
+        
+        
+        
     }
     
     

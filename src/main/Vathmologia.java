@@ -20,12 +20,9 @@ public class Vathmologia extends javax.swing.JFrame {
      */
     public Vathmologia() {
         fillCombos();
-        
-        
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
         showView();
-        
     }
 
     /**
@@ -49,7 +46,9 @@ public class Vathmologia extends javax.swing.JFrame {
         viewGrades = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        refreshViewButton = new javax.swing.JButton();
+        viewFilterSidCombo = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         addGrades = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -221,31 +220,46 @@ public class Vathmologia extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jButton1.setText("Ανανέωση");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        refreshViewButton.setText("Ανανέωση");
+        refreshViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                refreshViewButtonActionPerformed(evt);
             }
         });
+
+        viewFilterSidCombo.setModel(new javax.swing.DefaultComboBoxModel<>(viewFilterSid));
+        viewFilterSidCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewFilterSidComboActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel1.setText("Εύρεση μαθητη μεσω ΑΜ : ");
 
         javax.swing.GroupLayout viewGradesLayout = new javax.swing.GroupLayout(viewGrades);
         viewGrades.setLayout(viewGradesLayout);
         viewGradesLayout.setHorizontalGroup(
             viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1049, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewGradesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+            .addGroup(viewGradesLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
+                .addComponent(viewFilterSidCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(refreshViewButton)
                 .addContainerGap())
         );
         viewGradesLayout.setVerticalGroup(
             viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewGradesLayout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(refreshViewButton)
+                    .addComponent(viewFilterSidCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))
         );
 
         botPanel.add(viewGrades, "card2");
@@ -393,7 +407,7 @@ public class Vathmologia extends javax.swing.JFrame {
         addGradesLayout.setVerticalGroup(
             addGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addGradesLayout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -408,7 +422,7 @@ public class Vathmologia extends javax.swing.JFrame {
         );
         editGradesLayout.setVerticalGroup(
             editGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 452, Short.MAX_VALUE)
+            .addGap(0, 464, Short.MAX_VALUE)
         );
 
         botPanel.add(editGrades, "card4");
@@ -491,10 +505,10 @@ public class Vathmologia extends javax.swing.JFrame {
                           String.valueOf(etosVathmCombo.getSelectedItem()));
     }//GEN-LAST:event_kataxorisiBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        showView();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void refreshViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshViewButtonActionPerformed
+         // TODO add your handling code here:
+        showView(String.valueOf(viewFilterSidCombo.getSelectedItem()));
+    }//GEN-LAST:event_refreshViewButtonActionPerformed
 
     private void editPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPanelMouseClicked
         // TODO add your handling code here:
@@ -505,6 +519,11 @@ public class Vathmologia extends javax.swing.JFrame {
         addPanel.setBackground(new java.awt.Color(45,118,232));
         editPanel.setBackground(new java.awt.Color(35,90,190)); 
     }//GEN-LAST:event_editPanelMouseClicked
+
+    private void viewFilterSidComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFilterSidComboActionPerformed
+        // TODO add your handling code here:
+        refreshViewButton.requestFocus();
+    }//GEN-LAST:event_viewFilterSidComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -552,7 +571,7 @@ public class Vathmologia extends javax.swing.JFrame {
     private javax.swing.JPanel editPanel;
     private javax.swing.JComboBox<String> etosVathmCombo;
     private javax.swing.JLabel etosΒathLabel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -566,11 +585,13 @@ public class Vathmologia extends javax.swing.JFrame {
     private javax.swing.JTextField kwdikosMathitiField;
     private javax.swing.JLabel mathimaLabel;
     private javax.swing.JLabel onomaLabel;
+    private javax.swing.JButton refreshViewButton;
     private javax.swing.JLabel stoixeiaMathimatosLabel;
     private javax.swing.JLabel stoixeiaMathitisLabel;
     private javax.swing.JComboBox<String> tetraminoCombo;
     private javax.swing.JLabel tetraminoLabel;
     private javax.swing.JComboBox<String> vathmosCombo;
+    private javax.swing.JComboBox<String> viewFilterSidCombo;
     private javax.swing.JPanel viewGrades;
     private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
@@ -578,10 +599,16 @@ public class Vathmologia extends javax.swing.JFrame {
     String vathmos[] = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"};
     String tetramino[] = {"1o Τετράμηνο", "2ο Τετράμηνο", "Τελική Εξέταση"};
     String etosCombo[] = new String[61];
-    String[] viewChager = {"1ο, 2ο και Τελικες εξετάσεις", "1ο και 2ο εξαμηνο",
+    String[] viewChanger = {"1ο, 2ο και Τελικες εξετάσεις", "1ο και 2ο εξαμηνο",
                            "Τελικές Εξετάσεις", "2ο τετραμηνο", "1o τετραμηνο"};
+    String[] viewFilterSid;
     
     private void fillCombos(){
+        viewFilterSid = new String[MathitisAdmin.getSid()+1];
+        viewFilterSid[0]="";
+        for(int i = 1; i < MathitisAdmin.getSid()+1; i++){
+            viewFilterSid[i]=String.valueOf(i);
+        }
         for (int i = 0; i < 61; i++) {
             int etos = 2020;
             etosCombo[i] = String.valueOf(etos - i);
@@ -683,7 +710,7 @@ public class Vathmologia extends javax.swing.JFrame {
             VathmologiaAdmin.addNewVathmologia(Integer.valueOf(sid), 
                                                Integer.valueOf(mid), 
                                                Integer.valueOf(vathmos), 
-                                               Integer.valueOf(eksamino), 
+                                               eksamino, 
                                                Integer.valueOf(etos));
         } catch (Exception e) {
             System.out.println("kati xalase "+ e.getMessage());
@@ -691,7 +718,19 @@ public class Vathmologia extends javax.swing.JFrame {
     }
     
     
-    
+    private void showView(String ext){
+        
+        if(ext.equals("")){
+            showView();
+        }else{
+            int num = Integer.valueOf(ext);
+            showTwoTermsWithFinalExams(num);
+            showOnePlusTwoTerms(num);
+            showFinalExams(num);
+            showSecondTerm(num);
+            showFirstTerm(num);
+        }
+    }
     private void showView(){
         showTwoTermsWithFinalExams();
         showOnePlusTwoTerms();
@@ -841,6 +880,142 @@ public class Vathmologia extends javax.swing.JFrame {
         }
     }  
 
+    private void showTwoTermsWithFinalExams(int ext){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmTwoTermsWithFinalExams(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        model.setRowCount(0);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, ext);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showOnePlusTwoTerms(int ext){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmOnePlusTwoTerms(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, ext);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+        
+    }
+    private void showFinalExams(int ext){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmFinalExams(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, ext);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showSecondTerm(int ext){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmSecondTerm(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, ext);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showFirstTerm(int ext){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmFirstTerm(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, ext);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
     
-
 }

@@ -423,6 +423,7 @@ public class Settings extends javax.swing.JFrame {
         
     }
     private void dropTablesPG() {
+        Statement psql = dbpg.getStatement();
         try {psql.executeUpdate("DROP TABLE vathmologia");} catch (SQLException e) {System.out.println(e.getMessage());}
         try {psql.executeUpdate("DROP TABLE mathima");} catch (SQLException e) {System.out.println(e.getMessage());}
         try {psql.executeUpdate("DROP TABLE mathitis");} catch (SQLException e) {System.out.println(e.getMessage());}
