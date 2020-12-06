@@ -55,7 +55,7 @@ public class Kathigitis extends javax.swing.JFrame {
         kataxorisiBtn = new javax.swing.JButton();
         eponimoLabel = new javax.swing.JLabel();
         eidikotitaLabel = new javax.swing.JLabel();
-        eidikotitaTF = new javax.swing.JTextField();
+        eidikotitaCombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -232,6 +232,8 @@ public class Kathigitis extends javax.swing.JFrame {
         eidikotitaLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
         eidikotitaLabel.setText("Ειδικότητα :");
 
+        eidikotitaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(eidikotita));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -239,7 +241,9 @@ public class Kathigitis extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kataxorisiBtn)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(kataxorisiBtn)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(onomaLabel)
@@ -248,9 +252,9 @@ public class Kathigitis extends javax.swing.JFrame {
                         .addGap(106, 106, 106)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(eponimoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                            .addComponent(eidikotitaTF, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(onomaTF))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                            .addComponent(onomaTF)
+                            .addComponent(eidikotitaCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(50, 50, 50))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +270,7 @@ public class Kathigitis extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eidikotitaLabel)
-                    .addComponent(eidikotitaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eidikotitaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(kataxorisiBtn)
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -284,7 +288,7 @@ public class Kathigitis extends javax.swing.JFrame {
         editTeachersLayout.setVerticalGroup(
             editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editTeachersLayout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(124, 124, 124))
         );
@@ -329,7 +333,7 @@ public class Kathigitis extends javax.swing.JFrame {
 
     private void eponimoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eponimoTFActionPerformed
         // TODO add your handling code here:
-        eidikotitaTF.requestFocus();
+        eidikotitaCombo.requestFocus();
     }//GEN-LAST:event_eponimoTFActionPerformed
 
     private void refreshListTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshListTeachersActionPerformed
@@ -339,7 +343,7 @@ public class Kathigitis extends javax.swing.JFrame {
 
     private void kataxorisiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kataxorisiBtnActionPerformed
         // TODO add your handling code here:
-        KathigitisAdmin.addNewTeacher(onomaTF.getText(), eponimoTF.getText(), eidikotitaTF.getText());
+        KathigitisAdmin.addNewTeacher(onomaTF.getText(), eponimoTF.getText(), String.valueOf(eidikotitaCombo.getSelectedItem()));
         
         
     }//GEN-LAST:event_kataxorisiBtnActionPerformed
@@ -403,8 +407,8 @@ public class Kathigitis extends javax.swing.JFrame {
     private javax.swing.JPanel botPanel;
     private javax.swing.JPanel editPanel;
     private javax.swing.JPanel editTeachers;
+    private javax.swing.JComboBox<String> eidikotitaCombo;
     private javax.swing.JLabel eidikotitaLabel;
-    private javax.swing.JTextField eidikotitaTF;
     private javax.swing.JLabel eponimoLabel;
     private javax.swing.JTextField eponimoTF;
     private javax.swing.JLabel jLabel15;
@@ -422,9 +426,13 @@ public class Kathigitis extends javax.swing.JFrame {
     private javax.swing.JPanel viewTeachers;
     // End of variables declaration//GEN-END:variables
 
+    String eidikotita[] = {"ΚΦΑ","Μαθηματικός","Φυσικός","Χημικός","Φιλόλογος","Βιολόγος","Οικονομολόγος"};
+            
+    
+    
 private void showInTable(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String selectString = "SELECT * FROM kathigitis;";
+        String selectString = "SELECT showtablekathigitis();";
         Statement aStatePG = DBPostresqlAdmin.getStatement();
         model.setRowCount(0);
         ResultSet rs = DBPostresqlAdmin.getResultset();
