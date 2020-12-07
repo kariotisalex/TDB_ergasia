@@ -48,7 +48,7 @@ public class Vathmologia extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         refreshViewButton = new javax.swing.JButton();
         viewFilterSidCombo = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        viewFilterEtosCombo = new javax.swing.JComboBox<>();
         addGrades = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -234,8 +234,7 @@ public class Vathmologia extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel1.setText("Εύρεση μαθητη μεσω ΑΜ : ");
+        viewFilterEtosCombo.setModel(new javax.swing.DefaultComboBoxModel<>(viewFilterEtos));
 
         javax.swing.GroupLayout viewGradesLayout = new javax.swing.GroupLayout(viewGrades);
         viewGrades.setLayout(viewGradesLayout);
@@ -243,10 +242,10 @@ public class Vathmologia extends javax.swing.JFrame {
             viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1049, Short.MAX_VALUE)
             .addGroup(viewGradesLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addComponent(viewFilterSidCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(viewFilterSidCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addComponent(viewFilterEtosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshViewButton)
                 .addContainerGap())
@@ -257,7 +256,7 @@ public class Vathmologia extends javax.swing.JFrame {
                 .addGroup(viewGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(refreshViewButton)
                     .addComponent(viewFilterSidCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(viewFilterEtosCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))
         );
@@ -505,11 +504,6 @@ public class Vathmologia extends javax.swing.JFrame {
                           String.valueOf(etosVathmCombo.getSelectedItem()));
     }//GEN-LAST:event_kataxorisiBtnActionPerformed
 
-    private void refreshViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshViewButtonActionPerformed
-         // TODO add your handling code here:
-        showView(String.valueOf(viewFilterSidCombo.getSelectedItem()));
-    }//GEN-LAST:event_refreshViewButtonActionPerformed
-
     private void editPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPanelMouseClicked
         // TODO add your handling code here:
         viewGrades.setVisible(false);
@@ -524,6 +518,11 @@ public class Vathmologia extends javax.swing.JFrame {
         // TODO add your handling code here:
         refreshViewButton.requestFocus();
     }//GEN-LAST:event_viewFilterSidComboActionPerformed
+
+    private void refreshViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshViewButtonActionPerformed
+        // TODO add your handling code here:
+        showView(String.valueOf(viewFilterSidCombo.getSelectedItem()),String.valueOf(viewFilterEtosCombo.getSelectedItem()));
+    }//GEN-LAST:event_refreshViewButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -571,7 +570,6 @@ public class Vathmologia extends javax.swing.JFrame {
     private javax.swing.JPanel editPanel;
     private javax.swing.JComboBox<String> etosVathmCombo;
     private javax.swing.JLabel etosΒathLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -591,6 +589,7 @@ public class Vathmologia extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> tetraminoCombo;
     private javax.swing.JLabel tetraminoLabel;
     private javax.swing.JComboBox<String> vathmosCombo;
+    private javax.swing.JComboBox<String> viewFilterEtosCombo;
     private javax.swing.JComboBox<String> viewFilterSidCombo;
     private javax.swing.JPanel viewGrades;
     private javax.swing.JPanel viewPanel;
@@ -602,18 +601,21 @@ public class Vathmologia extends javax.swing.JFrame {
     String[] viewChanger = {"1ο, 2ο και Τελικες εξετάσεις", "1ο και 2ο εξαμηνο",
                            "Τελικές Εξετάσεις", "2ο τετραμηνο", "1o τετραμηνο"};
     String[] viewFilterSid;
+
+    String viewFilterEtos[] = new String[62];
     
     private void fillCombos(){
         viewFilterSid = new String[MathitisAdmin.getSid()+1];
-        viewFilterSid[0]="";
+        viewFilterSid[0]="Εύρεση μαθητη μεσω ΑΜ : ";
+        viewFilterEtos[0] = "Εύρεση μαθητών μεσω ετους βαθμολογίας : ";
         for(int i = 1; i < MathitisAdmin.getSid()+1; i++){
             viewFilterSid[i]=String.valueOf(i);
         }
         for (int i = 0; i < 61; i++) {
             int etos = 2020;
             etosCombo[i] = String.valueOf(etos - i);
+            viewFilterEtos[i+1] = String.valueOf(etos-i);
         }
-        
     }
 
 
@@ -718,18 +720,36 @@ public class Vathmologia extends javax.swing.JFrame {
     }
     
     
-    private void showView(String ext){
+    private void showView(String sid, String etos){
         
-        if(ext.equals("")){
+        if(sid.equals("Εύρεση μαθητη μεσω ΑΜ : ") && (etos.equals("Εύρεση μαθητών μεσω ετους βαθμολογίας : "))){
             showView();
-        }else{
-            int num = Integer.valueOf(ext);
-            showTwoTermsWithFinalExams(num);
-            showOnePlusTwoTerms(num);
-            showFinalExams(num);
-            showSecondTerm(num);
-            showFirstTerm(num);
+        }else if (!sid.equals("Εύρεση μαθητη μεσω ΑΜ : ")&& (etos.equals("Εύρεση μαθητών μεσω ετους βαθμολογίας : "))){
+            int num = Integer.valueOf(sid);
+            showTwoTermsWithFinalExamsFilterSid(num);
+            showOnePlusTwoTermsFilterSid(num);
+            showFinalExamsFilterSid(num);
+            showSecondTermFilterSid(num);
+            showFirstTermFilterSid(num);
+        }else if ((!sid.equals("Εύρεση μαθητη μεσω ΑΜ : ")&& (!etos.equals("Εύρεση μαθητών μεσω ετους βαθμολογίας : ")))){
+            int etos1 = Integer.valueOf(etos);
+            int sid1 = Integer.valueOf(sid);
+            showTwoTermsWithFinalExamsFilterSidEtos(sid1,etos1);
+            showOnePlusTwoTermsFilterSidEtos(sid1,etos1);
+            showFinalExamsFilterSidEtos(sid1,etos1);
+            showSecondTermFilterSidEtos(sid1,etos1);
+            showFirstTermFilterSidEtos(sid1,etos1);
+        }else if ((sid.equals("Εύρεση μαθητη μεσω ΑΜ : ") && (!etos.equals("Εύρεση μαθητών μεσω ετους βαθμολογίας : ")))){
+            int num = Integer.valueOf(etos);
+            showTwoTermsWithFinalExamsFilterEtos(num);
+            showOnePlusTwoTermsFilterEtos(num);
+            showFinalExamsFilterEtos(num);
+            showSecondTermFilterEtos(num);
+            showFirstTermFilterEtos(num);
+            
         }
+        
+        
     }
     private void showView(){
         showTwoTermsWithFinalExams();
@@ -880,9 +900,9 @@ public class Vathmologia extends javax.swing.JFrame {
         }
     }  
 
-    private void showTwoTermsWithFinalExams(int ext){
+    private void showTwoTermsWithFinalExamsFilterSid(int ext){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String selectString = "SELECT selVathmTwoTermsWithFinalExams(?);";
+        String selectString = "SELECT selVathmTwoTermsWithFinalExamsFilterSid(?);";
         PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
         model.setRowCount(0);
         ResultSet rs = DBPostresqlAdmin.getResultset();
@@ -908,9 +928,9 @@ public class Vathmologia extends javax.swing.JFrame {
         
         }
     }
-    private void showOnePlusTwoTerms(int ext){
+    private void showOnePlusTwoTermsFilterSid(int ext){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String selectString = "SELECT selVathmOnePlusTwoTerms(?);";
+        String selectString = "SELECT selVathmOnePlusTwoTermsFilterSid(?);";
         PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
         ResultSet rs = DBPostresqlAdmin.getResultset();
         try {
@@ -936,9 +956,9 @@ public class Vathmologia extends javax.swing.JFrame {
         }
         
     }
-    private void showFinalExams(int ext){
+    private void showFinalExamsFilterSid(int ext){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String selectString = "SELECT selVathmFinalExams(?);";
+        String selectString = "SELECT selVathmFinalExamsFilterSid(?);";
         PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
         ResultSet rs = DBPostresqlAdmin.getResultset();
         try {
@@ -963,9 +983,9 @@ public class Vathmologia extends javax.swing.JFrame {
         
         }
     }
-    private void showSecondTerm(int ext){
+    private void showSecondTermFilterSid(int ext){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String selectString = "SELECT selVathmSecondTerm(?);";
+        String selectString = "SELECT selVathmSecondTermFilterSid(?);";
         PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
         ResultSet rs = DBPostresqlAdmin.getResultset();
         try {
@@ -990,13 +1010,294 @@ public class Vathmologia extends javax.swing.JFrame {
         
         }
     }
-    private void showFirstTerm(int ext){
+    private void showFirstTermFilterSid(int ext){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        String selectString = "SELECT selVathmFirstTerm(?);";
+        String selectString = "SELECT selVathmFirstTermFilterSid(?);";
         PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
         ResultSet rs = DBPostresqlAdmin.getResultset();
         try {
             aStatePG.setInt(1, ext);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    
+    private void showTwoTermsWithFinalExamsFilterEtos(int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmTwoTermsWithFinalExamsFilterEtos(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        model.setRowCount(0);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, etos);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showOnePlusTwoTermsFilterEtos(int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmOnePlusTwoTermsFilterEtos(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, etos);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+        
+    }
+    private void showFinalExamsFilterEtos(int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmFinalExamsFilterEtos(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, etos);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showSecondTermFilterEtos(int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmSecondTermFilterEtos(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, etos);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showFirstTermFilterEtos(int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmFirstTermFilterEtos(?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, etos);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    
+    private void showTwoTermsWithFinalExamsFilterSidEtos(int sid, int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmTwoTermsWithFinalExamsFilterSidEtos(?,?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        model.setRowCount(0);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, sid);
+            aStatePG.setInt(2, etos);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showOnePlusTwoTermsFilterSidEtos(int sid, int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmOnePlusTwoTermsFilterSidEtos(?,?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, sid);
+            aStatePG.setInt(2, etos);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+        
+    }
+    private void showFinalExamsFilterSidEtos(int sid, int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmFinalExamsFilterSidEtos(?,?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, sid);
+            aStatePG.setInt(2, etos);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showSecondTermFilterSidEtos(int sid, int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmSecondTermFilterSidEtos(?,?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, sid);
+            aStatePG.setInt(2, etos);
+            rs = aStatePG.executeQuery();
+            Object[] row = new Object[8];
+            String columnvalue;
+            while (rs.next()) {
+                columnvalue = rs.getString(1);
+                String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                for (int i = 0; i < a.length; i++) {
+                    row[i] =a[i];
+                }
+                model.addRow(row);
+            }
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        
+        }
+    }
+    private void showFirstTermFilterSidEtos(int sid, int etos){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        String selectString = "SELECT selVathmFirstTermFilterSidEtos(?,?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, sid);
+            aStatePG.setInt(2, etos);
             rs = aStatePG.executeQuery();
             Object[] row = new Object[8];
             String columnvalue;
