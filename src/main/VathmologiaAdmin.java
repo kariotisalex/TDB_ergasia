@@ -29,14 +29,18 @@ public class VathmologiaAdmin {
         Statement aStatePG = DBPostresqlAdmin.getStatement();
 
         String query4 = "CREATE TABLE vathmologia(\n" +
-                        "sid BIGINT NOT NULL, \n" +
-                        "mid BIGINT NOT NULL, \n" +
-                        "vathmos int,\n" +
-                        "eksamino int,\n" +
-                        "etos int,\n" +
-                        "FOREIGN KEY (sid) REFERENCES mathitis(sid),\n" +
-                        "FOREIGN KEY (mid) REFERENCES mathima(mid)\n" +
-                        ");";
+"                        sid BIGINT NOT NULL,\n" +
+"                        mid BIGINT NOT NULL,\n" +
+"                        vathmos int,\n" +
+"                        eksamino int,\n" +
+"                        etos int,\n" +
+"                        FOREIGN KEY (sid) REFERENCES mathitis(sid)\n" +
+"                        ON DELETE CASCADE\n" +
+"                        ON UPDATE CASCADE,\n" +
+"                        FOREIGN KEY (mid) REFERENCES mathima(mid)\n" +
+"                        ON DELETE CASCADE\n" +
+"                        ON UPDATE CASCADE\n" +
+"                        );";
         
         try {aStatePG.executeUpdate(query4);} catch (Exception e) {System.out.println("Create table : " + e.toString());}
     }
@@ -50,9 +54,9 @@ public class VathmologiaAdmin {
         PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(insertQuery);
         
         
-            int[] sid      =  {  1,    1,    2,    4,    2,    2,    2,    2,    2    };
-            int[] mid      =  {  1,    1,    3,    4,    3,    4,    2,    4,    4    };
-            int[] vathmos  =  {  7,    9,    7,    8,    5,    3,    15,   10,   20    };
+            int[] sid      =  {  1,    1,    2,    4,    2,    2,    2,    2,    2   };
+            int[] mid      =  {  1,    1,    3,    4,    3,    4,    2,    4,    4   };
+            int[] vathmos  =  {  7,    9,    7,    8,    5,    3,    15,   10,   20  };
             int[] eksamino =  {  1,    2,    1,    2,    2,    1,    1,    2,    3   };
             int[] etos     =  { 2020, 2020, 2019, 2015, 2019, 2015, 2020, 2015, 2015 };
         

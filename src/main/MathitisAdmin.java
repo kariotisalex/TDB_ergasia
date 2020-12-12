@@ -88,8 +88,7 @@ public class MathitisAdmin {
     
     static void addNewStudent(String onoma, String eponymo, String onomaPatera, String onomaMiteras, Object etosEisagwgis){
 
-            String addQuery = "INSERT INTO mathitis( onoma, eponymo, onPateras, onMiteras, etosEisagogis) "
-                + "VALUES (?, ?, ?, ?, ?)";
+            String addQuery = "SELECT insertmathitis(?,?,?,?,?)";
 
             try {
                 PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(addQuery);

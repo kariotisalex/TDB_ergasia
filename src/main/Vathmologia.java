@@ -624,7 +624,7 @@ public class Vathmologia extends javax.swing.JFrame {
         try {
             int num  = Integer.valueOf(ext);
             if((num< MathitisAdmin.getSid()) && (num >0)){
-                String selectString = "SELECT selVathmLessonViaID(?);";
+                String selectString = "SELECT selVathmStudentViaID(?);";
                 PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
                 ResultSet rs = DBPostresqlAdmin.getResultset();
                 try {

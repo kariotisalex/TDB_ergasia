@@ -6,6 +6,7 @@
 package main;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,8 +35,10 @@ public class Mathitis extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel3 = new javax.swing.JPanel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         viewPanel = new javax.swing.JPanel();
@@ -51,6 +54,23 @@ public class Mathitis extends javax.swing.JFrame {
         refreshListStudents = new javax.swing.JButton();
         searchYear = new javax.swing.JComboBox<>();
         editStudent = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        epeksergasiaEditBtn = new javax.swing.JButton();
+        amEditLabel = new javax.swing.JLabel();
+        amMathitisEditTF = new javax.swing.JTextField();
+        onomaLabel3 = new javax.swing.JLabel();
+        diagrafiiMathitiRadio = new javax.swing.JRadioButton();
+        epeksergasiaMathitiRadio = new javax.swing.JRadioButton();
+        yearMathitisEditCombo = new javax.swing.JComboBox<>();
+        etoseisLabel1 = new javax.swing.JLabel();
+        onomamLabel1 = new javax.swing.JLabel();
+        onomamMathitisEditTF = new javax.swing.JTextField();
+        onomapMathitisEditTF = new javax.swing.JTextField();
+        onomapLabel1 = new javax.swing.JLabel();
+        eponimoLabel1 = new javax.swing.JLabel();
+        eponimoMathitisEditTF = new javax.swing.JTextField();
+        onomaMathitisEditTF = new javax.swing.JTextField();
+        onomaLabel1 = new javax.swing.JLabel();
         addStudent = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -259,38 +279,230 @@ public class Mathitis extends javax.swing.JFrame {
         viewStudent.setLayout(viewStudentLayout);
         viewStudentLayout.setHorizontalGroup(
             viewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewStudentLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchYear, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-            .addGroup(viewStudentLayout.createSequentialGroup()
-                .addGap(453, 453, 453)
+                .addGap(93, 93, 93)
                 .addComponent(refreshListStudents)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         viewStudentLayout.setVerticalGroup(
             viewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewStudentLayout.createSequentialGroup()
-                .addComponent(searchYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(viewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshListStudents))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(refreshListStudents)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
         );
 
         botPanel.add(viewStudent, "card2");
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Φόρμα επεξεργασίας καθηγητών"));
+        jPanel6.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel6MousePressed(evt);
+            }
+        });
+        jPanel6.setLayout(new java.awt.GridBagLayout());
+
+        epeksergasiaEditBtn.setText("Επεξεργασία");
+        epeksergasiaEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                epeksergasiaEditBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 39, 20, 0);
+        jPanel6.add(epeksergasiaEditBtn, gridBagConstraints);
+
+        amEditLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        amEditLabel.setText("ΑΜ :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 169, 0, 0);
+        jPanel6.add(amEditLabel, gridBagConstraints);
+
+        amMathitisEditTF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                amMathitisEditTFFocusLost(evt);
+            }
+        });
+        amMathitisEditTF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                amMathitisEditTFPropertyChange(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 153;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 46);
+        jPanel6.add(amMathitisEditTF, gridBagConstraints);
+
+        onomaLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        onomaLabel3.setText("Εισαγετε το ΑΜ του μαθητή που θελετε να επεξεργαστειτε:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
+        jPanel6.add(onomaLabel3, gridBagConstraints);
+
+        buttonGroup1.add(diagrafiiMathitiRadio);
+        diagrafiiMathitiRadio.setSelected(true);
+        diagrafiiMathitiRadio.setText("Διαγραφή Μαθητή");
+        diagrafiiMathitiRadio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                diagrafiiMathitiRadioItemStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 38, 9, 0);
+        jPanel6.add(diagrafiiMathitiRadio, gridBagConstraints);
+
+        buttonGroup1.add(epeksergasiaMathitiRadio);
+        epeksergasiaMathitiRadio.setText("Επεξεργασία Μαθητή");
+        epeksergasiaMathitiRadio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                epeksergasiaMathitiRadioItemStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 9, 0);
+        jPanel6.add(epeksergasiaMathitiRadio, gridBagConstraints);
+
+        yearMathitisEditCombo.setModel(new javax.swing.DefaultComboBoxModel<>(etosCombo));
+        yearMathitisEditCombo.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 46);
+        jPanel6.add(yearMathitisEditCombo, gridBagConstraints);
+
+        etoseisLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        etoseisLabel1.setText("Έτος Εισαγωγής:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 46, 0, 0);
+        jPanel6.add(etoseisLabel1, gridBagConstraints);
+
+        onomamLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        onomamLabel1.setText("Όνομα μητέρας :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 48, 0, 0);
+        jPanel6.add(onomamLabel1, gridBagConstraints);
+
+        onomamMathitisEditTF.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 46);
+        jPanel6.add(onomamMathitisEditTF, gridBagConstraints);
+
+        onomapMathitisEditTF.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 46);
+        jPanel6.add(onomapMathitisEditTF, gridBagConstraints);
+
+        onomapLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        onomapLabel1.setText("Όνομα πατέρα :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 55, 0, 0);
+        jPanel6.add(onomapLabel1, gridBagConstraints);
+
+        eponimoLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        eponimoLabel1.setText("Επώνυμο :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 109, 0, 0);
+        jPanel6.add(eponimoLabel1, gridBagConstraints);
+
+        eponimoMathitisEditTF.setEnabled(false);
+        eponimoMathitisEditTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eponimoMathitisEditTFActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 46);
+        jPanel6.add(eponimoMathitisEditTF, gridBagConstraints);
+
+        onomaMathitisEditTF.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 46);
+        jPanel6.add(onomaMathitisEditTF, gridBagConstraints);
+
+        onomaLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        onomaLabel1.setText("Όνομα :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 133, 0, 0);
+        jPanel6.add(onomaLabel1, gridBagConstraints);
 
         javax.swing.GroupLayout editStudentLayout = new javax.swing.GroupLayout(editStudent);
         editStudent.setLayout(editStudentLayout);
         editStudentLayout.setHorizontalGroup(
             editStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1035, Short.MAX_VALUE)
+            .addGroup(editStudentLayout.createSequentialGroup()
+                .addGap(259, 259, 259)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         editStudentLayout.setVerticalGroup(
             editStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGroup(editStudentLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         botPanel.add(editStudent, "card4");
@@ -386,17 +598,17 @@ public class Mathitis extends javax.swing.JFrame {
         addStudent.setLayout(addStudentLayout);
         addStudentLayout.setHorizontalGroup(
             addStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addStudentLayout.createSequentialGroup()
-                .addContainerGap(274, Short.MAX_VALUE)
+            .addGroup(addStudentLayout.createSequentialGroup()
+                .addGap(224, 224, 224)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(270, 270, 270))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         addStudentLayout.setVerticalGroup(
             addStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addStudentLayout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+            .addGroup(addStudentLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         botPanel.add(addStudent, "card3");
@@ -491,6 +703,56 @@ public class Mathitis extends javax.swing.JFrame {
         editPanel.setBackground(new java.awt.Color(35,90,190));
     }//GEN-LAST:event_editPanelMouseClicked
 
+    private void epeksergasiaEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_epeksergasiaEditBtnActionPerformed
+            // TODO add your handling code here:
+         if(epeksergasiaMathitiRadio.isSelected()){
+             editStudent(Integer.valueOf(amMathitisEditTF.getText()),
+                     onomaMathitisEditTF.getText(),
+                     eponimoMathitisEditTF.getText(),
+                     onomapMathitisEditTF.getText(),
+                     onomamMathitisEditTF.getText(),
+                     Integer.valueOf(String.valueOf(yearMathitisEditCombo.getSelectedItem())));
+         }else if(diagrafiiMathitiRadio.isSelected()){
+             deleteStudent(Integer.valueOf(amMathitisEditTF.getText()));
+         }
+    }//GEN-LAST:event_epeksergasiaEditBtnActionPerformed
+
+    private void amMathitisEditTFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_amMathitisEditTFFocusLost
+        // TODO add your handling code here:
+        showDetailsEdit(amMathitisEditTF.getText());
+    }//GEN-LAST:event_amMathitisEditTFFocusLost
+
+    private void amMathitisEditTFPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_amMathitisEditTFPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_amMathitisEditTFPropertyChange
+
+    private void diagrafiiMathitiRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_diagrafiiMathitiRadioItemStateChanged
+        // TODO add your handling code here:
+        onomaMathitisEditTF.setEnabled(false);
+        eponimoMathitisEditTF.setEnabled(false);
+        onomapMathitisEditTF.setEnabled(false);
+        onomamMathitisEditTF.setEnabled(false);
+        yearMathitisEditCombo.setEnabled(false);
+    }//GEN-LAST:event_diagrafiiMathitiRadioItemStateChanged
+
+    private void epeksergasiaMathitiRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_epeksergasiaMathitiRadioItemStateChanged
+        // TODO add your handling code here:
+        onomaMathitisEditTF.setEnabled(true);
+        eponimoMathitisEditTF.setEnabled(true);
+        onomapMathitisEditTF.setEnabled(true);
+        onomamMathitisEditTF.setEnabled(true);
+        yearMathitisEditCombo.setEnabled(true);
+    }//GEN-LAST:event_epeksergasiaMathitiRadioItemStateChanged
+
+    private void jPanel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MousePressed
+        // TODO add your handling code here:
+        jPanel6.requestFocus();
+    }//GEN-LAST:event_jPanel6MousePressed
+
+    private void eponimoMathitisEditTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eponimoMathitisEditTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eponimoMathitisEditTFActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -544,12 +806,21 @@ public class Mathitis extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addPanel;
     private javax.swing.JPanel addStudent;
+    private javax.swing.JLabel amEditLabel;
+    private javax.swing.JTextField amMathitisEditTF;
     private javax.swing.JPanel botPanel;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton diagrafiiMathitiRadio;
     private javax.swing.JPanel editPanel;
     private javax.swing.JPanel editStudent;
+    private javax.swing.JButton epeksergasiaEditBtn;
+    private javax.swing.JRadioButton epeksergasiaMathitiRadio;
     private javax.swing.JLabel eponimoLabel;
+    private javax.swing.JLabel eponimoLabel1;
+    private javax.swing.JTextField eponimoMathitisEditTF;
     private javax.swing.JTextField eponimoTF;
     private javax.swing.JLabel etoseisLabel;
+    private javax.swing.JLabel etoseisLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -557,24 +828,37 @@ public class Mathitis extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton kataxorisiBtn;
     private javax.swing.JLabel onomaLabel;
+    private javax.swing.JLabel onomaLabel1;
+    private javax.swing.JLabel onomaLabel3;
+    private javax.swing.JTextField onomaMathitisEditTF;
     private javax.swing.JTextField onomaTF;
     private javax.swing.JLabel onomamLabel;
+    private javax.swing.JLabel onomamLabel1;
+    private javax.swing.JTextField onomamMathitisEditTF;
     private javax.swing.JTextField onomamTF;
     private javax.swing.JLabel onomapLabel;
+    private javax.swing.JLabel onomapLabel1;
+    private javax.swing.JTextField onomapMathitisEditTF;
     private javax.swing.JTextField onomapTF;
     private javax.swing.JButton refreshListStudents;
     private javax.swing.JComboBox<String> searchYear;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JPanel viewStudent;
     private javax.swing.JComboBox<String> year;
+    private javax.swing.JComboBox<String> yearMathitisEditCombo;
     // End of variables declaration//GEN-END:variables
-   
+    String nameMathitis;
+    String eponymoMathitis;
+    String onomapMathitis;
+    String onomamMathitis;
+    int yearMathitis;
 
-     String[] etosCombo = new String[61];
+    String[] etosCombo = new String[61];
     
     
     void fillCombos() {
@@ -647,6 +931,107 @@ public class Mathitis extends javax.swing.JFrame {
         }
     }
 
-
+    private void showDetailsEdit(String ext){
+        try {
+            int num  = Integer.valueOf(ext);
+            if((num< MathitisAdmin.getSid()) && (num >0)){
+                String selectString = "SELECT selVathmStudentViaID(?);";
+                PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+                ResultSet rs = DBPostresqlAdmin.getResultset();
+                try {
+                    aStatePG.setInt(1, num);
+                    rs = aStatePG.executeQuery();        
+                    String columnvalue;
+                    rs.next();
+                    columnvalue = rs.getString(1);   
+                    String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                    nameMathitis = a[0];
+                    eponymoMathitis = a[1];
+                    onomapMathitis = a[2];
+                    onomamMathitis = a[3];
+                    for(int i=0; i<etosCombo.length; i++){
+                        if(a[4].equals(etosCombo[i])){
+                            yearMathitis = i;
+                            break;
+                        }
+                    }
+                    onomaMathitisEditTF.setText(nameMathitis);
+                    eponimoMathitisEditTF.setText(eponymoMathitis);
+                    onomapMathitisEditTF.setText(onomapMathitis);
+                    onomamMathitisEditTF.setText(onomamMathitis);
+                    yearMathitisEditCombo.setSelectedIndex(yearMathitis);                
+                } catch(SQLException ex) {
+                    System.out.println("\n -- SQL Exception --- \n");
+                    while(ex != null) {
+                        System.out.println("Message: " + ex.getMessage());
+                        ex = ex.getNextException();
+                    }
+                } 
+            }else{
+                onomaMathitisEditTF.setText("");
+                eponimoMathitisEditTF.setText("");
+                onomapMathitisEditTF.setText("");
+                onomamMathitisEditTF.setText("");
+                yearMathitisEditCombo.setSelectedIndex(0);
+                String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+                JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+                onomaMathitisEditTF.setText("");
+                eponimoMathitisEditTF.setText("");
+                onomapMathitisEditTF.setText("");
+                onomamMathitisEditTF.setText("");
+                yearMathitisEditCombo.setSelectedIndex(0);
+            String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+            JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            System.out.println("ti pige strava: " + e.getMessage());
+        }
+    }
+    
+    
+    private void deleteStudent(int ext){
+        String selectString = "SELECT deletemathitis(?)";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, ext);
+            aStatePG.executeQuery();
+            
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        }
+    }
+    
+    private void editStudent(int ext1,String ext2, String ext3,String ext4,String ext5,int ext6){
+        String selectString = "SELECT updatemathitis(?, ?, ?, ?, ?, ?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        
+        ResultSet rs = DBPostresqlAdmin.getResultset();
+        try {
+            aStatePG.setInt(1, ext1);
+            aStatePG.setString(2, ext2);
+            aStatePG.setString(3, ext3);
+            aStatePG.setString(4, ext4);
+            aStatePG.setString(5, ext5);
+            aStatePG.setInt(6, ext6);
+            aStatePG.executeQuery();
+            
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        }
+    }
+    
+    
+    
+    
 
 }

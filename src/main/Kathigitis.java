@@ -25,7 +25,7 @@ public class Kathigitis extends javax.swing.JFrame {
     public Kathigitis() {
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
-        showInTable();
+        //showInTable();
 
     }
 
@@ -37,7 +37,9 @@ public class Kathigitis extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         viewPanel = new javax.swing.JPanel();
@@ -62,9 +64,23 @@ public class Kathigitis extends javax.swing.JFrame {
         eidikotitaLabel = new javax.swing.JLabel();
         eidikotitaCombo = new javax.swing.JComboBox<>();
         editTeachers = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        onomaEditLabel = new javax.swing.JLabel();
+        eponimoKathigitisEditTF = new javax.swing.JTextField();
+        onomaKathigitisEditTF = new javax.swing.JTextField();
+        epeksergasiaEditBtn = new javax.swing.JButton();
+        eponimoEditLabel = new javax.swing.JLabel();
+        eidikotitaEditLabel = new javax.swing.JLabel();
+        eidikotitaKathigitisEditCombo = new javax.swing.JComboBox<>();
+        amEditLabel = new javax.swing.JLabel();
+        amKathigitisEditTF = new javax.swing.JTextField();
+        onomaLabel3 = new javax.swing.JLabel();
+        diagrafiKathigitiRadio = new javax.swing.JRadioButton();
+        epeksergasiaKathigitisRadio = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(45, 118, 232));
 
@@ -224,7 +240,7 @@ public class Kathigitis extends javax.swing.JFrame {
         viewTeachers.setLayout(viewTeachersLayout);
         viewTeachersLayout.setHorizontalGroup(
             viewTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewTeachersLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(eidikotitaViewCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,7 +260,7 @@ public class Kathigitis extends javax.swing.JFrame {
 
         botPanel.add(viewTeachers, "card2");
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Φόρμα επεξεργασίας καθηγητών"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Φόρμα εισαγωγής νεων καθηγητών"));
         jPanel5.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
 
         onomaLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
@@ -322,7 +338,7 @@ public class Kathigitis extends javax.swing.JFrame {
         addTeachersLayout.setHorizontalGroup(
             addTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTeachersLayout.createSequentialGroup()
-                .addContainerGap(236, Short.MAX_VALUE)
+                .addContainerGap(229, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(228, 228, 228))
         );
@@ -336,15 +352,189 @@ public class Kathigitis extends javax.swing.JFrame {
 
         botPanel.add(addTeachers, "card3");
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Φόρμα επεξεργασίας καθηγητών"));
+        jPanel6.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel6MousePressed(evt);
+            }
+        });
+        jPanel6.setLayout(new java.awt.GridBagLayout());
+
+        onomaEditLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        onomaEditLabel.setLabelFor(onomaKathigitisEditTF);
+        onomaEditLabel.setText("Όνομα :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(onomaEditLabel, gridBagConstraints);
+
+        eponimoKathigitisEditTF.setEnabled(false);
+        eponimoKathigitisEditTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eponimoKathigitisEditTFActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 149;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(eponimoKathigitisEditTF, gridBagConstraints);
+
+        onomaKathigitisEditTF.setEnabled(false);
+        onomaKathigitisEditTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onomaKathigitisEditTFActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 149;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(onomaKathigitisEditTF, gridBagConstraints);
+
+        epeksergasiaEditBtn.setText("Επεξεργασία");
+        epeksergasiaEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                epeksergasiaEditBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 39, 20, 0);
+        jPanel6.add(epeksergasiaEditBtn, gridBagConstraints);
+
+        eponimoEditLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        eponimoEditLabel.setLabelFor(eponimoKathigitisEditTF);
+        eponimoEditLabel.setText("Επώνυμο :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(eponimoEditLabel, gridBagConstraints);
+
+        eidikotitaEditLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        eidikotitaEditLabel.setLabelFor(eidikotitaKathigitisEditCombo);
+        eidikotitaEditLabel.setText("Ειδικότητα :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(eidikotitaEditLabel, gridBagConstraints);
+
+        eidikotitaKathigitisEditCombo.setModel(new javax.swing.DefaultComboBoxModel<>(eidikotita));
+        eidikotitaKathigitisEditCombo.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 122;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(eidikotitaKathigitisEditCombo, gridBagConstraints);
+
+        amEditLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        amEditLabel.setLabelFor(amEditLabel);
+        amEditLabel.setText("ΑΜ :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(amEditLabel, gridBagConstraints);
+
+        amKathigitisEditTF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                amKathigitisEditTFFocusLost(evt);
+            }
+        });
+        amKathigitisEditTF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                amKathigitisEditTFPropertyChange(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 153;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(amKathigitisEditTF, gridBagConstraints);
+
+        onomaLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        onomaLabel3.setText("Εισαγετε το ΑΜ του καθηγητη που θελετε να επεξεργαστειτε:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
+        jPanel6.add(onomaLabel3, gridBagConstraints);
+
+        buttonGroup1.add(diagrafiKathigitiRadio);
+        diagrafiKathigitiRadio.setSelected(true);
+        diagrafiKathigitiRadio.setText("Διαγραφή Καθηγητή");
+        diagrafiKathigitiRadio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                diagrafiKathigitiRadioItemStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 38, 9, 0);
+        jPanel6.add(diagrafiKathigitiRadio, gridBagConstraints);
+
+        buttonGroup1.add(epeksergasiaKathigitisRadio);
+        epeksergasiaKathigitisRadio.setText("Επεξεργασία Καθηγητη");
+        epeksergasiaKathigitisRadio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                epeksergasiaKathigitisRadioItemStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 38, 9, 0);
+        jPanel6.add(epeksergasiaKathigitisRadio, gridBagConstraints);
+
         javax.swing.GroupLayout editTeachersLayout = new javax.swing.GroupLayout(editTeachers);
         editTeachers.setLayout(editTeachersLayout);
         editTeachersLayout.setHorizontalGroup(
             editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 951, Short.MAX_VALUE)
+            .addGroup(editTeachersLayout.createSequentialGroup()
+                .addGap(251, 251, 251)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(256, Short.MAX_VALUE))
         );
         editTeachersLayout.setVerticalGroup(
             editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGroup(editTeachersLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         botPanel.add(editTeachers, "card4");
@@ -420,6 +610,55 @@ public class Kathigitis extends javax.swing.JFrame {
         addPanel.setBackground(new java.awt.Color(45,118,232));
         editPanel.setBackground(new java.awt.Color(35,90,190));
     }//GEN-LAST:event_editPanelMouseClicked
+
+    private void eponimoKathigitisEditTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eponimoKathigitisEditTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eponimoKathigitisEditTFActionPerformed
+
+    private void onomaKathigitisEditTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onomaKathigitisEditTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onomaKathigitisEditTFActionPerformed
+
+    private void epeksergasiaEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_epeksergasiaEditBtnActionPerformed
+        // TODO add your handling code here:
+        if(diagrafiKathigitiRadio.isSelected()){
+            editKathigitis(Integer.valueOf(amKathigitisEditTF.getText()),
+                            onomaKathigitisEditTF.getText(),
+                            eponimoKathigitisEditTF.getText(),
+                            String.valueOf(eidikotitaKathigitisEditCombo.getSelectedItem()));
+        }else if (epeksergasiaKathigitisRadio.isSelected()){
+            deleteKathigitis(Integer.valueOf(amKathigitisEditTF.getText()));
+        }
+    }//GEN-LAST:event_epeksergasiaEditBtnActionPerformed
+
+    private void epeksergasiaKathigitisRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_epeksergasiaKathigitisRadioItemStateChanged
+        // TODO add your handling code here:
+        onomaKathigitisEditTF.setEnabled(true);
+        eponimoKathigitisEditTF.setEnabled(true);
+        eidikotitaKathigitisEditCombo.setEnabled(true);
+    }//GEN-LAST:event_epeksergasiaKathigitisRadioItemStateChanged
+
+    private void diagrafiKathigitiRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_diagrafiKathigitiRadioItemStateChanged
+        // TODO add your handling code here:
+        onomaKathigitisEditTF.setEnabled(false);
+        eponimoKathigitisEditTF.setEnabled(false);
+        eidikotitaKathigitisEditCombo.setEnabled(false);
+    }//GEN-LAST:event_diagrafiKathigitiRadioItemStateChanged
+
+    private void amKathigitisEditTFPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_amKathigitisEditTFPropertyChange
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_amKathigitisEditTFPropertyChange
+
+    private void jPanel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MousePressed
+        // TODO add your handling code here:
+        jPanel6.requestFocus();
+    }//GEN-LAST:event_jPanel6MousePressed
+
+    private void amKathigitisEditTFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_amKathigitisEditTFFocusLost
+        // TODO add your handling code here:
+        showDetailsEdit(amKathigitisEditTF.getText());
+    }//GEN-LAST:event_amKathigitisEditTFFocusLost
 
     /**
      * @param args the command line arguments
@@ -522,12 +761,22 @@ public class Kathigitis extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addPanel;
     private javax.swing.JPanel addTeachers;
+    private javax.swing.JLabel amEditLabel;
+    private javax.swing.JTextField amKathigitisEditTF;
     private javax.swing.JPanel botPanel;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton diagrafiKathigitiRadio;
     private javax.swing.JPanel editPanel;
     private javax.swing.JPanel editTeachers;
     private javax.swing.JComboBox<String> eidikotitaCombo;
+    private javax.swing.JLabel eidikotitaEditLabel;
+    private javax.swing.JComboBox<String> eidikotitaKathigitisEditCombo;
     private javax.swing.JLabel eidikotitaLabel;
     private javax.swing.JComboBox<String> eidikotitaViewCombo;
+    private javax.swing.JButton epeksergasiaEditBtn;
+    private javax.swing.JRadioButton epeksergasiaKathigitisRadio;
+    private javax.swing.JLabel eponimoEditLabel;
+    private javax.swing.JTextField eponimoKathigitisEditTF;
     private javax.swing.JLabel eponimoLabel;
     private javax.swing.JTextField eponimoTF;
     private javax.swing.JLabel jLabel15;
@@ -536,10 +785,14 @@ public class Kathigitis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton kataxorisiBtn;
+    private javax.swing.JLabel onomaEditLabel;
+    private javax.swing.JTextField onomaKathigitisEditTF;
     private javax.swing.JLabel onomaLabel;
+    private javax.swing.JLabel onomaLabel3;
     private javax.swing.JTextField onomaTF;
     private javax.swing.JButton refreshListTeachers;
     private javax.swing.JPanel viewPanel;
@@ -548,6 +801,7 @@ public class Kathigitis extends javax.swing.JFrame {
 
     String eidikotita[] = {"ΚΦΑ","Μαθηματικός","Φυσικός","Χημικός","Φιλόλογος","Βιολόγος","Οικονομολόγος","Πληροφορική"};
     String viewEidikotita[] = {"","ΚΦΑ","Μαθηματικό","Φυσικό","Χημικό","Φιλολογία","Βιολογία","Οικονομικό","Πληροφορική"};
+    
     
     
     private void showInTable(String ext){
@@ -570,7 +824,6 @@ public class Kathigitis extends javax.swing.JFrame {
                     String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
                     for (int i = 0; i< a.length; i++) {
                         row[i] =a[i];
-
                     }
                     System.out.println("15");
                     model.addRow(row);
@@ -617,4 +870,97 @@ public class Kathigitis extends javax.swing.JFrame {
             }
         }
     }
+    
+    private void editKathigitis(int ext1, String ext2, String ext3,String ext4){
+        String selectString = "SELECT updatekathigitis(?, ?, ?, ?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        
+        try {
+            aStatePG.setInt(1, ext1);
+            aStatePG.setString(2, ext2);
+            aStatePG.setString(3, ext3);
+            aStatePG.setString(4, ext4);
+            aStatePG.executeQuery();
+            
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        }
+    }
+    
+    
+        private void deleteKathigitis(int ext){
+        String selectString = "SELECT deletekathigitis(?)";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+        try {
+            aStatePG.setInt(1, ext);
+            aStatePG.executeQuery();
+            
+        } catch(SQLException ex) {
+            System.out.println("\n -- SQL Exception --- \n");
+            while(ex != null) {
+		System.out.println("Message: " + ex.getMessage());
+		ex = ex.getNextException();
+            }
+        }
+    }
+    
+    
+    
+    private void showDetailsEdit(String ext){
+        try {
+            int num  = Integer.valueOf(ext);
+            if((num< MathitisAdmin.getSid()) && (num >0)){
+                String selectString = "SELECT selKathigitiViaID(?);";
+                PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+                ResultSet rs = DBPostresqlAdmin.getResultset();
+                try {
+                    aStatePG.setInt(1, num);
+                    rs = aStatePG.executeQuery();        
+                    String columnvalue;
+                    rs.next();
+                    columnvalue = rs.getString(1);   
+                    String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                    onomaKathigitisEditTF.setText(a[0]);
+                    eponimoKathigitisEditTF.setText(a[1]);
+                    for(int i=0; i<eidikotita.length; i++){
+                        if(a[2].equals(eidikotita[i])){
+                            eidikotitaKathigitisEditCombo.setSelectedIndex(i); 
+                            break;
+                        }
+                    }
+                    
+                                   
+                } catch(SQLException ex) {
+                    System.out.println("\n -- SQL Exception --- \n");
+                    while(ex != null) {
+                        System.out.println("Message: " + ex.getMessage());
+                        ex = ex.getNextException();
+                    }
+                } 
+            }else{
+                onomaKathigitisEditTF.setText("");
+                eponimoKathigitisEditTF.setText("");
+                eidikotitaKathigitisEditCombo.setSelectedIndex(0);
+                String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+                JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+                onomaKathigitisEditTF.setText("");
+                eponimoKathigitisEditTF.setText("");
+                eidikotitaKathigitisEditCombo.setSelectedIndex(0);
+            String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+            JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            System.out.println("ti pige strava: " + e.getMessage());
+        }
+        
+    }
+    
+    
+    
+    
+    
 }

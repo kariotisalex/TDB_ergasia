@@ -15,17 +15,121 @@ public class StoredProceduresAdmin {
     
 
     static void dropStoreProcedures(){
+        
         dropVathmologiaStoredProcedures();
+        
         dropMathimaStoredProcedure();
+        
         dropMathitisStoredProcedure();
+        dropMathitisStoredProceduresDeleteQueries();
+        dropMathitisStoredProceduresUpdateQueries();        
+        dropMathitisStoredProceduresInsertQueries();
+        
         dropKathigitisStoredProcedure();
+        dropKathigitisStoredProceduresInsertQueries();
+        dropKathigitisStoredProceduresUpdateQueries();
+        dropKathigitisStoredProceduresDeleteQueries();
+        
+        
     }
     
     static void createStoreProcedures(){
-        createKathigitisStoredProcedure();
-        createMathitisStoredProcedure();
+        
+        createKathigitisStoredProcedureSelectQueries();
+        createKathigitisStoredProceduresInsertQueries();
+        createKathigitisStoredProceduresUpdateQueries();
+        createKathigitisStoredProceduresDeleteQueries();
+        
+        createMathitisStoredProcedureSelectQueries();
+        createMathitisStoredProceduresInsertQueries();
+        createMathitisStoredProceduresDeleteQueries();
+        createMathitisStoredProceduresUpdateQueries();
+        
+        
         createMathimaStoredProcedure();
-        createVathmologiaStoredProcedures();        
+        
+        
+        createVathmologiaStoredProceduresSelectQueries();   
+        
+        
+        
+
+    
+    }
+    
+    
+// DROP
+    
+    
+    private static void dropMathitisStoredProcedure(){
+    Statement psql = DBPostresqlAdmin.getStatement();
+    try {psql.executeUpdate("DROP FUNCTION showtablemathitis();");} catch (SQLException e) {System.out.println("DROP :2 " +e.getMessage());}
+    try {psql.executeUpdate("DROP FUNCTION showtablemathitisyearly(int);");} catch (SQLException e) {System.out.println("DROP :3 "         +e.getMessage());}
+
+}
+    private static void dropMathitisStoredProceduresInsertQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION insertmathitis(varchar, varchar, varchar, varchar, int)");
+        }catch (SQLException e) {
+            System.out.println("createMathitisStoredProceduresInsertQueries : " + e.getMessage());
+        }
+    }
+    private static void dropMathitisStoredProceduresDeleteQueries(){
+            try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION deletemathitis(int)");
+            }catch (SQLException e) {
+                System.out.println("createMathitisStoredProceduresDeleteQueries : " + e.getMessage());
+            }
+        }
+    private static void dropMathitisStoredProceduresUpdateQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION updatemathitis(int, varchar, varchar, varchar, varchar, int);");
+        }catch (SQLException e) {
+            System.out.println("createMathitisStoredProceduresUpdateQueries : " + e.getMessage());
+        }
+    }      
+    
+    
+    private static void dropKathigitisStoredProcedure(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION showtablekathigitis();");} 
+        catch (SQLException e) {
+            System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
+     
+        }
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION showtableeidkathigitis(varchar);");} 
+        catch (SQLException e) {
+            System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
+        }
+        
+    }
+    private static void dropKathigitisStoredProceduresInsertQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION insertkathigitis(varchar, varchar, varchar)");
+        }catch (SQLException e) {
+            System.out.println("dropKathigitisStoredProcedureInsertQueries : " + e.getMessage());
+        } 
+    }
+    private static void dropKathigitisStoredProceduresUpdateQueries(){
+        try {
+            DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION updatemathitis(int, varchar, varchar, varchar, varchar, int)");
+        
+        }catch (SQLException e) {
+            System.out.println("createMathitisStoredProceduresDeleteQueries : " + e.getMessage());
+        }
+                
+    }
+    private static void dropKathigitisStoredProceduresDeleteQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION updatekathigitis(int, varchar, varchar, varchar)");
+        }catch (SQLException e) {
+            System.out.println("createMathitisStoredProceduresDeleteQueries : " + e.getMessage());
+        }
+    }
+
+    
+    private static void dropMathimaStoredProcedure(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION showtablemathima();");} 
+        catch (SQLException e) {
+            System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
+     
+        }
+        
+        
     }
     
     private static void dropVathmologiaStoredProcedures(){
@@ -65,36 +169,175 @@ public class StoredProceduresAdmin {
     
     
     }
-    private static void dropMathitisStoredProcedure(){
-    Statement psql = DBPostresqlAdmin.getStatement();
-    try {psql.executeUpdate("DROP FUNCTION showtablemathitis();");} catch (SQLException e) {System.out.println("DROP :2 " +e.getMessage());}
-    try {psql.executeUpdate("DROP FUNCTION showtablemathitisyearly(int);");} catch (SQLException e) {System.out.println("DROP :3 "         +e.getMessage());}
 
-}
-    private static void dropMathimaStoredProcedure(){
-        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION showtablemathima();");} 
-        catch (SQLException e) {
-            System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
-     
-        }
-        
-        
-    }
-    private static void dropKathigitisStoredProcedure(){
-        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION showtablekathigitis();");} 
-        catch (SQLException e) {
-            System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
-     
-        }
-        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION showtableeidkathigitis(varchar);");} 
-        catch (SQLException e) {
-            System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
-        }
-        
-    }
-        
     
-    private static void createVathmologiaStoredProcedures(){
+// CREATE   
+    
+    
+    private static void createMathitisStoredProcedureSelectQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablemathitis()\n" +
+                                "returns SETOF mathitis as\n" +
+                                "$$\n" +
+                                "SELECT sid , onoma, eponymo, onpateras, onMiteras, etoseisagogis FROM mathitis ORDER BY sid;\n" +
+                                "$$ LANGUAGE SQL");} 
+        catch (SQLException e) {
+            System.out.println("createMathitisStoredProcedure, showtablemathitis : " + e.getMessage());
+        }
+        
+        
+        
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablemathitisyearly(int)\n" +
+                                "returns SETOF mathitis as\n" +
+                                "$$\n" +
+                                "SELECT * \n" +
+                                "FROM mathitis\n" +
+                                "WHERE etosEisagogis = $1;\n" +
+                                "$$ LANGUAGE SQL");} 
+        catch (SQLException e) {
+            System.out.println("createMathitisStoredProcedure, showtablemathitisyearly(int) : " + e.getMessage());    
+        }
+    }
+    private static void createMathitisStoredProceduresInsertQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION insertmathitis(varchar, varchar, varchar, varchar, int)\n" +
+                                            "returns VOID as\n" +
+                                            "$$\n" +
+                                            "\n" +
+                                            "INSERT INTO mathitis( onoma, eponymo, onPateras, onMiteras, etosEisagogis )" +
+                                            "VALUES ($1, $2, $3, $4, $5)" +
+                                            "$$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createMathitisStoredProceduresDeleteQueries : " + e.getMessage());
+        }
+    }
+    private static void createMathitisStoredProceduresDeleteQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION deletemathitis(int)\n" +
+                                            "returns VOID as\n" +
+                                            "$$\n" +
+                                            "\n" +
+                                            "DELETE FROM mathitis WHERE sid=$1;\n" +
+                                            "$$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createMathitisStoredProceduresDeleteQueries : " + e.getMessage());
+        }
+    }
+    private static void createMathitisStoredProceduresUpdateQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION updatemathitis(int, varchar, varchar, varchar, varchar, int)\n" +
+                                            "returns VOID as\n" +
+                                            "$$\n" +
+                                            "\n" +
+                                            "UPDATE mathitis\n" +
+                                            "SET onoma=$2 , eponymo=$3 , onPateras=$4 , onMiteras=$5 , etosEisagogis=$6 \n" +
+                                            "WHERE sid = $1;\n" +
+                                            "$$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createMathitisStoredProceduresDeleteQueries : " + e.getMessage());
+        }
+    }     
+    
+    private static void createKathigitisStoredProcedureSelectQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION selKathigitiViaID(int)\n" +
+                                "returns table(onoma_kathigiti varchar,\n" +
+                                "	      epitheto_kathigiti varchar,\n" +
+                                "	      eidikotita varchar,\n" +
+                                "$$\n" +
+                                "SELECT onoma_kathigiti, epitheto_kathigiti, eidikotita FROM kathigitis WHERE kid = $1;\n" +
+                                "$$ LANGUAGE SQL;");} 
+        catch (SQLException e) {
+            
+            System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
+        
+        }
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablekathigitis()\n" +
+                        "returns SETOF kathigitis as\n" +
+                        "$$\n" +
+                        "SELECT * FROM kathigitis;\n" +
+                        "\n" +
+                        "$$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createKathigitisStoredProcedure : " + e.getMessage());
+        }
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtableeidkathigitis(varchar)\n" +
+                                            "returns SETOF kathigitis as\n" +
+                                            "$$\n" +
+                                            "SELECT * \n" +
+                                            "FROM kathigitis\n" +
+                                            "WHERE eidikotita = $1;\n" +
+                                            "\n" +
+                                            "$$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createKathigitisStoredProcedure : " + e.getMessage());
+        }
+        
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION selKathigitisViaID(int)\n" +
+                                "returns table(name varchar,\n" +
+                                "	      surname varchar,\n" +
+                                "	      nameFathers varchar) as\n" +
+                                "$$\n" +
+                                "SELECT Onoma_kathigiti, Epitheto_kathigiti, Eidikotita FROM kathigitis WHERE kid = $1;\n" +
+                                "$$ LANGUAGE SQL;");} 
+        catch (SQLException e) {
+            
+            System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
+        
+        }
+        
+        
+        
+    }
+    private static void createKathigitisStoredProceduresInsertQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION insertkathigitis(varchar, varchar, varchar)\n" +
+                    "returns void as\n" +
+                    "$$\n" +
+                    "INSERT INTO kathigitis( Onoma_kathigiti, Epitheto_kathigiti, Eidikotita ) VALUES ( $1, $2, $3);\n" +
+                    "$$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createKathigitisStoredProcedure : " + e.getMessage());
+        }        
+    }
+    private static void createKathigitisStoredProceduresUpdateQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION updatekathigitis(int, varchar, varchar, varchar)\n" +
+                                            "returns VOID as\n" +
+                                            "$$\n" +
+                                            "\n" +
+                                            "UPDATE kathigitis\n" +
+                                            "SET onoma_kathigiti=$2 , epitheto_kathigiti=$3 , eidikotita=$4\n" +
+                                            "WHERE kid = $1;\n" +
+                                            "$$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createMathitisStoredProceduresDeleteQueries : " + e.getMessage());
+        }
+    }
+    private static void createKathigitisStoredProceduresDeleteQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION deletekathigitis(int)\n" +
+                                            "returns VOID as\n" +
+                                            "$$\n" +
+                                            "\n" +
+                                            "DELETE FROM kathigitis WHERE kid=$1;\n" +
+                                            "$$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createMathitisStoredProceduresDeleteQueries : " + e.getMessage());
+        }
+    }
+
+
+    
+    private static void createMathimaStoredProcedure(){
+        
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablemathima()\n" +
+                "returns table (mid int, onoma_mathimatos varchar, onoma_kathigiti varchar , epitheto_kathigiti varchar)as\n" +
+                "$$\n" +
+                "SELECT M.mid, M.onoma_mathimatos, K.onoma_kathigiti, K.epitheto_kathigiti \n" +
+                "FROM mathima M, kathigitis K \n" +
+                "WHERE M.kid=K.kid;\n" +
+                "\n" +
+                "$$ LANGUAGE SQL");
+        }catch (SQLException e) {
+            System.out.println("createMathimaStoredProcedure : " + e.getMessage());
+        }
+    }
+    
+    
+    private static void createVathmologiaStoredProceduresSelectQueries(){
         Statement psql = DBPostresqlAdmin.getStatement();
         try {psql.executeUpdate("CREATE OR REPLACE FUNCTION selVathmStudentViaID(int)\n" +
                                 "returns table(name varchar,\n" +
@@ -1043,69 +1286,16 @@ public class StoredProceduresAdmin {
         catch (SQLException e) {
             System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
         }
-    }
-    private static void createMathitisStoredProcedure(){
-        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablemathitis()\n" +
-                                "returns SETOF mathitis as\n" +
-                                "$$\n" +
-                                "SELECT * FROM mathitis;\n" +
-                                "$$ LANGUAGE SQL");} 
-        catch (SQLException e) {
-            System.out.println("createMathitisStoredProcedure, showtablemathitis : " + e.getMessage());
-        }
-        
-        
-        
-        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablemathitisyearly(int)\n" +
-                                "returns SETOF mathitis as\n" +
-                                "$$\n" +
-                                "SELECT * \n" +
-                                "FROM mathitis\n" +
-                                "WHERE etosEisagogis = $1;\n" +
-                                "$$ LANGUAGE SQL");} 
-        catch (SQLException e) {
-            System.out.println("createMathitisStoredProcedure, showtablemathitisyearly(int) : " + e.getMessage());    
-        }
-    }
-    private static void createMathimaStoredProcedure(){
-        
-        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablemathima()\n" +
-                "returns table (mid int, onoma_mathimatos varchar, onoma_kathigiti varchar , epitheto_kathigiti varchar)as\n" +
-                "$$\n" +
-                "SELECT M.mid, M.onoma_mathimatos, K.onoma_kathigiti, K.epitheto_kathigiti \n" +
-                "FROM mathima M, kathigitis K \n" +
-                "WHERE M.kid=K.kid;\n" +
-                "\n" +
-                "$$ LANGUAGE SQL");
-        }catch (SQLException e) {
-            System.out.println("createMathimaStoredProcedure : " + e.getMessage());
-        }
-    }
-    private static void createKathigitisStoredProcedure(){
-        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablekathigitis()\n" +
-                        "returns SETOF kathigitis as\n" +
-                        "$$\n" +
-                        "SELECT * FROM kathigitis;\n" +
-                        "\n" +
-                        "$$ LANGUAGE SQL;");
-        }catch (SQLException e) {
-            System.out.println("createKathigitisStoredProcedure : " + e.getMessage());
-        }
-        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtableeidkathigitis(varchar)\n" +
-                                            "returns SETOF kathigitis as\n" +
-                                            "$$\n" +
-                                            "SELECT * \n" +
-                                            "FROM kathigitis\n" +
-                                            "WHERE eidikotita = $1;\n" +
-                                            "\n" +
-                                            "$$ LANGUAGE SQL;");
-        }catch (SQLException e) {
-            System.out.println("createKathigitisStoredProcedure : " + e.getMessage());
-        }
-        
-        
-        
-    }
+    }    
+    
+
+    
+   
+    
+
+    
+    
+    
     
     
     

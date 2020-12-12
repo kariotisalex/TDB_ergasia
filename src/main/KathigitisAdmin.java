@@ -74,27 +74,24 @@ public class KathigitisAdmin {
     }
     
     static void addNewTeacher(String onoma,String epitheto, String eidikotita){
-        String addQuery = "INSERT INTO kathigitis( Onoma_kathigiti, Epitheto_kathigiti, Eidikotita"
-                + ") VALUES ( ?, ?, ?);";
-
+        String addQuery = "SELECT insertkathigitis(?,?,?);";
+        PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(addQuery);
             try {
-                PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(addQuery);
-                    kid++;
-                    aStatePG.setString(1,onoma);
-                    aStatePG.setString(2, epitheto);
-                    aStatePG.setString(3, eidikotita);
-                    aStatePG.executeUpdate();
-                    
-                    JOptionPane.showMessageDialog(null, "Η καταχωρηση ολοκληρωθηκε επιτυχώς", 
-                        "Ενημέρωση", JOptionPane.INFORMATION_MESSAGE);
-                    
-
-
-                
+                kid++;
+                aStatePG.setString(1,onoma);
+                System.out.println("7");
+                aStatePG.setString(2, epitheto);
+                System.out.println("8");
+                aStatePG.setString(3, eidikotita);
+                System.out.println("9");
+                aStatePG.executeUpdate();
+                System.out.println("10");
+                JOptionPane.showMessageDialog(null, "Η καταχωρηση ολοκληρωθηκε επιτυχώς", 
+                    "Ενημέρωση", JOptionPane.INFORMATION_MESSAGE);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Η καταχωρηση δεν ολοκληρωθηκε επιτυχώς /n"+e.getMessage() , 
+                JOptionPane.showMessageDialog(null, "<html>Η καταχωρηση δεν ολοκληρωθηκε επιτυχώς <br> "+e.getMessage() , 
                         "Ενημέρωση", JOptionPane.WARNING_MESSAGE);
-                System.out.println("addNewTeacher : "+e.getMessage());
+                System.out.println("addNewTeacher : "+e.toString());
             }
         
         
