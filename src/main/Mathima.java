@@ -5,6 +5,7 @@
  */
 package main;
 
+import java.awt.Toolkit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +26,11 @@ public class Mathima extends javax.swing.JFrame {
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
         showAllInTable();
+        setIcon();
+    }
+    
+    public void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().createImage(getClass().getResource("binder_30px.png")));
     }
 
     /**

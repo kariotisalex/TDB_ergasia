@@ -5,6 +5,7 @@
  */
 package main;
 
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -19,6 +20,11 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        setIcon();
+    }
+    
+    public void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().createImage(getClass().getResource("binder_30px.png")));
     }
 
     /**
