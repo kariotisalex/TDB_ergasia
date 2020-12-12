@@ -46,9 +46,13 @@ public class Vathmologia extends javax.swing.JFrame {
         viewGrades = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+<<<<<<< HEAD
         refreshViewButton = new javax.swing.JButton();
         viewFilterSidCombo = new javax.swing.JComboBox<>();
         viewFilterEtosCombo = new javax.swing.JComboBox<>();
+=======
+        jButton1 = new javax.swing.JButton();
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
         addGrades = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -406,7 +410,11 @@ public class Vathmologia extends javax.swing.JFrame {
         addGradesLayout.setVerticalGroup(
             addGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addGradesLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap(62, Short.MAX_VALUE)
+=======
+                .addContainerGap(53, Short.MAX_VALUE)
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -421,7 +429,11 @@ public class Vathmologia extends javax.swing.JFrame {
         );
         editGradesLayout.setVerticalGroup(
             editGradesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGap(0, 464, Short.MAX_VALUE)
+=======
+            .addGap(0, 452, Short.MAX_VALUE)
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
         );
 
         botPanel.add(editGrades, "card4");
@@ -523,6 +535,16 @@ public class Vathmologia extends javax.swing.JFrame {
         // TODO add your handling code here:
         showView(String.valueOf(viewFilterSidCombo.getSelectedItem()),String.valueOf(viewFilterEtosCombo.getSelectedItem()));
     }//GEN-LAST:event_refreshViewButtonActionPerformed
+
+    private void editPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPanelMouseClicked
+        // TODO add your handling code here:
+        viewGrades.setVisible(false);
+        addGrades.setVisible(false);
+        editGrades.setVisible(true);
+        viewPanel.setBackground(new java.awt.Color(45,118,232));
+        addPanel.setBackground(new java.awt.Color(45,118,232));
+        editPanel.setBackground(new java.awt.Color(35,90,190)); 
+    }//GEN-LAST:event_editPanelMouseClicked
 
     /**
      * @param args the command line arguments

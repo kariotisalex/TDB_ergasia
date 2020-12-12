@@ -53,7 +53,10 @@ public class Kathigitis extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         refreshListTeachers = new javax.swing.JButton();
+<<<<<<< HEAD
         eidikotitaViewCombo = new javax.swing.JComboBox<>();
+=======
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
         addTeachers = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -62,6 +65,7 @@ public class Kathigitis extends javax.swing.JFrame {
         kataxorisiBtn = new javax.swing.JButton();
         eponimoLabel = new javax.swing.JLabel();
         eidikotitaLabel = new javax.swing.JLabel();
+<<<<<<< HEAD
         eidikotitaCombo = new javax.swing.JComboBox<>();
         editTeachers = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -77,6 +81,10 @@ public class Kathigitis extends javax.swing.JFrame {
         onomaLabel3 = new javax.swing.JLabel();
         diagrafiKathigitiRadio = new javax.swing.JRadioButton();
         epeksergasiaKathigitisRadio = new javax.swing.JRadioButton();
+=======
+        eidikotitaTF = new javax.swing.JTextField();
+        editTeachers = new javax.swing.JPanel();
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -338,6 +346,7 @@ public class Kathigitis extends javax.swing.JFrame {
         addTeachersLayout.setHorizontalGroup(
             addTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTeachersLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap(229, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(228, 228, 228))
@@ -537,6 +546,33 @@ public class Kathigitis extends javax.swing.JFrame {
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
+=======
+                .addContainerGap(234, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(228, 228, 228))
+        );
+        addTeachersLayout.setVerticalGroup(
+            addTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTeachersLayout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(124, 124, 124))
+        );
+
+        botPanel.add(addTeachers, "card3");
+
+        javax.swing.GroupLayout editTeachersLayout = new javax.swing.GroupLayout(editTeachers);
+        editTeachers.setLayout(editTeachersLayout);
+        editTeachersLayout.setHorizontalGroup(
+            editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 951, Short.MAX_VALUE)
+        );
+        editTeachersLayout.setVerticalGroup(
+            editTeachersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
         botPanel.add(editTeachers, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -611,6 +647,7 @@ public class Kathigitis extends javax.swing.JFrame {
         editPanel.setBackground(new java.awt.Color(35,90,190));
     }//GEN-LAST:event_editPanelMouseClicked
 
+<<<<<<< HEAD
     private void eponimoKathigitisEditTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eponimoKathigitisEditTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eponimoKathigitisEditTFActionPerformed
@@ -660,6 +697,8 @@ public class Kathigitis extends javax.swing.JFrame {
         showDetailsEdit(amKathigitisEditTF.getText());
     }//GEN-LAST:event_amKathigitisEditTFFocusLost
 
+=======
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
     /**
      * @param args the command line arguments
      */
@@ -761,8 +800,11 @@ public class Kathigitis extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addPanel;
     private javax.swing.JPanel addTeachers;
+<<<<<<< HEAD
     private javax.swing.JLabel amEditLabel;
     private javax.swing.JTextField amKathigitisEditTF;
+=======
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
     private javax.swing.JPanel botPanel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton diagrafiKathigitiRadio;

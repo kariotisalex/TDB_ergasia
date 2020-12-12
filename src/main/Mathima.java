@@ -194,11 +194,20 @@ public class Mathima extends javax.swing.JFrame {
         editMathimataLayout.setHorizontalGroup(
             editMathimataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1035, Short.MAX_VALUE)
+<<<<<<< HEAD
+        );
+        editMathimataLayout.setVerticalGroup(
+            editMathimataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 604, Short.MAX_VALUE)
+=======
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
         );
         editMathimataLayout.setVerticalGroup(
             editMathimataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 604, Short.MAX_VALUE)
         );
+
+        botPanel.add(editMathimata, "card3");
 
         botPanel.add(editMathimata, "card3");
 

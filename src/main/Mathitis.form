@@ -400,15 +400,20 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
                       <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="192" max="32767" attributes="0"/>
                   </Group>
+=======
+                  <EmptySpace min="0" pref="1035" max="32767" attributes="0"/>
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
@@ -645,6 +650,12 @@
               </SubComponents>
             </Container>
           </SubComponents>
+=======
+                  <EmptySpace min="0" pref="440" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
         </Container>
         <Container class="javax.swing.JPanel" name="addStudent">
           <Constraints>

@@ -54,6 +54,7 @@ public class Mathitis extends javax.swing.JFrame {
         refreshListStudents = new javax.swing.JButton();
         searchYear = new javax.swing.JComboBox<>();
         editStudent = new javax.swing.JPanel();
+<<<<<<< HEAD
         jPanel6 = new javax.swing.JPanel();
         epeksergasiaEditBtn = new javax.swing.JButton();
         amEditLabel = new javax.swing.JLabel();
@@ -71,6 +72,8 @@ public class Mathitis extends javax.swing.JFrame {
         eponimoMathitisEditTF = new javax.swing.JTextField();
         onomaMathitisEditTF = new javax.swing.JTextField();
         onomaLabel1 = new javax.swing.JLabel();
+=======
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
         addStudent = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         onomaLabel = new javax.swing.JLabel();
@@ -299,6 +302,7 @@ public class Mathitis extends javax.swing.JFrame {
 
         botPanel.add(viewStudent, "card2");
 
+<<<<<<< HEAD
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Φόρμα επεξεργασίας καθηγητών"));
         jPanel6.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -488,10 +492,13 @@ public class Mathitis extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 133, 0, 0);
         jPanel6.add(onomaLabel1, gridBagConstraints);
 
+=======
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
         javax.swing.GroupLayout editStudentLayout = new javax.swing.GroupLayout(editStudent);
         editStudent.setLayout(editStudentLayout);
         editStudentLayout.setHorizontalGroup(
             editStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(editStudentLayout.createSequentialGroup()
                 .addGap(259, 259, 259)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -503,6 +510,13 @@ public class Mathitis extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
+=======
+            .addGap(0, 1035, Short.MAX_VALUE)
+        );
+        editStudentLayout.setVerticalGroup(
+            editStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
         );
 
         botPanel.add(editStudent, "card4");
@@ -598,15 +612,25 @@ public class Mathitis extends javax.swing.JFrame {
         addStudent.setLayout(addStudentLayout);
         addStudentLayout.setHorizontalGroup(
             addStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(addStudentLayout.createSequentialGroup()
                 .addGap(224, 224, 224)
+=======
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addStudentLayout.createSequentialGroup()
+                .addContainerGap(274, Short.MAX_VALUE)
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(197, Short.MAX_VALUE))
         );
         addStudentLayout.setVerticalGroup(
             addStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(addStudentLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
+=======
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addStudentLayout.createSequentialGroup()
+                .addContainerGap(67, Short.MAX_VALUE)
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(77, Short.MAX_VALUE))
         );
@@ -703,6 +727,7 @@ public class Mathitis extends javax.swing.JFrame {
         editPanel.setBackground(new java.awt.Color(35,90,190));
     }//GEN-LAST:event_editPanelMouseClicked
 
+<<<<<<< HEAD
     private void epeksergasiaEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_epeksergasiaEditBtnActionPerformed
             // TODO add your handling code here:
          if(epeksergasiaMathitiRadio.isSelected()){
@@ -753,6 +778,8 @@ public class Mathitis extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_eponimoMathitisEditTFActionPerformed
 
+=======
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
     /**
      * @param args the command line arguments
      */
@@ -806,8 +833,11 @@ public class Mathitis extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addPanel;
     private javax.swing.JPanel addStudent;
+<<<<<<< HEAD
     private javax.swing.JLabel amEditLabel;
     private javax.swing.JTextField amMathitisEditTF;
+=======
+>>>>>>> e2e2b500be1751af7ba912f297d5681dd745a989
     private javax.swing.JPanel botPanel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton diagrafiiMathitiRadio;
