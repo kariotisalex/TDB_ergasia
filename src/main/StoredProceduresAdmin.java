@@ -96,8 +96,10 @@ public class StoredProceduresAdmin {
         try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION showtableeidkathigitis(varchar);");} 
         catch (SQLException e) {
             System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
+            
         }
         
+
     }
     private static void dropKathigitisStoredProceduresInsertQueries(){
         try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION insertkathigitis(varchar, varchar, varchar)");
@@ -126,9 +128,14 @@ public class StoredProceduresAdmin {
         try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION showtablemathima();");} 
         catch (SQLException e) {
             System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
-     
         }
         
+        
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION selMathimaViaID(int)");}
+        catch (SQLException e) {
+            System.out.println("dropMathitisStoredProcedure : " + e.getMessage());
+            
+        }
         
     }
     
@@ -235,18 +242,7 @@ public class StoredProceduresAdmin {
     }     
     
     private static void createKathigitisStoredProcedureSelectQueries(){
-        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION selKathigitiViaID(int)\n" +
-                                "returns table(onoma_kathigiti varchar,\n" +
-                                "	      epitheto_kathigiti varchar,\n" +
-                                "	      eidikotita varchar,\n" +
-                                "$$\n" +
-                                "SELECT onoma_kathigiti, epitheto_kathigiti, eidikotita FROM kathigitis WHERE kid = $1;\n" +
-                                "$$ LANGUAGE SQL;");} 
-        catch (SQLException e) {
-            
-            System.out.println("createVathmologiaStoredProcedures : " + e.getMessage());
-        
-        }
+
         try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION showtablekathigitis()\n" +
                         "returns SETOF kathigitis as\n" +
                         "$$\n" +
@@ -334,6 +330,32 @@ public class StoredProceduresAdmin {
         }catch (SQLException e) {
             System.out.println("createMathimaStoredProcedure : " + e.getMessage());
         }
+        
+        try {DBPostresqlAdmin.getStatement().executeUpdate( "CREATE OR REPLACE FUNCTION selMathimaViaID(int)\n" +
+                                                            "    returns table(onoma_mathimatos varchar,\n" +
+                                                            "    	      	  kid int,\n" +
+                                                            "    	      	  onoma_kathigiti varchar,\n" +
+                                                            "    	      	  epitheto_kathigiti varchar,\n" +
+                                                            "    	      	  eidikotita varchar)as\n" +
+                                                            "\n" +
+                                                            "    $$\n" +
+                                                            "    SELECT M.onoma_mathimatos, K.kid, K.onoma_kathigiti, K.epitheto_kathigiti, K.eidikotita\n" +
+                                                            "	FROM mathima M, kathigitis K\n" +
+                                                            "	WHERE M.kid=K.kid AND \n" +
+                                                            "	mid = $1;\n" +
+                                                            "    $$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createMathimaStoredProcedure : " + e.getMessage());
+        }        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
     

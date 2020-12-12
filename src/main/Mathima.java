@@ -7,7 +7,6 @@ package main;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -38,6 +37,7 @@ public class Mathima extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         viewPanel = new javax.swing.JPanel();
@@ -59,8 +59,8 @@ public class Mathima extends javax.swing.JFrame {
         amEditLabel = new javax.swing.JLabel();
         amKathigitisEditTF = new javax.swing.JTextField();
         onomaLabel3 = new javax.swing.JLabel();
-        diagrafiKathigitiRadio = new javax.swing.JRadioButton();
-        epeksergasiaKathigitisRadio = new javax.swing.JRadioButton();
+        diagrafiMathimatosRadio = new javax.swing.JRadioButton();
+        epeksergasiaMathimatosRadio = new javax.swing.JRadioButton();
         emfanisiStoixeiaKathigitiLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -218,13 +218,18 @@ public class Mathima extends javax.swing.JFrame {
         onomaEditLabel.setText("Όνομα Μαθήματος :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = null;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
         jPanel6.add(onomaEditLabel, gridBagConstraints);
 
         amKathigitiMathimatosTF.setEnabled(false);
+        amKathigitiMathimatosTF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                amKathigitiMathimatosTFFocusLost(evt);
+            }
+        });
         amKathigitiMathimatosTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 amKathigitiMathimatosTFActionPerformed(evt);
@@ -271,7 +276,7 @@ public class Mathima extends javax.swing.JFrame {
         eponimoEditLabel.setText("ΑΜ Σχετιζόμενου Καθηγητή :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = null;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
@@ -281,7 +286,7 @@ public class Mathima extends javax.swing.JFrame {
         eidikotitaEditLabel.setText("Στοιχεία Καθηγητη :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = null;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
@@ -291,7 +296,7 @@ public class Mathima extends javax.swing.JFrame {
         amEditLabel.setText("ΑΜ Μαθήματος :");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = null;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
@@ -326,30 +331,32 @@ public class Mathima extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
         jPanel6.add(onomaLabel3, gridBagConstraints);
 
-        diagrafiKathigitiRadio.setSelected(true);
-        diagrafiKathigitiRadio.setText("Διαγραφή Μαθήματος");
-        diagrafiKathigitiRadio.addItemListener(new java.awt.event.ItemListener() {
+        buttonGroup1.add(diagrafiMathimatosRadio);
+        diagrafiMathimatosRadio.setSelected(true);
+        diagrafiMathimatosRadio.setText("Διαγραφή Μαθήματος");
+        diagrafiMathimatosRadio.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                diagrafiKathigitiRadioItemStateChanged(evt);
+                diagrafiMathimatosRadioItemStateChanged(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(0, 38, 9, 0);
-        jPanel6.add(diagrafiKathigitiRadio, gridBagConstraints);
+        jPanel6.add(diagrafiMathimatosRadio, gridBagConstraints);
 
-        epeksergasiaKathigitisRadio.setText("Επεξεργασία Μαθήματος");
-        epeksergasiaKathigitisRadio.addItemListener(new java.awt.event.ItemListener() {
+        buttonGroup1.add(epeksergasiaMathimatosRadio);
+        epeksergasiaMathimatosRadio.setText("Επεξεργασία Μαθήματος");
+        epeksergasiaMathimatosRadio.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                epeksergasiaKathigitisRadioItemStateChanged(evt);
+                epeksergasiaMathimatosRadioItemStateChanged(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(0, 38, 9, 0);
-        jPanel6.add(epeksergasiaKathigitisRadio, gridBagConstraints);
+        jPanel6.add(epeksergasiaMathimatosRadio, gridBagConstraints);
 
         emfanisiStoixeiaKathigitiLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -437,10 +444,10 @@ public class Mathima extends javax.swing.JFrame {
 
     private void epeksergasiaEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_epeksergasiaEditBtnActionPerformed
         // TODO add your handling code here:
-        if(diagrafiKathigitiRadio.isSelected()){
+        if(diagrafiMathimatosRadio.isSelected()){
             
                 
-        }else if (epeksergasiaKathigitisRadio.isSelected()){
+        }else if (epeksergasiaMathimatosRadio.isSelected()){
             
         }
     }//GEN-LAST:event_epeksergasiaEditBtnActionPerformed
@@ -454,24 +461,27 @@ public class Mathima extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_amKathigitisEditTFPropertyChange
 
-    private void diagrafiKathigitiRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_diagrafiKathigitiRadioItemStateChanged
+    private void diagrafiMathimatosRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_diagrafiMathimatosRadioItemStateChanged
         // TODO add your handling code here:
         onomaMathimatosEditTF.setEnabled(false);
         amKathigitiMathimatosTF.setEnabled(false);
-        eidikotitaKathigitisEditCombo.setEnabled(false);
-    }//GEN-LAST:event_diagrafiKathigitiRadioItemStateChanged
+    }//GEN-LAST:event_diagrafiMathimatosRadioItemStateChanged
 
-    private void epeksergasiaKathigitisRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_epeksergasiaKathigitisRadioItemStateChanged
+    private void epeksergasiaMathimatosRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_epeksergasiaMathimatosRadioItemStateChanged
         // TODO add your handling code here:
         onomaMathimatosEditTF.setEnabled(true);
         amKathigitiMathimatosTF.setEnabled(true);
-        eidikotitaKathigitisEditCombo.setEnabled(true);
-    }//GEN-LAST:event_epeksergasiaKathigitisRadioItemStateChanged
+    }//GEN-LAST:event_epeksergasiaMathimatosRadioItemStateChanged
 
     private void jPanel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MousePressed
         // TODO add your handling code here:
         jPanel6.requestFocus();
     }//GEN-LAST:event_jPanel6MousePressed
+
+    private void amKathigitiMathimatosTFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_amKathigitiMathimatosTFFocusLost
+        // TODO add your handling code here:
+        showKathigitis(Integer.valueOf(amKathigitiMathimatosTF.getText()));
+    }//GEN-LAST:event_amKathigitiMathimatosTFFocusLost
 
     /**
      * @param args the command line arguments
@@ -512,13 +522,14 @@ public class Mathima extends javax.swing.JFrame {
     private javax.swing.JTextField amKathigitiMathimatosTF;
     private javax.swing.JTextField amKathigitisEditTF;
     private javax.swing.JPanel botPanel;
-    private javax.swing.JRadioButton diagrafiKathigitiRadio;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton diagrafiMathimatosRadio;
     private javax.swing.JPanel editMathimata;
     private javax.swing.JPanel editPanel;
     private javax.swing.JLabel eidikotitaEditLabel;
     private javax.swing.JLabel emfanisiStoixeiaKathigitiLabel;
     private javax.swing.JButton epeksergasiaEditBtn;
-    private javax.swing.JRadioButton epeksergasiaKathigitisRadio;
+    private javax.swing.JRadioButton epeksergasiaMathimatosRadio;
     private javax.swing.JLabel eponimoEditLabel;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel7;
@@ -566,7 +577,7 @@ public class Mathima extends javax.swing.JFrame {
         try {
             int num  = Integer.valueOf(ext);
             if((num< MathitisAdmin.getSid()) && (num >0)){
-                String selectString = "SELECT selKathigitiViaID(?);";
+                String selectString = "SELECT selMathimaViaID(?);";
                 PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
                 ResultSet rs = DBPostresqlAdmin.getResultset();
                 try {
@@ -576,15 +587,10 @@ public class Mathima extends javax.swing.JFrame {
                     rs.next();
                     columnvalue = rs.getString(1);   
                     String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
-                    onomaMathimatosEditTF.setText("");
-                    amKathigitiMathimatosTF.setText("");
-                    emfanisiStoixeiaKathigitiLabel.setText("");
-                    for(int i=0; i<eidikotita.length; i++){
-                        if(a[2].equals(eidikotita[i])){
-                            eidikotitaKathigitisEditCombo.setSelectedIndex(i); 
-                            break;
-                        }
-                    }
+                    onomaMathimatosEditTF.setText(a[0]);
+                    amKathigitiMathimatosTF.setText(a[1]);
+                    emfanisiStoixeiaKathigitiLabel.setText(a[2] + " " + a[3] + " " + a[4]);
+                    
                     
                                    
                 } catch(SQLException ex) {
@@ -613,7 +619,44 @@ public class Mathima extends javax.swing.JFrame {
     }
 
 
-
+    private void showKathigitis(int ext){
+                try {
+            int num  = Integer.valueOf(ext);
+            if((num< MathitisAdmin.getSid()) && (num >0)){
+                String selectString = "SELECT selKathigitisViaID(?);";
+                PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+                ResultSet rs = DBPostresqlAdmin.getResultset();
+                try {
+                    aStatePG.setInt(1, num);
+                    rs = aStatePG.executeQuery();        
+                    String columnvalue;
+                    rs.next();
+                    columnvalue = rs.getString(1);   
+                    String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                    emfanisiStoixeiaKathigitiLabel.setText(a[0] + " " + a[1] + " " + a[2]);
+                    
+                    
+                                   
+                                  
+                } catch(SQLException ex) {
+                    System.out.println("\n -- SQL Exception --- \n");
+                    while(ex != null) {
+                        System.out.println("Message: " + ex.getMessage());
+                        ex = ex.getNextException();
+                    }
+                } 
+            }else{
+                emfanisiStoixeiaKathigitiLabel.setText("");
+                String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+                JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+                emfanisiStoixeiaKathigitiLabel.setText("");
+            String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+            JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            System.out.println("ti pige strava: " + e.getMessage());
+        }
+    }
 
 
 

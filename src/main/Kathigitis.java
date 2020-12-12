@@ -914,7 +914,7 @@ public class Kathigitis extends javax.swing.JFrame {
         try {
             int num  = Integer.valueOf(ext);
             if((num< MathitisAdmin.getSid()) && (num >0)){
-                String selectString = "SELECT selKathigitiViaID(?);";
+                String selectString = "SELECT selKathigitisViaID(?);";
                 PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
                 ResultSet rs = DBPostresqlAdmin.getResultset();
                 try {
