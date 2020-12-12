@@ -5,10 +5,12 @@
  */
 package main;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,6 +36,7 @@ public class Mathima extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -46,6 +49,19 @@ public class Mathima extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         editMathimata = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        onomaEditLabel = new javax.swing.JLabel();
+        amKathigitiMathimatosTF = new javax.swing.JTextField();
+        onomaMathimatosEditTF = new javax.swing.JTextField();
+        epeksergasiaEditBtn = new javax.swing.JButton();
+        eponimoEditLabel = new javax.swing.JLabel();
+        eidikotitaEditLabel = new javax.swing.JLabel();
+        amEditLabel = new javax.swing.JLabel();
+        amKathigitisEditTF = new javax.swing.JTextField();
+        onomaLabel3 = new javax.swing.JLabel();
+        diagrafiKathigitiRadio = new javax.swing.JRadioButton();
+        epeksergasiaKathigitisRadio = new javax.swing.JRadioButton();
+        emfanisiStoixeiaKathigitiLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -189,15 +205,176 @@ public class Mathima extends javax.swing.JFrame {
 
         botPanel.add(viewMathimata, "card2");
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Φόρμα επεξεργασίας καθηγητών"));
+        jPanel6.setFont(new java.awt.Font("Lucida Sans", 0, 18)); // NOI18N
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel6MousePressed(evt);
+            }
+        });
+        jPanel6.setLayout(new java.awt.GridBagLayout());
+
+        onomaEditLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        onomaEditLabel.setText("Όνομα Μαθήματος :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = null;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        jPanel6.add(onomaEditLabel, gridBagConstraints);
+
+        amKathigitiMathimatosTF.setEnabled(false);
+        amKathigitiMathimatosTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amKathigitiMathimatosTFActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 149;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(amKathigitiMathimatosTF, gridBagConstraints);
+
+        onomaMathimatosEditTF.setEnabled(false);
+        onomaMathimatosEditTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onomaMathimatosEditTFActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 149;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(onomaMathimatosEditTF, gridBagConstraints);
+
+        epeksergasiaEditBtn.setText("Επεξεργασία");
+        epeksergasiaEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                epeksergasiaEditBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(17, 39, 20, 0);
+        jPanel6.add(epeksergasiaEditBtn, gridBagConstraints);
+
+        eponimoEditLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        eponimoEditLabel.setText("ΑΜ Σχετιζόμενου Καθηγητή :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = null;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        jPanel6.add(eponimoEditLabel, gridBagConstraints);
+
+        eidikotitaEditLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        eidikotitaEditLabel.setText("Στοιχεία Καθηγητη :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = null;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        jPanel6.add(eidikotitaEditLabel, gridBagConstraints);
+
+        amEditLabel.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
+        amEditLabel.setText("ΑΜ Μαθήματος :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = null;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        jPanel6.add(amEditLabel, gridBagConstraints);
+
+        amKathigitisEditTF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                amKathigitisEditTFFocusLost(evt);
+            }
+        });
+        amKathigitisEditTF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                amKathigitisEditTFPropertyChange(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 153;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(amKathigitisEditTF, gridBagConstraints);
+
+        onomaLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        onomaLabel3.setText("Εισαγετε το ΑΜ του καθηγητη που θελετε να επεξεργαστειτε:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 14, 14, 14);
+        jPanel6.add(onomaLabel3, gridBagConstraints);
+
+        diagrafiKathigitiRadio.setSelected(true);
+        diagrafiKathigitiRadio.setText("Διαγραφή Μαθήματος");
+        diagrafiKathigitiRadio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                diagrafiKathigitiRadioItemStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 38, 9, 0);
+        jPanel6.add(diagrafiKathigitiRadio, gridBagConstraints);
+
+        epeksergasiaKathigitisRadio.setText("Επεξεργασία Μαθήματος");
+        epeksergasiaKathigitisRadio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                epeksergasiaKathigitisRadioItemStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 38, 9, 0);
+        jPanel6.add(epeksergasiaKathigitisRadio, gridBagConstraints);
+
+        emfanisiStoixeiaKathigitiLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(9, 40, 9, 0);
+        jPanel6.add(emfanisiStoixeiaKathigitiLabel, gridBagConstraints);
+
         javax.swing.GroupLayout editMathimataLayout = new javax.swing.GroupLayout(editMathimata);
         editMathimata.setLayout(editMathimataLayout);
         editMathimataLayout.setHorizontalGroup(
             editMathimataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1035, Short.MAX_VALUE)
+            .addGroup(editMathimataLayout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         editMathimataLayout.setVerticalGroup(
             editMathimataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 604, Short.MAX_VALUE)
+            .addGroup(editMathimataLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         botPanel.add(editMathimata, "card3");
@@ -250,6 +427,52 @@ public class Mathima extends javax.swing.JFrame {
         editPanel.setBackground(new java.awt.Color(35,90,190));
     }//GEN-LAST:event_editPanelMouseClicked
 
+    private void amKathigitiMathimatosTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amKathigitiMathimatosTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_amKathigitiMathimatosTFActionPerformed
+
+    private void onomaMathimatosEditTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onomaMathimatosEditTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onomaMathimatosEditTFActionPerformed
+
+    private void epeksergasiaEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_epeksergasiaEditBtnActionPerformed
+        // TODO add your handling code here:
+        if(diagrafiKathigitiRadio.isSelected()){
+            
+                
+        }else if (epeksergasiaKathigitisRadio.isSelected()){
+            
+        }
+    }//GEN-LAST:event_epeksergasiaEditBtnActionPerformed
+
+    private void amKathigitisEditTFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_amKathigitisEditTFFocusLost
+        // TODO add your handling code here:
+        showDetailsEdit(amKathigitisEditTF.getText());
+    }//GEN-LAST:event_amKathigitisEditTFFocusLost
+
+    private void amKathigitisEditTFPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_amKathigitisEditTFPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_amKathigitisEditTFPropertyChange
+
+    private void diagrafiKathigitiRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_diagrafiKathigitiRadioItemStateChanged
+        // TODO add your handling code here:
+        onomaMathimatosEditTF.setEnabled(false);
+        amKathigitiMathimatosTF.setEnabled(false);
+        eidikotitaKathigitisEditCombo.setEnabled(false);
+    }//GEN-LAST:event_diagrafiKathigitiRadioItemStateChanged
+
+    private void epeksergasiaKathigitisRadioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_epeksergasiaKathigitisRadioItemStateChanged
+        // TODO add your handling code here:
+        onomaMathimatosEditTF.setEnabled(true);
+        amKathigitiMathimatosTF.setEnabled(true);
+        eidikotitaKathigitisEditCombo.setEnabled(true);
+    }//GEN-LAST:event_epeksergasiaKathigitisRadioItemStateChanged
+
+    private void jPanel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MousePressed
+        // TODO add your handling code here:
+        jPanel6.requestFocus();
+    }//GEN-LAST:event_jPanel6MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -275,134 +498,6 @@ public class Mathima extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Mathima.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -413,15 +508,28 @@ public class Mathima extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amEditLabel;
+    private javax.swing.JTextField amKathigitiMathimatosTF;
+    private javax.swing.JTextField amKathigitisEditTF;
     private javax.swing.JPanel botPanel;
+    private javax.swing.JRadioButton diagrafiKathigitiRadio;
     private javax.swing.JPanel editMathimata;
     private javax.swing.JPanel editPanel;
+    private javax.swing.JLabel eidikotitaEditLabel;
+    private javax.swing.JLabel emfanisiStoixeiaKathigitiLabel;
+    private javax.swing.JButton epeksergasiaEditBtn;
+    private javax.swing.JRadioButton epeksergasiaKathigitisRadio;
+    private javax.swing.JLabel eponimoEditLabel;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel onomaEditLabel;
+    private javax.swing.JLabel onomaLabel3;
+    private javax.swing.JTextField onomaMathimatosEditTF;
     private javax.swing.JPanel viewMathimata;
     private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
@@ -454,7 +562,55 @@ public class Mathima extends javax.swing.JFrame {
         } 
     }
 
-
+    private void showDetailsEdit(String ext){
+        try {
+            int num  = Integer.valueOf(ext);
+            if((num< MathitisAdmin.getSid()) && (num >0)){
+                String selectString = "SELECT selKathigitiViaID(?);";
+                PreparedStatement aStatePG = DBPostresqlAdmin.getPrepareStatement(selectString);
+                ResultSet rs = DBPostresqlAdmin.getResultset();
+                try {
+                    aStatePG.setInt(1, num);
+                    rs = aStatePG.executeQuery();        
+                    String columnvalue;
+                    rs.next();
+                    columnvalue = rs.getString(1);   
+                    String[] a = columnvalue.substring(1, columnvalue.length()-1).split(",");
+                    onomaMathimatosEditTF.setText("");
+                    amKathigitiMathimatosTF.setText("");
+                    emfanisiStoixeiaKathigitiLabel.setText("");
+                    for(int i=0; i<eidikotita.length; i++){
+                        if(a[2].equals(eidikotita[i])){
+                            eidikotitaKathigitisEditCombo.setSelectedIndex(i); 
+                            break;
+                        }
+                    }
+                    
+                                   
+                } catch(SQLException ex) {
+                    System.out.println("\n -- SQL Exception --- \n");
+                    while(ex != null) {
+                        System.out.println("Message: " + ex.getMessage());
+                        ex = ex.getNextException();
+                    }
+                } 
+            }else{
+                onomaMathimatosEditTF.setText("");
+                amKathigitiMathimatosTF.setText("");
+                emfanisiStoixeiaKathigitiLabel.setText("");
+                String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+                JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+                onomaMathimatosEditTF.setText("");
+                amKathigitiMathimatosTF.setText("");
+                emfanisiStoixeiaKathigitiLabel.setText("");
+            String temp = "<html>To AM που δωσατε ειναι δεν υπαρχει <br>Παρακαλω δωστε αριθμους απο το 1 εως "+ String.valueOf(MathitisAdmin.getSid()-1);
+            JOptionPane.showMessageDialog(null, temp, "Προσοχή!", JOptionPane.WARNING_MESSAGE);
+            System.out.println("ti pige strava: " + e.getMessage());
+        }
+        
+    }
 
 
 
