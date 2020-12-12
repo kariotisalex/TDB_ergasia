@@ -19,6 +19,7 @@ public class StoredProceduresAdmin {
         dropVathmologiaStoredProcedures();
         
         dropMathimaStoredProcedure();
+        dropMathimaStoredProcedureUpdateQueries();
         
         dropMathitisStoredProcedure();
         dropMathitisStoredProceduresDeleteQueries();
@@ -47,7 +48,7 @@ public class StoredProceduresAdmin {
         
         
         createMathimaStoredProcedure();
-        
+        createMathimaStoredProcedureUpdateQueries();
         
         createVathmologiaStoredProceduresSelectQueries();   
         
@@ -138,6 +139,14 @@ public class StoredProceduresAdmin {
         }
         
     }
+    private static void dropMathimaStoredProcedureUpdateQueries(){
+        try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION updatemathima(int, varchar, int);");} 
+        catch (SQLException e) {
+            System.out.println("dropMathimaStoredProcedureUpdateQueries : " + e.getMessage());
+        }
+        
+    }
+
     
     private static void dropVathmologiaStoredProcedures(){
     try {DBPostresqlAdmin.getStatement().executeUpdate("DROP FUNCTION selVathmTwoTermsWithFinalExams();");} catch (SQLException e) {System.out.println("DROP :2 " +e.getMessage());}
@@ -324,7 +333,7 @@ public class StoredProceduresAdmin {
                 "$$\n" +
                 "SELECT M.mid, M.onoma_mathimatos, K.onoma_kathigiti, K.epitheto_kathigiti \n" +
                 "FROM mathima M, kathigitis K \n" +
-                "WHERE M.kid=K.kid;\n" +
+                "WHERE M.kid=K.kid ORDER BY mid;\n" +
                 "\n" +
                 "$$ LANGUAGE SQL");
         }catch (SQLException e) {
@@ -338,6 +347,44 @@ public class StoredProceduresAdmin {
                                                             "    	      	  epitheto_kathigiti varchar,\n" +
                                                             "    	      	  eidikotita varchar)as\n" +
                                                             "\n" +
+                                                            "    $$\n" +
+                                                            "    SELECT M.onoma_mathimatos, K.kid, K.onoma_kathigiti, K.epitheto_kathigiti, K.eidikotita\n" +
+                                                            "	FROM mathima M, kathigitis K\n" +
+                                                            "	WHERE M.kid=K.kid AND \n" +
+                                                            "	mid = $1;\n" +
+                                                            "    $$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createMathimaStoredProcedure : " + e.getMessage());
+        }        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    private static void createMathimaStoredProcedureUpdateQueries(){
+        
+        try {DBPostresqlAdmin.getStatement().executeUpdate("CREATE OR REPLACE FUNCTION updatemathima(int, varchar, int)\n" +
+"                                            returns VOID as\n" +
+"                                            $$\n" +
+"                                            UPDATE mathima\n" +
+"                                            SET onoma_mathimatos=$2 , kid=$3\n" +
+"                                            WHERE mid = $1;\n" +
+"                                            $$ LANGUAGE SQL;");
+        }catch (SQLException e) {
+            System.out.println("createMathimaStoredProcedure : " + e.getMessage());
+        }
+        
+        try {DBPostresqlAdmin.getStatement().executeUpdate( "CREATE OR REPLACE FUNCTION selMathimaViaID(int)\n" +
+                                                            "    returns table(onoma_mathimatos varchar,\n" +
+                                                            "    	      	  kid int,\n" +
+                                                            "    	      	  onoma_kathigiti varchar,\n" +
+                                                            "    	      	  epitheto_kathigiti varchar,\n" +
+                                                            "    	      	  eidikotita varchar)as\n" +
                                                             "    $$\n" +
                                                             "    SELECT M.onoma_mathimatos, K.kid, K.onoma_kathigiti, K.epitheto_kathigiti, K.eidikotita\n" +
                                                             "	FROM mathima M, kathigitis K\n" +

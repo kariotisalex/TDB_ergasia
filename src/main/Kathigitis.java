@@ -25,7 +25,7 @@ public class Kathigitis extends javax.swing.JFrame {
     public Kathigitis() {
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
-        //showInTable();
+        showInTable();
 
     }
 
