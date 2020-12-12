@@ -5,6 +5,7 @@
  */
 package main;
 
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,11 @@ public class SignInToProgram extends javax.swing.JFrame {
             jPanelChanger(true);
             loginButton.setText("Log Out");
         }
+        setIcon();
+    }
+    
+    public void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().createImage(getClass().getResource("binder_30px.png")));
     }
 
     /**

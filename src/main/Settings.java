@@ -6,6 +6,7 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.sql.*;
 import javax.swing.*;
 
@@ -26,6 +27,11 @@ public class Settings extends javax.swing.JFrame {
             postgrePW.setText(DBPostresqlAdmin.getPassword());
             isConnectedPostgre = !isConnectedPostgre;
         }
+        setIcon();
+    }
+    
+    public void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().createImage(getClass().getResource("binder_30px.png")));
     }
 
     /**

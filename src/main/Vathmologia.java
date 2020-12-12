@@ -5,6 +5,7 @@
  */
 package main;
 
+import java.awt.Toolkit;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +24,11 @@ public class Vathmologia extends javax.swing.JFrame {
         initComponents();
         viewPanel.setBackground(new java.awt.Color(35,90,190));
         showView();
+        setIcon();
+    }
+    
+    public void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().createImage(getClass().getResource("binder_30px.png")));
     }
 
     /**
